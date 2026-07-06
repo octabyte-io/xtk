@@ -20,7 +20,7 @@ export default function CtaBand() {
             </ButtonLink>
           </div>
           <p className="mt-5 text-sm text-ink-soft">
-            Free trial for your whole practice.
+            30-day free trial for your whole practice — no credit card required.
           </p>
         </div>
       </Reveal>
