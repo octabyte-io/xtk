@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -22,11 +23,11 @@ export default function ButtonLink({
   className?: string;
 }) {
   return (
-    <a
+    <Link
       href={href}
       className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-base font-medium transition-colors ${styles[variant]} ${className}`}
     >
       {children}
-    </a>
+    </Link>
   );
 }

@@ -1,10 +1,12 @@
+import Link from "next/link";
 import Logo from "./logo";
 
 const links = [
-  { href: "#features", label: "Features" },
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#esign", label: "E-signatures" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#features", label: "Features" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#esign", label: "E-signatures" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Footer() {
@@ -19,13 +21,13 @@ export default function Footer() {
         </div>
         <nav className="flex flex-wrap gap-x-8 gap-y-2" aria-label="Footer">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
