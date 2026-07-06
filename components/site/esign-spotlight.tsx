@@ -17,7 +17,7 @@ const flow = [
 
 const audit = [
   { t: "9:41 am", e: "Request viewed", who: "priya@acmetrading.co" },
-  { t: "9:43 am", e: "Signature added", who: "Azeem Haider" },
+  { t: "9:43 am", e: "Signature added", who: "John Smith" },
   { t: "9:43 am", e: "Document completed", who: "Certificate issued" },
 ];
 
@@ -46,7 +46,7 @@ export default function EsignSpotlight() {
                 <div>
                   <div className="border-b border-dashed border-ink/25 pb-1">
                     <span className="sig-write inline-block font-script text-3xl leading-none text-pen">
-                      Azeem Haider
+                      John Smith
                     </span>
                   </div>
                   <div className="mt-1.5 text-[11px] text-ink-soft">

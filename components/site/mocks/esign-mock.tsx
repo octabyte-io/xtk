@@ -9,7 +9,7 @@ export default function EsignMock() {
         </div>
         <div className="mt-4 border-b border-dashed border-ink/25 pb-1">
           <span className="sig-write inline-block font-script text-2xl leading-none text-pen">
-            Azeem Haider
+            John Smith
           </span>
         </div>
         <div className="mt-1 flex items-center justify-between text-[10px] text-ink-soft">
