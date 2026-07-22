@@ -3,7 +3,7 @@
 const pairs = [
   { token: "[CLIENT:NAME]", value: "Acme Trading Ltd" },
   { token: "[CLIENT:ADDRESS_PHYSICAL:CITY]", value: "Wellington" },
-  { token: "[CLIENT:CONTACT:FIRST]", value: "Priya" },
+  { token: "[CLIENT:CONTACT:FIRST]", value: "John" },
 ];
 
 export default function TemplatesMock() {

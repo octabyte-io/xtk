@@ -16,7 +16,7 @@ const flow = [
 ];
 
 const audit = [
-  { t: "9:41 am", e: "Request viewed", who: "priya@acmetrading.co" },
+  { t: "9:41 am", e: "Request viewed", who: "john@acmetrading.co" },
   { t: "9:43 am", e: "Signature added", who: "John Smith" },
   { t: "9:43 am", e: "Document completed", who: "Certificate issued" },
 ];
