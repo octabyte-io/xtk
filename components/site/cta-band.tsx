@@ -1,5 +1,6 @@
 import Reveal from "./reveal";
 import ButtonLink from "./button-link";
+import { chromeStoreHref, firefoxStoreHref } from "@/lib/site";
 
 export default function CtaBand() {
   return (
@@ -14,8 +15,8 @@ export default function CtaBand() {
             client — your whole practice can be working in context today.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <ButtonLink href="#">Add to Chrome</ButtonLink>
-            <ButtonLink href="#" variant="secondary">
+            <ButtonLink href={chromeStoreHref()}>Add to Chrome</ButtonLink>
+            <ButtonLink href={firefoxStoreHref()} variant="secondary">
               Add to Firefox
             </ButtonLink>
           </div>

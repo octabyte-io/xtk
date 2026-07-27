@@ -4,6 +4,7 @@ import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { company } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/support" },
   title: "Support — XTK",
   description:
     "Get help with OctaByte XTK — contact support, report a problem, or read the FAQ.",
@@ -36,7 +37,12 @@ export default function Support() {
         <LI>
           <Strong>Getting started</Strong> — installing the extension, connecting
           your Google Drive or OneDrive, and opening your first client. See the{" "}
-          <A href="/blog">blog</A> for guides.
+          <A href="/guides">user guides</A>.
+        </LI>
+        <LI>
+          <Strong>Documents, e-signatures &amp; the client portal</Strong> —
+          step-by-step walkthroughs of every feature live in the{" "}
+          <A href="/guides">guides section</A>.
         </LI>
         <LI>
           <Strong>Billing &amp; trials</Strong> — how the {""}

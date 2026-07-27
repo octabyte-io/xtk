@@ -7,6 +7,7 @@ const links = [
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#esign", label: "E-signatures" },
   { href: "/#pricing", label: "Pricing" },
+  { href: "/guides", label: "Guides" },
   { href: "/blog", label: "Blog" },
 ];
 

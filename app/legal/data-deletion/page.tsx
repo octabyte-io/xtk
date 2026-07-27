@@ -4,6 +4,7 @@ import { A, Callout, H2, LI, OL, P, Strong, UL } from "@/components/site/legal/p
 import { LAST_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/legal/data-deletion" },
   title: "Your Data Rights & Deletion — XTK",
   description:
     "How to access, export or delete your data from OctaByte XTK, and what happens when you do.",

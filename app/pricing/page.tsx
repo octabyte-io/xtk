@@ -6,6 +6,7 @@ import Faq from "@/components/site/faq";
 import CtaBand from "@/components/site/cta-band";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pricing" },
   title: "Pricing — XTK",
   description:
     "One simple plan with everything included, and a 30-day free trial for your whole practice. No per-seat pricing, no feature tiers.",

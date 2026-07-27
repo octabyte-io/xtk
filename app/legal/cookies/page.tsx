@@ -4,6 +4,7 @@ import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { LAST_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/legal/cookies" },
   title: "Cookies & Tracking — XTK",
   description:
     "The cookies, local storage and diagnostics XTK uses across the website, portal and extension.",

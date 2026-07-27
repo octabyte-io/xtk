@@ -8,6 +8,7 @@ import PostCard, { CategoryChip, PostMeta } from "@/components/site/post-card";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/blog" },
   title: "Blog — XTK",
   description:
     "Product news, guides and practice tips from XTK — the toolkit that adds documents, e-signatures, client portals and templates to Xero Practice Manager.",

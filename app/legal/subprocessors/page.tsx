@@ -4,6 +4,7 @@ import { A, H2, P, Table } from "@/components/site/legal/prose";
 import { LAST_UPDATED, company, subProcessors } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/legal/subprocessors" },
   title: "Sub-processors — XTK",
   description:
     "The third-party services XTK relies on to process data, their purpose and region.",

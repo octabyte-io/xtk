@@ -13,6 +13,7 @@ import {
 import { LAST_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/legal/privacy" },
   title: "Privacy Policy — XTK",
   description:
     "How OctaByte XTK collects, uses, shares and protects data across the browser extension, web portal and backend.",

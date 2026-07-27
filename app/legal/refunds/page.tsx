@@ -4,6 +4,7 @@ import { A, H2, LI, P, UL } from "@/components/site/legal/prose";
 import { LAST_UPDATED, company, pricing } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/legal/refunds" },
   title: "Refund & Cancellation Policy — XTK",
   description:
     "How trials, cancellations and refunds work for OctaByte XTK subscriptions.",

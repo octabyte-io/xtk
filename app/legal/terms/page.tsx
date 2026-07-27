@@ -4,6 +4,7 @@ import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { LAST_UPDATED, company, pricing } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/legal/terms" },
   title: "Terms of Service — XTK",
   description:
     "The terms governing use of the OctaByte XTK browser extension and web portal.",

@@ -4,6 +4,7 @@ import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { company } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About — XTK",
   description:
     "What OctaByte XTK is, who makes it, and how it works with Xero Practice Manager.",

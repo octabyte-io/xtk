@@ -4,6 +4,7 @@ import { A, Callout, H2, LI, P, Strong, UL } from "@/components/site/legal/prose
 import { LAST_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/legal/dpa" },
   title: "Data Processing Addendum — XTK",
   description:
     "The DPA governing XTK's processing of personal data on behalf of practices under GDPR / UK GDPR.",

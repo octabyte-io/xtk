@@ -1,5 +1,7 @@
 import Reveal from "./reveal";
 import SectionHeading from "./section-heading";
+import JsonLd from "@/components/json-ld";
+import { faqPageJsonLd } from "@/lib/structured-data";
 
 const faqs = [
   {
@@ -27,6 +29,7 @@ const faqs = [
 export default function Faq() {
   return (
     <section id="faq" className="mx-auto w-full max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
+      <JsonLd data={faqPageJsonLd(faqs)} />
       <SectionHeading
         eyebrow="FAQ"
         title="Questions practices ask us"
