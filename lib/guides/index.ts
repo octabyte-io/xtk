@@ -27,6 +27,7 @@ import { guide as connectYourEmail } from "./content/connect-your-email";
 import { guide as inviteYourTeam } from "./content/invite-your-team";
 import { guide as manageClientDocuments } from "./content/manage-client-documents";
 import { guide as bulkFileActions } from "./content/bulk-file-actions";
+import { guide as documentTemplates } from "./content/document-templates";
 
 /**
  * The guide registry, in no particular order — helpers below sort. To publish
@@ -40,6 +41,7 @@ export const guides: Guide[] = [
   inviteYourTeam,
   manageClientDocuments,
   bulkFileActions,
+  documentTemplates,
 ];
 
 export function formatGuideDate(iso: string): string {
