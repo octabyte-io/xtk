@@ -56,7 +56,12 @@ function Steps({ title, steps }: { title?: string; steps: GuideStep[] }) {
               <p className="font-semibold text-ink">{step.title}</p>
               <p className="mt-1 leading-relaxed text-ink-soft">{step.text}</p>
               {step.image && (
-                <Figure src={step.image.src} alt={step.image.alt} />
+                <Figure
+                  src={step.image.src}
+                  alt={step.image.alt}
+                  width={step.image.width}
+                  height={step.image.height}
+                />
               )}
             </div>
           </li>

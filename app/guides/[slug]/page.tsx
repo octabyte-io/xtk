@@ -1,11 +1,3 @@
-/**
- * Guide detail page — currently parked in a private `_slug` folder because
- * `output: export` refuses to build a dynamic route whose
- * generateStaticParams() returns zero params, and no guides exist yet.
- *
- * FIRST ARTICLE SESSION: rename this folder to `[slug]`
- * (git mv app/guides/_slug "app/guides/[slug]") and delete this comment.
- */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
