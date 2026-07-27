@@ -111,7 +111,7 @@ export const guide: Guide = {
     {
       type: "list",
       items: [
-        "[IF CLIENT:NOTES] … [ENDIF] — keeps the passage when the field has any value at all",
+        "[IF CLIENT:MOBILE] … [ENDIF] — keeps the passage when the field has any value at all",
         "[IF CLIENT:STREET:COUNTRYCODE = \"AU\"] … [ENDIF] — keeps it when the value matches",
         "[IF CLIENT:STREET:COUNTRYCODE != \"AU\"] … [ENDIF] — keeps it when the value differs (including when it's empty)",
       ],

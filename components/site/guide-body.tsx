@@ -71,6 +71,64 @@ function Steps({ title, steps }: { title?: string; steps: GuideStep[] }) {
   );
 }
 
+function Table({
+  head,
+  rows,
+  caption,
+  codeColumns = [],
+}: {
+  head: string[];
+  rows: string[][];
+  caption?: string;
+  codeColumns?: number[];
+}) {
+  const cell = (text: string, col: number) =>
+    codeColumns.includes(col) ? (
+      <code className="whitespace-nowrap rounded bg-accent-soft/60 px-1.5 py-0.5 font-mono text-[13px] text-accent-deep">
+        {text}
+      </code>
+    ) : (
+      text
+    );
+  return (
+    <figure className="mt-6">
+      <div className="overflow-x-auto rounded-2xl border border-line">
+        <table className="w-full border-collapse text-left text-[15px] leading-relaxed">
+          <thead>
+            <tr className="border-b border-line bg-accent-soft/40">
+              {head.map((h, i) => (
+                <th
+                  key={i}
+                  scope="col"
+                  className="px-4 py-2.5 font-display text-sm font-bold tracking-tight text-ink"
+                >
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, r) => (
+              <tr key={r} className="border-b border-line/60 last:border-b-0">
+                {row.map((c, i) => (
+                  <td key={i} className="px-4 py-2.5 align-top text-ink-soft">
+                    {cell(c, i)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {caption && (
+        <figcaption className="mt-2 text-center text-sm text-ink-soft">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 function Block({ block }: { block: GuideBlock }) {
   switch (block.type) {
     case "h2":
@@ -128,6 +186,15 @@ function Block({ block }: { block: GuideBlock }) {
       );
     case "steps":
       return <Steps title={block.title} steps={block.steps} />;
+    case "table":
+      return (
+        <Table
+          head={block.head}
+          rows={block.rows}
+          caption={block.caption}
+          codeColumns={block.codeColumns}
+        />
+      );
     case "video": {
       const src = `${basePath}${block.src}`;
       return (

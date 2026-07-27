@@ -42,6 +42,15 @@ export type GuideBlock =
       /** Static-fallback description, also used as alt/aria-label. */
       alt: string;
       caption?: string;
+    }
+  | {
+      type: "table";
+      /** Column headers. */
+      head: string[];
+      rows: string[][];
+      caption?: string;
+      /** Column indices rendered in monospace, e.g. a placeholder-token column. */
+      codeColumns?: number[];
     };
 
 export type GuideSeries =
