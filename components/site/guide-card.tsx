@@ -1,4 +1,5 @@
 import Link from "next/link";
+import OptimizedImage from "@/components/optimized-image";
 import type { Guide, GuideSeries } from "@/lib/guides";
 import { formatGuideDate } from "@/lib/guides";
 import Reveal from "./reveal";
@@ -41,21 +42,33 @@ export default function GuideCard({
 }) {
   return (
     <Reveal delay={delay} className="h-full">
-      <article className="h-full rounded-2xl border border-line bg-surface transition-shadow hover:shadow-[0_24px_48px_-32px_rgba(13,34,66,0.35)]">
-        <Link href={`/guides/${guide.slug}`} className="flex h-full flex-col gap-3 p-6">
-          <div className="flex items-center gap-3">
-            {showSeries && <SeriesChip series={guide.series} />}
-            <GuideMeta guide={guide} />
+      <article className="h-full overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-[0_24px_48px_-32px_rgba(13,34,66,0.35)]">
+        <Link href={`/guides/${guide.slug}`} className="flex h-full flex-col">
+          {guide.thumbnail && (
+            <OptimizedImage
+              src={guide.thumbnail.src}
+              alt={guide.thumbnail.alt}
+              width={1200}
+              height={675}
+              className="w-full border-b border-line"
+              sizes="(max-width: 768px) 100vw, 480px"
+            />
+          )}
+          <div className="flex h-full flex-col gap-3 p-6">
+            <div className="flex items-center gap-3">
+              {showSeries && <SeriesChip series={guide.series} />}
+              <GuideMeta guide={guide} />
+            </div>
+            <h3 className="font-display text-xl font-bold tracking-tight text-ink">
+              {guide.title}
+            </h3>
+            <p className="flex-1 text-[15px] leading-relaxed text-ink-soft">
+              {guide.description}
+            </p>
+            <span className="text-sm font-medium text-accent-deep">
+              Read guide →
+            </span>
           </div>
-          <h3 className="font-display text-xl font-bold tracking-tight text-ink">
-            {guide.title}
-          </h3>
-          <p className="flex-1 text-[15px] leading-relaxed text-ink-soft">
-            {guide.description}
-          </p>
-          <span className="text-sm font-medium text-accent-deep">
-            Read guide →
-          </span>
         </Link>
       </article>
     </Reveal>

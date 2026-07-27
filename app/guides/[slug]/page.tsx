@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "@/components/site/nav";
+import OptimizedImage from "@/components/optimized-image";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
 import GuideBody from "@/components/site/guide-body";
@@ -98,6 +99,17 @@ export default async function GuidePage({
           </header>
 
           <div className="mx-auto w-full max-w-3xl px-5 pb-16 pt-2 sm:px-8">
+            {guide.thumbnail && (
+              <OptimizedImage
+                src={guide.thumbnail.src}
+                alt={guide.thumbnail.alt}
+                width={1200}
+                height={675}
+                preload
+                className="mt-4 w-full rounded-2xl border border-line"
+                sizes="(max-width: 768px) 100vw, 720px"
+              />
+            )}
             <GuideBody body={guide.body} />
 
             {guide.faq.length > 0 && (

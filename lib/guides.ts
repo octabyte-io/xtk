@@ -81,6 +81,11 @@ export type Guide = {
   relatedSlugs: string[];
   /** Path under public/ to the 1200×630 OG image; falls back to the site default. */
   ogImage?: string;
+  /**
+   * Path under public/ to the 1200×675 card/post thumbnail (rendered from
+   * user-guide/assets/thumb-template.html); omitted → text-only card.
+   */
+  thumbnail?: { src: string; alt: string };
   body: GuideBlock[];
 };
 
@@ -108,6 +113,10 @@ export const guides: Guide[] = [
     updated: "2026-07-27",
     readingTime: "5 min read",
     ogImage: "/images/guides/getting-started-with-xtk/og.png",
+    thumbnail: {
+      src: "/images/guides/getting-started-with-xtk/thumb.png",
+      alt: "The XTK practice registration form, framed in a browser window",
+    },
     relatedSlugs: [
       "connect-document-storage",
       "connect-your-email",
