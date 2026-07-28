@@ -32,6 +32,9 @@ import { guide as placeholderReference } from "./content/placeholder-reference";
 import { guide as folderTemplates } from "./content/folder-templates";
 import { guide as emailTemplates } from "./content/email-templates";
 import { guide as howXtkHandlesYourData } from "./content/how-xtk-handles-your-data";
+import { guide as documentRequests } from "./content/document-requests";
+import { guide as sendDocumentsForSignature } from "./content/send-documents-for-signature";
+import { guide as notifications } from "./content/notifications";
 
 /**
  * The guide registry, in no particular order — helpers below sort. To publish
@@ -50,6 +53,9 @@ export const guides: Guide[] = [
   folderTemplates,
   emailTemplates,
   howXtkHandlesYourData,
+  documentRequests,
+  sendDocumentsForSignature,
+  notifications,
 ];
 
 export function formatGuideDate(iso: string): string {
