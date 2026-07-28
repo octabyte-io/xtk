@@ -36,7 +36,7 @@ export const guide: Guide = {
     },
     {
       q: "Does XTK copy our files to its own servers?",
-      a: "No. Files stay in your practice's own Google Drive, OneDrive or SharePoint. Uploads and downloads go directly between your browser and Google or Microsoft — XTK's servers store account and request details, never your file contents.",
+      a: "No. Files stay in your practice's own Google Drive, OneDrive or SharePoint. Uploads go straight from your browser to Google or Microsoft. Downloads and a handful of server-side jobs — merging PDFs, zipping a multi-file download, generating a document from a template, flattening a signed PDF — stream through XTK's servers, because that's where those engines run, but the bytes are only passed along, never written to disk or kept in XTK's database. What XTK's servers do store is account and request details, not your file contents.",
     },
     {
       q: "What happens to our files if we disconnect?",
@@ -185,7 +185,7 @@ export const guide: Guide = {
     { type: "h2", text: "Your files never leave your storage" },
     {
       type: "p",
-      text: "This connection is also XTK's core privacy promise. Files are stored only in your practice's Google Drive, OneDrive or SharePoint — uploads and downloads travel directly between your browser and Google or Microsoft, and XTK's servers never hold your file contents. Every file operation stays inside the client's own folder, so nothing you do in XTK can scatter documents around your drive. Even client portal sharing works by marking files, not copying them out. The full story is in the related guide on how XTK handles your data.",
+      text: "This connection is also XTK's core privacy promise. Files are stored only in your practice's Google Drive, OneDrive or SharePoint, and XTK's servers never keep your file contents. Uploads travel straight from your browser to Google or Microsoft; downloads and jobs like merging PDFs or generating a document from a template stream through XTK's servers, which pass the bytes along without storing them. Every file operation stays inside the client's own folder, so nothing you do in XTK can scatter documents around your drive. Even client portal sharing works by marking files, not copying them out. The full story is in the related guide on how XTK handles your data.",
     },
     { type: "h2", text: "Where next" },
     {

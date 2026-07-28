@@ -28,7 +28,7 @@ export const guide: Guide = {
   faq: [
     {
       q: "Where are the files actually stored?",
-      a: "In your practice's own Google Drive, OneDrive or SharePoint — one folder per client inside your Main Storage Folder. The Documents tab is a window onto that folder: uploads and downloads travel directly between your browser and Google or Microsoft, and XTK's servers never hold your file contents.",
+      a: "In your practice's own Google Drive, OneDrive or SharePoint — one folder per client inside your Main Storage Folder. The Documents tab is a window onto that folder. Uploads travel straight from your browser to Google or Microsoft; downloads stream through XTK's servers, which pass the bytes along without storing them. Either way, XTK's servers never hold your file contents.",
     },
     {
       q: "What happened to Xero's own Documents tab?",

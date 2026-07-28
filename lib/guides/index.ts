@@ -29,6 +29,9 @@ import { guide as manageClientDocuments } from "./content/manage-client-document
 import { guide as bulkFileActions } from "./content/bulk-file-actions";
 import { guide as documentTemplates } from "./content/document-templates";
 import { guide as placeholderReference } from "./content/placeholder-reference";
+import { guide as folderTemplates } from "./content/folder-templates";
+import { guide as emailTemplates } from "./content/email-templates";
+import { guide as howXtkHandlesYourData } from "./content/how-xtk-handles-your-data";
 
 /**
  * The guide registry, in no particular order — helpers below sort. To publish
@@ -44,6 +47,9 @@ export const guides: Guide[] = [
   bulkFileActions,
   documentTemplates,
   placeholderReference,
+  folderTemplates,
+  emailTemplates,
+  howXtkHandlesYourData,
 ];
 
 export function formatGuideDate(iso: string): string {
