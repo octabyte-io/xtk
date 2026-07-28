@@ -10,7 +10,7 @@
  * These drafts describe how XTK works but are not legal advice.
  */
 
-export const LAST_UPDATED = "23 July 2026";
+export const LAST_UPDATED = "28 July 2026";
 
 export const company = {
   /** Marketing / brand name used in body copy. */
@@ -59,9 +59,11 @@ export type SubProcessor = {
 /**
  * Sub-processors grounded in the codebase + confirmed infrastructure:
  * Google Drive/Gmail (ADR-0009 / 0018), Microsoft Graph/Outlook (ADR-0034 /
- * 0038), Stripe billing (UK account), Sentry error monitoring + replay (ADR-0039,
- * US data region), Resend outbound mail (ADR-0029 / 0030), Hetzner (EU) for the
- * portal/backend/database, and GitHub Pages for this public website.
+ * 0038), CloudConvert for Word-to-PDF conversion (ADR-0015 — the one operation
+ * that sends a document outside the practice's own storage), Stripe billing (UK
+ * account), Sentry error monitoring + replay (ADR-0039, US data region), Resend
+ * outbound mail (ADR-0029 / 0030), Hetzner (EU) for the portal/backend/database,
+ * and GitHub Pages for this public website.
  */
 export const subProcessors: SubProcessor[] = [
   {
@@ -75,6 +77,12 @@ export const subProcessors: SubProcessor[] = [
     purpose:
       "Optional document storage (OneDrive / SharePoint) and outbound mail (Outlook) via Microsoft Graph, when a practice connects Microsoft.",
     region: "United States / EU",
+  },
+  {
+    name: "CloudConvert (Lunaweb GmbH)",
+    purpose:
+      "Converting Word documents to PDF, when a member chooses “Convert to PDF” on a file. That file's contents are sent to CloudConvert for the duration of the conversion and the rendered PDF is written back to the practice's own storage. No other XTK feature sends documents to CloudConvert.",
+    region: "EU (Germany)",
   },
   {
     name: "Stripe Payments UK, Ltd. / Stripe, Inc.",
