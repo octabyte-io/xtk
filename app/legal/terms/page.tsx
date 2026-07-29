@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company, pricing } from "@/lib/legal";
+import { LEGAL_UPDATED, company, pricing } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/terms" },
@@ -16,7 +16,7 @@ export default function TermsOfService() {
       eyebrow="Legal"
       title="Terms of Service"
       lede="The agreement between your practice and XTK for using the extension and portal."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED.terms}
     >
       <P>
         These Terms of Service (“Terms”) are a contract between{" "}

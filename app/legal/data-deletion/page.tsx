@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, Callout, H2, LI, OL, P, Strong, UL } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company } from "@/lib/legal";
+import { LEGAL_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/data-deletion" },
@@ -16,7 +16,7 @@ export default function DataDeletion() {
       eyebrow="Legal"
       title="Your data rights & deletion"
       lede="How to access, export or delete your data — and exactly what happens when you do."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED["data-deletion"]}
     >
       <P>
         You can request access to, correction of, export of, or deletion of your

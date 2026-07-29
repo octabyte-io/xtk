@@ -18,6 +18,7 @@ import {
   getAdjacentGuides,
   getGuide,
   getRelatedGuides,
+  getRelatedLinks,
   guides,
 } from "@/lib/guides";
 
@@ -61,6 +62,7 @@ export default async function GuidePage({
   const guide = getGuide(slug);
   if (!guide) notFound();
   const related = getRelatedGuides(slug);
+  const relatedLinks = getRelatedLinks(slug);
   const { prev, next } = getAdjacentGuides(slug);
 
   return (
@@ -167,20 +169,36 @@ export default async function GuidePage({
           </div>
         </article>
 
-        {related.length > 0 && (
+        {(related.length > 0 || relatedLinks.length > 0) && (
           <section
-            aria-label="Related guides"
+            aria-label="Related reading"
             className="mx-auto w-full max-w-6xl px-5 pb-20 sm:px-8"
           >
             <div className="border-t border-line pt-10">
               <h2 className="font-display text-2xl font-bold tracking-tight text-ink">
                 Related guides
               </h2>
-              <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                {related.map((g, i) => (
-                  <GuideCard key={g.slug} guide={g} delay={(i % 2) * 90} />
-                ))}
-              </div>
+              {related.length > 0 && (
+                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                  {related.map((g, i) => (
+                    <GuideCard key={g.slug} guide={g} delay={(i % 2) * 90} />
+                  ))}
+                </div>
+              )}
+              {relatedLinks.length > 0 && (
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2.5">
+                  {relatedLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm font-medium text-accent-deep underline decoration-accent/40 underline-offset-2 transition-colors hover:decoration-accent"
+                      >
+                        {link.label} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </section>
         )}

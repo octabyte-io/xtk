@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company } from "@/lib/legal";
+import { LEGAL_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/cookies" },
@@ -16,7 +16,7 @@ export default function Cookies() {
       eyebrow="Legal"
       title="Cookies & tracking"
       lede="What XTK stores on your device and the diagnostics we collect — and how to control them."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED.cookies}
     >
       <P>
         {company.product} keeps the on-device storage and diagnostics to a minimum.

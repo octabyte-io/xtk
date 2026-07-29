@@ -10,7 +10,7 @@ import {
   Strong,
   UL,
 } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company } from "@/lib/legal";
+import { LEGAL_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/privacy" },
@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
       eyebrow="Legal"
       title="Privacy Policy"
       lede="How XTK handles personal data across the browser extension, the client portal and our backend."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED.privacy}
     >
       <P>
         This policy explains how <Strong>{company.legalName}</Strong> (“we”, “us”,
@@ -82,9 +82,32 @@ export default function PrivacyPolicy() {
         </LI>
       </UL>
       <P>
-        OAuth tokens are encrypted at rest. XTK requests only the scopes it needs
-        to store files in the folder you designate and to send mail you initiate.
+        OAuth tokens are encrypted at rest. We are specific about what each grant
+        actually covers:
       </P>
+      <UL>
+        <LI>
+          <Strong>Storage is a full drive scope.</Strong> Google’s consent screen
+          describes it as “see, edit, create, and delete all your Google Drive
+          files”, and Microsoft’s equivalent is comparable. We request that scope
+          because XTK has to work with the client documents your Practice already
+          keeps in its own Drive, which a narrower “files this app created” scope
+          cannot do.
+        </LI>
+        <LI>
+          <Strong>Containment is our guarantee, not Google’s restriction.</Strong>{" "}
+          Every storage operation is checked on our server before your provider is
+          called, so it can only act inside the Main Storage Folder you designate
+          and, within it, the folder of the client you have open. That limit is
+          enforced by XTK’s own server-side checks — Google and Microsoft do not
+          narrow the grant for us.
+        </LI>
+        <LI>
+          <Strong>Mail is send-only.</Strong> Where you connect Gmail or Outlook so
+          invites and requests come from your own address, only the send
+          permission is granted. XTK cannot read your mailbox.
+        </LI>
+      </UL>
 
       <H3>Client &amp; document data</H3>
       <P>
@@ -95,12 +118,48 @@ export default function PrivacyPolicy() {
         the documents they exchange. This data belongs to the Practice; we process
         it as described in the Data Processing Addendum.
       </P>
-      <Callout title="Client data from Xero stays in your browser">
-        XTK reads client details (names, contacts, addresses) from Xero’s own APIs
-        inside your authenticated Xero tab, only while you have the relevant client
-        open. That data is used to fill the panel and templates in the moment and
-        is <Strong>not</Strong> sent to or stored on the XTK backend.
+      <Callout title="XTK has no Xero connection of its own">
+        XTK is not a Xero OAuth application and holds no Xero credentials. It reads
+        client details (names, contacts, addresses) from Xero’s own APIs inside your
+        already-authenticated Xero tab, only while you have the relevant client
+        open, and Xero’s access token never leaves that page. So there is{" "}
+        <Strong>no server-side route from XTK to your Xero data</Strong>, and the
+        snapshot the panel works from lives in the tab and is discarded when you
+        close or refresh it.
       </Callout>
+      <P>
+        Some client details do reach our backend, though — the ones you act on — and
+        we would rather be precise than absolute:
+      </P>
+      <UL>
+        <LI>
+          Sending an e-signature or document request stores that request, including
+          the client’s name, the recipient’s name and email address, and your
+          subject and message.
+        </LI>
+        <LI>
+          Inviting a portal contact stores their name and email address, and each
+          notification stores a summary line naming the client, files and
+          recipients involved.
+        </LI>
+        <LI>
+          Generating a document from a template sends the set of filled-in values
+          you confirmed in the fill dialog to our backend, because that is where
+          the document engine runs. They are used to render your file and are not
+          stored.
+        </LI>
+      </UL>
+      <P>
+        What our backend never holds is a{" "}
+        <Strong>Xero credential or token</Strong>, any{" "}
+        <Strong>server-side access to your Xero account</Strong>, or the{" "}
+        <Strong>contents of your documents</Strong> — the operations that need a
+        document engine (downloads, zips, PDF merges, template generation and
+        flattening a signed PDF) stream bytes through our backend in flight, but
+        nothing is written to disk or kept in our database. Nothing in Xero beyond
+        client details, contacts and custom fields is read at all — not jobs,
+        timesheets, invoices or the ledger.
+      </P>
 
       <H3>Diagnostics</H3>
       <P>

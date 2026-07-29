@@ -3,11 +3,11 @@ import Reveal from "./reveal";
 const points = [
   {
     title: "Your storage, your ownership",
-    body: "XTK connects to your practice's Google Drive or OneDrive. Files are never copied to XTK's servers — sharing works with markers, not duplicates.",
+    body: "XTK connects to your practice's Google Drive or OneDrive and works on your files where they already sit. A download, zip or merge streams bytes through our backend in the moment, but nothing is written to disk or kept in our database — and portal shares are markers, not duplicates.",
   },
   {
     title: "A strict containment guarantee",
-    body: "Every operation is scoped to the current client's folder subtree. Nothing XTK does can touch files outside it.",
+    body: "Every storage call is checked on our server before your provider is called, so it can only act inside the current client's folder. That limit is our own code, not a setting we ask you to trust Google with.",
   },
   {
     title: "Access you control",
@@ -62,7 +62,7 @@ export default function DriveTrust() {
               Built on your Drive
             </span>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Your files never leave your Drive
+              Your files stay in your Drive
             </h2>
             <p className="text-lg leading-relaxed text-white/70">
               XTK is a layer over storage you already own and trust — not

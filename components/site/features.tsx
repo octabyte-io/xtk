@@ -31,7 +31,7 @@ export default function Features() {
           />
           <FeatureCard
             title="Client portal"
-            body="Invite clients to a secure portal and share files or folders as markers — nothing is copied or moved out of your Drive."
+            body="Invite clients to a secure portal and share files or folders as markers — the originals stay exactly where they are in your Drive."
             mock={<PortalMock />}
           />
           <FeatureCard

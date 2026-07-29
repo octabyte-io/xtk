@@ -10,7 +10,33 @@
  * These drafts describe how XTK works but are not legal advice.
  */
 
-export const LAST_UPDATED = "28 July 2026";
+/** The seven policy pages under /legal, each of which carries its own date. */
+export type LegalPage =
+  | "privacy"
+  | "terms"
+  | "dpa"
+  | "subprocessors"
+  | "cookies"
+  | "refunds"
+  | "data-deletion";
+
+/**
+ * Per-page "last updated" dates. Each document is dated independently so that
+ * revising one policy does not silently re-date the other six — bump only the
+ * page whose wording actually changed.
+ *
+ * `satisfies Record<LegalPage, string>` keeps this exhaustive: adding a page to
+ * `LegalPage` without a date here is a compile error, not a blank date.
+ */
+export const LEGAL_UPDATED = {
+  privacy: "29 July 2026",
+  terms: "28 July 2026",
+  dpa: "28 July 2026",
+  subprocessors: "28 July 2026",
+  cookies: "28 July 2026",
+  refunds: "28 July 2026",
+  "data-deletion": "28 July 2026",
+} as const satisfies Record<LegalPage, string>;
 
 export const company = {
   /** Marketing / brand name used in body copy. */

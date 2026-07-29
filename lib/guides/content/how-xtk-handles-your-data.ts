@@ -21,6 +21,12 @@ export const guide: Guide = {
     "set-up-client-portal",
     "billing-trial-and-subscription",
   ],
+  relatedLinks: [
+    { label: "Privacy Policy", href: "/legal/privacy" },
+    { label: "Data Processing Addendum", href: "/legal/dpa" },
+    { label: "Sub-processors", href: "/legal/subprocessors" },
+    { label: "Your data rights & deletion", href: "/legal/data-deletion" },
+  ],
   faq: [
     {
       q: "Is XTK safe to install if we handle sensitive client data?",
@@ -40,7 +46,7 @@ export const guide: Guide = {
     },
     {
       q: "What happens to our data if we cancel or disconnect?",
-      a: "Your files are unaffected in every case. Disconnecting storage removes XTK's access to the account; every folder and file stays where it is, as ordinary files. Letting the trial lapse or cancelling puts the practice into read-only — you can still browse, but nothing can be changed. Closing your account deletes your accounts, your encrypted tokens and the workflow records XTK holds, and never touches anything in your Drive. Steps and timings are at xtk.octabyte.io/legal/data-deletion.",
+      a: "Your files are unaffected in every case. Disconnecting storage removes XTK's access to the account; every folder and file stays where it is, as ordinary files. Letting the trial lapse or cancelling puts the practice into read-only — you can still browse, but nothing can be changed. Closing your account deletes your accounts, your encrypted tokens and the workflow records XTK holds, and never touches anything in your Drive. Steps and timings are on the “Your data rights & deletion” page, linked at the end of this guide.",
     },
   ],
   body: [
@@ -55,7 +61,7 @@ export const guide: Guide = {
     {
       type: "callout",
       title: "Before you start",
-      text: "Nothing here needs a particular role — it's background reading for anyone weighing XTK up, and for whoever in your practice has to sign it off. The formal versions live on the site: the Privacy Policy at xtk.octabyte.io/legal/privacy, the Data Processing Addendum at xtk.octabyte.io/legal/dpa, the sub-processor list at xtk.octabyte.io/legal/subprocessors, and deletion requests at xtk.octabyte.io/legal/data-deletion.",
+      text: "Nothing here needs a particular role — it's background reading for anyone weighing XTK up, and for whoever in your practice has to sign it off. The formal versions live on this site — the Privacy Policy, the Data Processing Addendum, the sub-processor list and the deletion-request page — and every one of them is linked at the end of this guide.",
     },
     { type: "h2", text: "How does XTK read our Xero data?" },
     {
@@ -235,7 +241,7 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Session replay — a recording of the page around an error — deserves a straight answer, because inside the extension the page in question is Xero's, showing your client's data. So it is off: replay in the extension is disabled by default and gated behind a flag XTK controls on its own server, so it stays off until the disclosure and consent work it depends on is complete, and can be switched off for everyone without shipping a new version. Where replay does run, text and inputs are masked and media is blocked. The sub-processor list, with each provider's region, is at xtk.octabyte.io/legal/subprocessors.",
+      text: "Session replay — a recording of the page around an error — deserves a straight answer, because inside the extension the page in question is Xero's, showing your client's data. So it is off: replay in the extension is disabled by default and gated behind a flag XTK controls on its own server, so it stays off until the disclosure and consent work it depends on is complete, and can be switched off for everyone without shipping a new version. Where replay does run, text and inputs are masked and media is blocked. The sub-processor list, with each provider's region, is linked at the end of this guide.",
     },
     { type: "h2", text: "What happens when you leave?" },
     {
@@ -276,7 +282,7 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "For formal requests — a signed copy of the Data Processing Addendum, sub-processor change notifications, or a data access or deletion request — email support@octabyte.io. The Privacy Policy at xtk.octabyte.io/legal/privacy sets out the full picture, including which parts of XTK's processing your practice controls and which parts XTK controls on its own behalf.",
+      text: "For formal requests — a signed copy of the Data Processing Addendum, sub-processor change notifications, or a data access or deletion request — email support@octabyte.io. The Privacy Policy, linked at the end of this guide, sets out the full picture, including which parts of XTK's processing your practice controls and which parts XTK controls on its own behalf.",
     },
     { type: "h2", text: "Where next" },
     {

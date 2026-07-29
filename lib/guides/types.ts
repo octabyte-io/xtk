@@ -69,6 +69,18 @@ export const guideSeriesOrder: GuideSeries[] = [
 
 export type GuideFaq = { q: string; a: string };
 
+/**
+ * A related destination that is not a guide — a site page such as
+ * /legal/privacy. `relatedSlugs` resolves guide slugs only, so anything else a
+ * guide needs to link to structurally goes here.
+ */
+export type GuideLink = {
+  /** Link text, normally the destination page's own title. */
+  label: string;
+  /** Root-relative path, e.g. "/legal/privacy". */
+  href: string;
+};
+
 export type Guide = {
   slug: string;
   /** Page H1 and <title> (≤60 chars, contains the primary keyword). */
@@ -84,6 +96,11 @@ export type Guide = {
   faq: GuideFaq[];
   /** Slugs of related guides, rendered under the article and used for interlinks. */
   relatedSlugs: string[];
+  /**
+   * Non-guide destinations (site pages such as the legal policies), rendered
+   * alongside the related guides. Optional — most guides need only slugs.
+   */
+  relatedLinks?: GuideLink[];
   /** Path under public/ to the 1200×630 OG image; falls back to the site default. */
   ogImage?: string;
   /**
