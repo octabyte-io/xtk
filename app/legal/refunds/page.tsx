@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, UL } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company, pricing } from "@/lib/legal";
+import { LEGAL_UPDATED, company, pricing } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/refunds" },
@@ -16,7 +16,7 @@ export default function Refunds() {
       eyebrow="Legal"
       title="Refund & cancellation policy"
       lede="How the free trial, cancellations and refunds work."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED.refunds}
     >
       <H2 id="trial">Free trial</H2>
       <P>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, Callout, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company } from "@/lib/legal";
+import { LEGAL_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/dpa" },
@@ -16,7 +16,7 @@ export default function DPA() {
       eyebrow="Legal"
       title="Data Processing Addendum"
       lede="How XTK processes personal data on behalf of your practice, and the commitments we make as your processor."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED.dpa}
     >
       <Callout title="When this applies">
         This DPA forms part of the <A href="/legal/terms">Terms of Service</A> and

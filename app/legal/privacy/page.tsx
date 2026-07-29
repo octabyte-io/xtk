@@ -10,7 +10,7 @@ import {
   Strong,
   UL,
 } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company } from "@/lib/legal";
+import { LEGAL_UPDATED, company } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/privacy" },
@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
       eyebrow="Legal"
       title="Privacy Policy"
       lede="How XTK handles personal data across the browser extension, the client portal and our backend."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED.privacy}
     >
       <P>
         This policy explains how <Strong>{company.legalName}</Strong> (“we”, “us”,

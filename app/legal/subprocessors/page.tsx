@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, P, Table } from "@/components/site/legal/prose";
-import { LAST_UPDATED, company, subProcessors } from "@/lib/legal";
+import { LEGAL_UPDATED, company, subProcessors } from "@/lib/legal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/legal/subprocessors" },
@@ -16,7 +16,7 @@ export default function SubProcessors() {
       eyebrow="Legal"
       title="Sub-processors"
       lede="The third-party services XTK uses to deliver the product, what each one does, and where it processes data."
-      updated={LAST_UPDATED}
+      updated={LEGAL_UPDATED.subprocessors}
     >
       <P>
         We engage the sub-processors below to provide {company.product}. Each is
