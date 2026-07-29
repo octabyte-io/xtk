@@ -50,9 +50,12 @@ export default function About() {
       <H2 id="data">How it handles your data</H2>
       <P>
         Your documents live in the storage provider you connect — they stay under
-        your control. XTK reads client details from Xero’s own APIs in your
-        authenticated tab and does not copy that data to our servers. Read the full
-        detail in our <A href="/legal/privacy">Privacy Policy</A>, and see the{" "}
+        your control. XTK is not a Xero application and holds no Xero credentials:
+        it reads client details from Xero’s own APIs inside the tab you have already
+        authenticated, so nothing on our servers can reach your Xero account. The
+        details you act on — the client named on a signature request, say — do reach
+        our backend, and our <A href="/legal/privacy">Privacy Policy</A> sets out
+        exactly which. See also the{" "}
         <A href="/legal/subprocessors">Sub-processors</A> we rely on.
       </P>
 

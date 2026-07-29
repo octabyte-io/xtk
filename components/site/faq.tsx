@@ -6,7 +6,7 @@ import { faqPageJsonLd } from "@/lib/structured-data";
 const faqs = [
   {
     q: "Where do my files live?",
-    a: "In your practice's own Google Drive or OneDrive, in one folder per client. XTK operates on them in place — it never copies your documents into its own storage, and portal shares are markers pointing at your files, not duplicates.",
+    a: "In your practice's own Google Drive or OneDrive, in one folder per client. XTK operates on them in place: operations that need a document engine — downloads, zips, PDF merges, generating from a template — stream the bytes through our backend in flight, but nothing is written to disk or kept in our database, and portal shares are markers pointing at your files, not duplicates.",
   },
   {
     q: "Do my clients need an account?",
