@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Client-facing",
   order: 12,
   date: "2026-07-28",
-  updated: "2026-07-28",
+  updated: "2026-07-29",
   readingTime: "10 min read",
   ogImage: "/images/guides/send-documents-for-signature/og.png",
   thumbnail: {
@@ -205,6 +205,11 @@ export const guide: Guide = {
       ],
       caption:
         "The field types you can place today. Every one also carries Required, a data label and a tooltip.",
+    },
+    {
+      type: "callout",
+      title: "Which day a Date Signed field lands on",
+      text: "The format you pick is what everyone sees: the preview while you place the field, the signer's own read-only box, and the finished “… (signed).pdf”. Pick “DD/MM/YYYY” and an Australian client signing on the 24th gets 24/07/2026 — the date follows the signer's own timezone, not your server's. The Certificate of Completion on the last page is deliberately different: it records the exact moment in UTC (“July 23, 2026 at 11:00 PM UTC”), because that instant, not the calendar day, is what XTK attests to. For a signature just before midnight or just after dawn the two can therefore name different days. Both are right — the field follows the signer, the certificate follows the clock — and the certificate is the one to quote if a date is ever questioned.",
     },
     {
       type: "callout",
