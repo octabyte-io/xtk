@@ -9,13 +9,14 @@
  * per session — see user-guide/MASTER-PLAN.md for slugs, briefs and status.
  */
 
-import type { Guide, GuideSeries } from "./types";
+import type { Guide, GuideLink, GuideSeries } from "./types";
 import { guideSeriesOrder } from "./types";
 
 export type {
   Guide,
   GuideBlock,
   GuideFaq,
+  GuideLink,
   GuideSeries,
   GuideStep,
 } from "./types";
@@ -102,6 +103,14 @@ export function getRelatedGuides(slug: string): Guide[] {
   return current.relatedSlugs
     .map((s) => getGuide(s))
     .filter((g): g is Guide => Boolean(g));
+}
+
+/**
+ * The guide's declared non-guide related links (site pages), in declaration
+ * order. The companion to `getRelatedGuides`, which resolves guide slugs only.
+ */
+export function getRelatedLinks(slug: string): GuideLink[] {
+  return getGuide(slug)?.relatedLinks ?? [];
 }
 
 /** Previous/next guide within the full reading order (for series navigation). */
