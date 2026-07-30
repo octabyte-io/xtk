@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "./reveal";
 import SectionHeading from "./section-heading";
 
@@ -6,16 +7,19 @@ const steps = [
     n: "1",
     title: "Install the extension",
     body: "Add XTK to Chrome or Firefox. An XTK launcher appears in XPM's own navigation — nothing else to deploy.",
+    guide: { href: "/guides/getting-started-with-xtk", label: "Getting started" },
   },
   {
     n: "2",
     title: "Connect your Drive",
     body: "Link your practice's Google Drive or OneDrive. XTK creates one tidy folder per client and keeps everything inside it.",
+    guide: { href: "/guides/connect-document-storage", label: "Connect your storage" },
   },
   {
     n: "3",
     title: "Open any client",
     body: "The panel slides in with that client's files, signatures, portal and templates — no tab switching, no copy-pasting names.",
+    guide: { href: "/guides/manage-client-documents", label: "Manage client documents" },
   },
 ];
 
@@ -40,6 +44,12 @@ export default function HowItWorks() {
               <p className="text-[15px] leading-relaxed text-ink-soft">
                 {s.body}
               </p>
+              <Link
+                href={s.guide.href}
+                className="mt-auto text-sm font-medium text-accent-deep transition-colors hover:text-accent"
+              >
+                {s.guide.label} →
+              </Link>
             </li>
           </Reveal>
         ))}

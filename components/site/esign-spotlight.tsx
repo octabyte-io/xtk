@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { caveat, geistMono } from "@/app/fonts";
 import Reveal from "./reveal";
 
@@ -108,6 +109,20 @@ export default function EsignSpotlight() {
               folder. The finished document lands back in the same folder,
               certified.
             </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <Link
+                href="/guides/send-documents-for-signature"
+                className="text-sm font-medium text-accent-deep transition-colors hover:text-accent"
+              >
+                How to send for signature →
+              </Link>
+              <Link
+                href="/guides/esignatures-what-your-client-sees"
+                className="text-sm font-medium text-accent-deep transition-colors hover:text-accent"
+              >
+                What your client sees →
+              </Link>
+            </div>
           </Reveal>
           <ul className="mt-8 space-y-6">
             {flow.map((f, i) => (

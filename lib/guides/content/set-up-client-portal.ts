@@ -20,6 +20,12 @@ export const guide: Guide = {
     "bulk-file-actions",
     "email-templates",
     "client-portal-guide-for-clients",
+    "esignatures-what-your-client-sees",
+    "how-xtk-handles-your-data",
+  ],
+  relatedLinks: [
+    { label: "Client portals your clients will actually use", href: "/blog/client-portals-clients-actually-use" },
+    { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [
     {
@@ -46,7 +52,13 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "A client portal gives one of your clients a logged-in place to read the documents you share and to send you theirs. In XTK you switch it on per client from the “Client Portal” tab inside Xero Practice Manager (XPM), invite the people who need access by email, then mark folders and files as shared from that client's Documents tab. Nothing is copied: a Share is a marker on a file that stays in your practice's own Google Drive, OneDrive or SharePoint.",
+      text: [
+        "A client portal gives one of your clients a logged-in place to read the documents you share and to send you theirs. In XTK you switch it on per client from the “Client Portal” tab inside Xero Practice Manager (XPM), invite the people who need access by email, then mark folders and files as shared from ",
+        { text: "that client's Documents tab", href: "/guides/manage-client-documents" },
+        ". Nothing is copied: a Share is a marker on a file that stays in your practice's own ",
+        { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+        ".",
+      ],
     },
     {
       type: "p",
@@ -300,7 +312,10 @@ export const guide: Guide = {
     { type: "h2", text: "What XTK tells you about portal activity" },
     {
       type: "p",
-      text: "Two notification types feed the XTK bell, both on by default under “Portal activity”: “A client accepts an invite” and “A client uploads or creates files”. The second rolls up per person per hour, so five documents in one sitting make one line — “Sophie Baxter added 5 files”. Clicking either marks it read and, for now, does nothing else, so open the client yourself.",
+      text: [
+        { text: "Two notification types", href: "/guides/notifications" },
+        " feed the XTK bell, both on by default under “Portal activity”: “A client accepts an invite” and “A client uploads or creates files”. The second rolls up per person per hour, so five documents in one sitting make one line — “Sophie Baxter added 5 files”. Clicking either marks it read and, for now, does nothing else, so open the client yourself.",
+      ],
     },
     { type: "h2", text: "Tips from practice" },
     {
@@ -314,7 +329,15 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "Write your invite wording once as an email template, so every invitation reads the same and always carries the link. If you'd rather ask for records than open a permanent portal, a document request does the one-off job with no account at all. And when your client asks what to do with the email, the client-facing guide below is written for them — send it on.",
+      text: [
+        "Write your invite wording once as ",
+        { text: "an email template", href: "/guides/email-templates" },
+        ", so every invitation reads the same and always carries the link. If you'd rather ask for records than open a permanent portal, ",
+        { text: "a document request", href: "/guides/document-requests" },
+        " does the one-off job with no account at all. And when your client asks what to do with the email, ",
+        { text: "the client-facing guide", href: "/guides/client-portal-guide-for-clients" },
+        " is written for them — send it on.",
+      ],
     },
   ],
 };

@@ -3,22 +3,33 @@
  * files in ./content and the store entry point ./index.ts.
  */
 
+import type { Inline, RelatedLink } from "../inline";
+
 export type GuideStep = {
-  /** Short imperative name for the step (feeds HowTo JSON-LD `name`). */
+  /**
+   * Short imperative name for the step. Feeds HowTo JSON-LD `name`, so it stays
+   * a plain string.
+   */
   title: string;
   /** The full step instruction. */
-  text: string;
+  text: Inline;
   /** Intrinsic pixel size defaults to the 1440×900 screenshot standard. */
   image?: { src: string; alt: string; width?: number; height?: number };
 };
 
+/**
+ * `Inline` fields may carry inline links; `string` fields deliberately may not.
+ * Headings are landmarks and anchor targets, a pull-quote's display type fights
+ * an underlined link, and captions / alt text / table headers are plain-text
+ * sinks by definition.
+ */
 export type GuideBlock =
-  | { type: "p"; text: string }
+  | { type: "p"; text: Inline }
   | { type: "h2"; text: string }
   | { type: "h3"; text: string }
-  | { type: "list"; items: string[]; ordered?: boolean }
+  | { type: "list"; items: Inline[]; ordered?: boolean }
   | { type: "quote"; text: string; cite?: string }
-  | { type: "callout"; title: string; text: string }
+  | { type: "callout"; title: string; text: Inline }
   | {
       type: "image";
       /** Path under public/, e.g. "/images/guides/<slug>/01-name.png". */
@@ -50,7 +61,8 @@ export type GuideBlock =
       type: "table";
       /** Column headers. */
       head: string[];
-      rows: string[][];
+      /** Cells listed in `codeColumns` render as plain <code> — no links there. */
+      rows: Inline[][];
       caption?: string;
       /** Column indices rendered in monospace, e.g. a placeholder-token column. */
       codeColumns?: number[];
@@ -74,15 +86,12 @@ export type GuideFaq = { q: string; a: string };
 
 /**
  * A related destination that is not a guide — a site page such as
- * /legal/privacy. `relatedSlugs` resolves guide slugs only, so anything else a
- * guide needs to link to structurally goes here.
+ * /legal/privacy, /pricing or a blog post. `relatedSlugs` resolves guide slugs
+ * only, so anything else a guide needs to link to structurally goes here.
+ *
+ * Aliases `RelatedLink` from lib/inline, which posts share.
  */
-export type GuideLink = {
-  /** Link text, normally the destination page's own title. */
-  label: string;
-  /** Root-relative path, e.g. "/legal/privacy". */
-  href: string;
-};
+export type GuideLink = RelatedLink;
 
 export type Guide = {
   slug: string;

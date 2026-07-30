@@ -21,6 +21,10 @@ export const guide: Guide = {
     "connect-your-email",
     "billing-trial-and-subscription",
   ],
+  relatedLinks: [
+    { label: "Pricing", href: "/pricing" },
+    { label: "Support", href: "/support" },
+  ],
   faq: [
     {
       q: "Does each team member need their own XTK subscription?",
@@ -46,7 +50,10 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "One XTK subscription covers your whole practice, so once you're set up the next step is bringing everyone else in. The practice Admin invites colleagues by email from the Team Members tab in the XTK panel; each person clicks their invite link, chooses a password and lands signed in — ready to use XTK inside Xero Practice Manager (XPM) with their own account. This guide covers inviting, what Members can and can't do, handing the Admin role to someone else, and removing or restoring a member.",
+      text: [
+        { text: "One XTK subscription", href: "/guides/billing-trial-and-subscription" },
+        " covers your whole practice, so once you're set up the next step is bringing everyone else in. The practice Admin invites colleagues by email from the Team Members tab in the XTK panel; each person clicks their invite link, chooses a password and lands signed in — ready to use XTK inside Xero Practice Manager (XPM) with their own account. This guide covers inviting, what Members can and can't do, handing the Admin role to someone else, and removing or restoring a member.",
+      ],
     },
     {
       type: "p",
@@ -60,7 +67,17 @@ export const guide: Guide = {
     { type: "h2", text: "How team access works in XTK" },
     {
       type: "p",
-      text: "Every practice has exactly one Admin; everyone else is a Member. Members use all the day-to-day features — documents, templates, signatures, document requests and the client portal — on the same shared storage and practice mailbox. Four things are reserved for the Admin: connecting or changing document storage, connecting the shared practice mailbox, managing the team, and billing. Members see the Document Storage tab as read-only information, and the Team Members and Billing & Subscription tabs don't appear for them at all.",
+      text: [
+        "Every practice has exactly one Admin; everyone else is a Member. Members use all the day-to-day features — documents, templates, signatures, ",
+        { text: "document requests", href: "/guides/document-requests" },
+        " and ",
+        { text: "the client portal", href: "/guides/set-up-client-portal" },
+        " — on the same ",
+        { text: "shared storage", href: "/guides/connect-document-storage" },
+        " and ",
+        { text: "practice mailbox", href: "/guides/connect-your-email" },
+        ". Four things are reserved for the Admin: connecting or changing document storage, connecting the shared practice mailbox, managing the team, and billing. Members see the Document Storage tab as read-only information, and the Team Members and Billing & Subscription tabs don't appear for them at all.",
+      ],
     },
     { type: "h2", text: "Invite a team member" },
     {

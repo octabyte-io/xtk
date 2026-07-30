@@ -1,20 +1,30 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import OptimizedImage from "@/components/optimized-image";
 import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
+import Breadcrumbs from "@/components/site/breadcrumbs";
 import PostBody from "@/components/site/post-body";
 import PostCard, { CategoryChip, PostMeta } from "@/components/site/post-card";
+import RelatedReading from "@/components/site/related-reading";
 import JsonLd from "@/components/json-ld";
-import { getPost, getRelatedPosts, posts } from "@/lib/posts";
+import {
+  getPost,
+  getPostRelatedLinks,
+  getRelatedPosts,
+  posts,
+} from "@/lib/posts";
 import { pageMetadata } from "@/lib/metadata";
-import { blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { assertContentLinks } from "@/lib/routes";
+import { blogPostingJsonLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
+  // Also called from app/sitemap.ts; this call site is what surfaces a broken
+  // link in `next dev`, where the sitemap is only built on demand.
+  assertContentLinks();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -47,29 +57,24 @@ export default async function BlogPost({
   const post = getPost(slug);
   if (!post) notFound();
   const related = getRelatedPosts(slug);
+  const relatedLinks = getPostRelatedLinks(slug);
 
   return (
     <>
       <JsonLd data={blogPostingJsonLd(post)} />
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Blog", path: "/blog" },
-          { name: post.title, path: `/blog/${post.slug}` },
-        ])}
-      />
       <Nav active="/blog" />
       <main className="flex-1">
         <article>
           <header className="hero-wash">
             <div className="mx-auto w-full max-w-3xl px-5 pb-10 pt-14 sm:px-8 sm:pt-18">
               <div className="hero-rise flex flex-col gap-5">
-                <Link
-                  href="/blog"
-                  className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-                >
-                  ← All posts
-                </Link>
+                <Breadcrumbs
+                  items={[
+                    { name: "Home", path: "/" },
+                    { name: "Blog", path: "/blog" },
+                    { name: post.title, path: `/blog/${post.slug}` },
+                  ]}
+                />
                 <div className="flex items-center gap-3">
                   <CategoryChip category={post.category} />
                   <PostMeta post={post} />
@@ -102,21 +107,13 @@ export default async function BlogPost({
           </div>
         </article>
 
-        <section
-          aria-label="More posts"
-          className="mx-auto w-full max-w-6xl px-5 pb-20 sm:px-8"
-        >
-          <div className="border-t border-line pt-10">
-            <h2 className="font-display text-2xl font-bold tracking-tight text-ink">
-              Keep reading
-            </h2>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
-              {related.map((p, i) => (
-                <PostCard key={p.slug} post={p} delay={(i % 2) * 90} />
-              ))}
-            </div>
-          </div>
-        </section>
+        <RelatedReading
+          heading="Keep reading"
+          cards={related.map((p, i) => (
+            <PostCard key={p.slug} post={p} delay={(i % 2) * 90} />
+          ))}
+          links={relatedLinks}
+        />
 
         <CtaBand />
       </main>

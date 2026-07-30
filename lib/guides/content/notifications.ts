@@ -20,6 +20,10 @@ export const guide: Guide = {
     "send-documents-for-signature",
     "set-up-client-portal",
     "getting-started-with-xtk",
+    "esignatures-what-your-client-sees",
+  ],
+  relatedLinks: [
+    { label: "Support", href: "/support" },
   ],
   faq: [
     {
@@ -120,7 +124,13 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "The signature dialog is the one the Signatures tab shows, and the document request dialog is its read-only twin. A warning such as “Drive needs reconnecting” means an account XTK depends on has lost permission, so file actions or outgoing email fail until an Admin reconnects it.",
+      text: [
+        "The signature dialog is the one the Signatures tab shows, and ",
+        { text: "the document request dialog", href: "/guides/document-requests" },
+        " is its read-only twin. A warning such as “Drive needs reconnecting” means an account XTK depends on has lost permission, so file actions or outgoing email fail until ",
+        { text: "an Admin", href: "/guides/invite-your-team" },
+        " reconnects it.",
+      ],
     },
     {
       type: "image",
@@ -284,7 +294,17 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "Notifications only have something to report once the workflows behind them are running, so the next steps are the events themselves: requesting documents from clients, sending documents for e-signature, and setting up a client portal. If XTK is new to you, start with the getting-started guide.",
+      text: [
+        "Notifications only have something to report once the workflows behind them are running, so the next steps are the events themselves: ",
+        { text: "requesting documents from clients", href: "/guides/document-requests" },
+        ", ",
+        { text: "sending documents for e-signature", href: "/guides/send-documents-for-signature" },
+        ", and ",
+        { text: "setting up a client portal", href: "/guides/set-up-client-portal" },
+        ". If XTK is new to you, start with ",
+        { text: "the getting-started guide", href: "/guides/getting-started-with-xtk" },
+        ".",
+      ],
     },
   ],
 };

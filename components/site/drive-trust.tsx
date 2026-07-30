@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "./reveal";
 
 const points = [
@@ -68,6 +69,21 @@ export default function DriveTrust() {
               XTK is a layer over storage you already own and trust — not
               another silo to migrate into or out of.
             </p>
+            {/* Light link styling: accent-deep is unreadable on the ink panel. */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <Link
+                href="/guides/how-xtk-handles-your-data"
+                className="text-sm font-medium text-white underline decoration-white/40 underline-offset-2 transition-colors hover:decoration-white"
+              >
+                How XTK handles your data →
+              </Link>
+              <Link
+                href="/legal/privacy"
+                className="text-sm font-medium text-white underline decoration-white/40 underline-offset-2 transition-colors hover:decoration-white"
+              >
+                Privacy Policy →
+              </Link>
+            </div>
           </Reveal>
           <ul className="mt-8 space-y-6">
             {points.map((p, i) => (

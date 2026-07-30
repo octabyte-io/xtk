@@ -4,6 +4,7 @@
  */
 
 import { company, pricing } from "./legal";
+import { plainText } from "./inline";
 import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_URL } from "./site";
 import type { Guide, GuideFaq } from "./guides";
 import type { Post } from "./posts";
@@ -105,7 +106,9 @@ export function howToJsonLd(guide: Guide) {
       "@type": "HowToStep",
       position: i + 1,
       name: s.title,
-      text: s.text,
+      // plainText, not s.text: step text is `Inline`, and this object literal is
+      // untyped — handing it an array would silently emit objects into JSON-LD.
+      text: plainText(s.text),
       ...(s.image && { image: absoluteUrl(s.image.src) }),
     }));
   if (steps.length === 0) return null;

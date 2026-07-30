@@ -20,6 +20,10 @@ export const guide: Guide = {
     "set-up-client-portal",
     "connect-document-storage",
   ],
+  relatedLinks: [
+    { label: "Sub-processors", href: "/legal/subprocessors" },
+    { label: "Support", href: "/support" },
+  ],
   faq: [
     {
       q: "Why don't I see the Merge PDFs button?",
@@ -45,7 +49,13 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "Tick more than one file in XTK's Documents tab and a selection bar appears with actions that work on the whole selection: move, copy, download as zip, merge PDFs, convert to PDF, delete, and share to the client portal. It's the fastest way to reorganise a client's folder, bundle records for a lender, or combine a season's bank statements into one PDF — all inside Xero Practice Manager (XPM), with every file staying in your practice's own storage.",
+      text: [
+        "Tick more than one file in XTK's ",
+        { text: "Documents tab", href: "/guides/manage-client-documents" },
+        " and a selection bar appears with actions that work on the whole selection: move, copy, download as zip, merge PDFs, convert to PDF, delete, and share to ",
+        { text: "the client portal", href: "/guides/set-up-client-portal" },
+        ". It's the fastest way to reorganise a client's folder, bundle records for a lender, or combine a season's bank statements into one PDF — all inside Xero Practice Manager (XPM), with every file staying in your practice's own storage.",
+      ],
     },
     {
       type: "p",
@@ -161,7 +171,11 @@ export const guide: Guide = {
     { type: "h2", text: "Convert a Word document to PDF" },
     {
       type: "p",
-      text: "Select exactly one Word document (.doc or .docx) and “Convert to PDF” appears in the bar — the same action as the row menu offers. It creates a PDF copy beside the original, which is the usual first step when you want to merge a letter with existing PDFs or send it for e-signature.",
+      text: [
+        "Select exactly one Word document (.doc or .docx) and “Convert to PDF” appears in the bar — the same action as the row menu offers. It creates a PDF copy beside the original, which is the usual first step when you want to merge a letter with existing PDFs or send it for ",
+        { text: "e-signature", href: "/guides/send-documents-for-signature" },
+        ".",
+      ],
     },
     { type: "h2", text: "Delete several files at once" },
     {
@@ -176,7 +190,15 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "Bulk actions cover organising what's already in the client's folder. The rest of the series fills the folder for you: document templates generate client letters, folder templates lay down a standard structure, and document requests collect records straight from the client.",
+      text: [
+        "Bulk actions cover organising what's already in the client's folder. The rest of the series fills the folder for you: ",
+        { text: "document templates", href: "/guides/document-templates" },
+        " generate client letters, ",
+        { text: "folder templates", href: "/guides/folder-templates" },
+        " lay down a standard structure, and ",
+        { text: "document requests", href: "/guides/document-requests" },
+        " collect records straight from the client.",
+      ],
     },
   ],
 };

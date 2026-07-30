@@ -1,6 +1,8 @@
 import { geistMono } from "@/app/fonts";
 import OptimizedImage from "@/components/optimized-image";
 import type { GuideBlock, GuideStep } from "@/lib/guides";
+import { plainText, type Inline } from "@/lib/inline";
+import { renderInline } from "./inline-text";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -55,7 +57,9 @@ function Steps({ title, steps }: { title?: string; steps: GuideStep[] }) {
             </span>
             <div className="min-w-0 flex-1">
               <p className="font-semibold text-ink">{step.title}</p>
-              <p className="mt-1 leading-relaxed text-ink-soft">{step.text}</p>
+              <p className="mt-1 leading-relaxed text-ink-soft">
+                {renderInline(step.text)}
+              </p>
               {step.image && (
                 <Figure
                   src={step.image.src}
@@ -79,17 +83,19 @@ function Table({
   codeColumns = [],
 }: {
   head: string[];
-  rows: string[][];
+  rows: Inline[][];
   caption?: string;
   codeColumns?: number[];
 }) {
-  const cell = (text: string, col: number) =>
+  // Code columns hold literal tokens like [CLIENT:NAME] — always plain text,
+  // never a link, so they flatten rather than render inline nodes.
+  const cell = (value: Inline, col: number) =>
     codeColumns.includes(col) ? (
       <code className="whitespace-nowrap rounded bg-accent-soft/60 px-1.5 py-0.5 font-mono text-[13px] text-accent-deep">
-        {text}
+        {plainText(value)}
       </code>
     ) : (
-      text
+      renderInline(value)
     );
   return (
     <figure className="mt-6">
@@ -145,12 +151,16 @@ function Block({ block }: { block: GuideBlock }) {
         </h3>
       );
     case "p":
-      return <p className="mt-5 text-lg leading-relaxed text-ink-soft">{block.text}</p>;
+      return (
+        <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+          {renderInline(block.text)}
+        </p>
+      );
     case "list": {
       const cls = "mt-5 flex flex-col gap-2.5 pl-5 text-lg leading-relaxed text-ink-soft";
       const items = block.items.map((item, i) => (
         <li key={i} className="pl-1 marker:text-accent">
-          {item}
+          {renderInline(item)}
         </li>
       ));
       return block.ordered ? (
@@ -172,7 +182,9 @@ function Block({ block }: { block: GuideBlock }) {
       return (
         <aside className="mt-8 rounded-2xl border border-accent/25 bg-accent-soft/50 p-5">
           <p className="text-sm font-semibold text-accent-deep">{block.title}</p>
-          <p className="mt-1.5 leading-relaxed text-ink-soft">{block.text}</p>
+          <p className="mt-1.5 leading-relaxed text-ink-soft">
+            {renderInline(block.text)}
+          </p>
         </aside>
       );
     case "image":

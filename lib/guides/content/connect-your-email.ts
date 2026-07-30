@@ -20,6 +20,11 @@ export const guide: Guide = {
     "document-requests",
     "set-up-client-portal",
     "getting-started-with-xtk",
+    "invite-your-team",
+  ],
+  relatedLinks: [
+    { label: "Privacy Policy", href: "/legal/privacy" },
+    { label: "Sub-processors", href: "/legal/subprocessors" },
   ],
   faq: [
     {
@@ -46,7 +51,15 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "XTK sends real email on your behalf — client portal invites, document requests and e-signature emails. Connect a Gmail or Microsoft (Outlook) mailbox and those messages go out from your practice's own address rather than a generic one, replies come straight back to you, and every message lands in your own Sent folder. Connecting takes a couple of minutes in the XTK panel inside Xero Practice Manager (XPM).",
+      text: [
+        "XTK sends real email on your behalf — ",
+        { text: "client portal invites", href: "/guides/set-up-client-portal" },
+        ", ",
+        { text: "document requests", href: "/guides/document-requests" },
+        " and ",
+        { text: "e-signature emails", href: "/guides/send-documents-for-signature" },
+        ". Connect a Gmail or Microsoft (Outlook) mailbox and those messages go out from your practice's own address rather than a generic one, replies come straight back to you, and every message lands in your own Sent folder. Connecting takes a couple of minutes in the XTK panel inside Xero Practice Manager (XPM).",
+      ],
     },
     {
       type: "p",
@@ -68,7 +81,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Two kinds of mailbox can do that sending. The Practice account is one shared mailbox — say info@yourpractice.com — that the Admin connects once; it's the default sender for the whole team. Your own account is personal: anyone can connect their own Gmail or Microsoft mailbox and have their mail go out under their own name instead. You can use either, or both.",
+      text: [
+        "Two kinds of mailbox can do that sending. The Practice account is one shared mailbox — say info@yourpractice.com — that ",
+        { text: "the Admin", href: "/guides/invite-your-team" },
+        " connects once; it's the default sender for the whole team. Your own account is personal: anyone can connect their own Gmail or Microsoft mailbox and have their mail go out under their own name instead. You can use either, or both.",
+      ],
     },
     { type: "h2", text: "Connect the Practice account (Admin only)" },
     {
@@ -138,7 +155,11 @@ export const guide: Guide = {
     { type: "h2", text: "Nothing connected? Mail still sends" },
     {
       type: "p",
-      text: "You don't have to connect a mailbox to use XTK. With nothing connected, portal invites, document requests and signature emails send from XTK's own shared address, and the Email Templates tab shows a “Sending from a shared address” notice with the exact address your clients will see. It's a perfectly good fallback — but clients recognise your own name more readily, so connecting a mailbox is worth the two minutes.",
+      text: [
+        "You don't have to connect a mailbox to use XTK. With nothing connected, portal invites, document requests and signature emails send from XTK's own shared address, and the ",
+        { text: "Email Templates", href: "/guides/email-templates" },
+        " tab shows a “Sending from a shared address” notice with the exact address your clients will see. It's a perfectly good fallback — but clients recognise your own name more readily, so connecting a mailbox is worth the two minutes.",
+      ],
     },
     {
       type: "p",

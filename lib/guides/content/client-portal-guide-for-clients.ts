@@ -20,6 +20,10 @@ export const guide: Guide = {
     "esignatures-what-your-client-sees",
     "document-requests",
   ],
+  relatedLinks: [
+    { label: "Support", href: "/support" },
+    { label: "Privacy Policy", href: "/legal/privacy" },
+  ],
   faq: [
     {
       q: "Do I need to create an account or install anything?",
@@ -115,7 +119,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Once you are inside, the name in the top bar is also the switcher: click it to jump between businesses without going back to the hub. Everything below the bar — documents, signatures, requests, notifications — always belongs to the business named there.",
+      text: [
+        "Once you are inside, the name in the top bar is also the switcher: click it to jump between businesses without going back to the hub. Everything below the bar — documents, signatures, requests, ",
+        { text: "notifications", href: "/guides/notifications" },
+        " — always belongs to the business named there.",
+      ],
     },
     {
       type: "image",
@@ -205,7 +213,11 @@ export const guide: Guide = {
     { type: "h2", text: "How do I sign a document?" },
     {
       type: "p",
-      text: "“Signatures”, at the top right of your documents page, lists everything your accountant has sent you to sign for this business, split into “Awaiting your signature” and “On file”. Anything still waiting on you has a “Review & sign” button that opens the signing page.",
+      text: [
+        "“Signatures”, at the top right of your documents page, lists everything your accountant has sent you to sign for this business, split into “Awaiting your signature” and “On file”. Anything still waiting on you has a “Review & sign” button that opens ",
+        { text: "the signing page", href: "/guides/esignatures-what-your-client-sees" },
+        ".",
+      ],
     },
     {
       type: "image",

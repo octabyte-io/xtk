@@ -21,6 +21,10 @@ export const guide: Guide = {
     "manage-client-documents",
     "bulk-file-actions",
   ],
+  relatedLinks: [
+    { label: "Stop retyping client data", href: "/blog/stop-retyping-client-data" },
+    { label: "Support", href: "/support" },
+  ],
   faq: [
     {
       q: "What happens to placeholders XTK can't fill in?",
@@ -50,7 +54,13 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "A document template is an ordinary Word file with placeholders like [CLIENT:NAME] where the client-specific details go. Upload it to XTK once, and any team member can generate a finished letter for any client from inside Xero Practice Manager (XPM) — XTK fills the placeholders from the client's own details, you review the values, and the completed .docx lands straight in the client's folder. Engagement letters, fee reviews, ethical letters: write them once, reuse them forever.",
+      text: [
+        "A document template is an ordinary Word file with ",
+        { text: "placeholders", href: "/guides/placeholder-reference" },
+        " like [CLIENT:NAME] where the client-specific details go. Upload it to XTK once, and ",
+        { text: "any team member", href: "/guides/invite-your-team" },
+        " can generate a finished letter for any client from inside Xero Practice Manager (XPM) — XTK fills the placeholders from the client's own details, you review the values, and the completed .docx lands straight in the client's folder. Engagement letters, fee reviews, ethical letters: write them once, reuse them forever.",
+      ],
     },
     {
       type: "p",
@@ -68,7 +78,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Generating is the other half: in a client's Documents tab, “Create ▾ → File from template” picks a template, fills its placeholders from the client's live details, and files the finished document wherever you choose in that client's folder.",
+      text: [
+        "Generating is the other half: in a client's ",
+        { text: "Documents tab", href: "/guides/manage-client-documents" },
+        ", “Create ▾ → File from template” picks a template, fills its placeholders from the client's live details, and files the finished document wherever you choose in that client's folder.",
+      ],
     },
     { type: "h2", text: "Write the template in Word" },
     {
@@ -250,7 +264,11 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "The placeholder reference lists every token the templates understand, with sample output for each. And if you find yourself creating the same folders for every client before filing letters into them, folder templates lay down a standard structure the same way — from the same Create menu.",
+      text: [
+        "The placeholder reference lists every token the templates understand, with sample output for each. And if you find yourself creating the same folders for every client before filing letters into them, ",
+        { text: "folder templates", href: "/guides/folder-templates" },
+        " lay down a standard structure the same way — from the same Create menu.",
+      ],
     },
   ],
 };

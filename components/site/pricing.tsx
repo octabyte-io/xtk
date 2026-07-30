@@ -1,6 +1,7 @@
 import Reveal from "./reveal";
 import SectionHeading from "./section-heading";
 import ButtonLink from "./button-link";
+import { A } from "./prose-link";
 
 const included = [
   "Every XTK feature — e-signatures, client portal, document requests and templates",
@@ -84,6 +85,15 @@ export default function Pricing({
                   </li>
                 ))}
               </ul>
+              <p className="mt-6 text-sm leading-relaxed text-ink-soft">
+                <A href="/guides/billing-trial-and-subscription">
+                  How the trial and billing work
+                </A>
+                {" · "}
+                <A href="/legal/refunds">Refunds</A>
+                {" · "}
+                <A href="/support">Questions?</A>
+              </p>
             </div>
           </div>
         </div>

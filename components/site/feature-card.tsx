@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import Reveal from "./reveal";
 
@@ -5,12 +6,19 @@ export default function FeatureCard({
   title,
   body,
   mock,
+  guide,
   className = "",
   delay = 0,
 }: {
   title: string;
   body: string;
   mock: ReactNode;
+  /**
+   * The guide that covers this feature in full. The home page is the site's
+   * highest-authority page and used to link nowhere but its own #get-xtk
+   * anchor; this is how it hands readers (and crawlers) on to /guides.
+   */
+  guide?: { href: string; label?: string };
   className?: string;
   delay?: number;
 }) {
@@ -23,6 +31,14 @@ export default function FeatureCard({
           <p className="mt-1.5 text-[15px] leading-relaxed text-ink-soft">
             {body}
           </p>
+          {guide && (
+            <Link
+              href={guide.href}
+              className="mt-3 inline-block text-sm font-medium text-accent-deep transition-colors hover:text-accent"
+            >
+              {guide.label ?? "Read the guide"} →
+            </Link>
+          )}
         </div>
       </article>
     </Reveal>

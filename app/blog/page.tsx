@@ -5,11 +5,11 @@ import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
 import Reveal from "@/components/site/reveal";
+import Breadcrumbs from "@/components/site/breadcrumbs";
 import PostCard, { CategoryChip, PostMeta } from "@/components/site/post-card";
-import JsonLd from "@/components/json-ld";
+import { A } from "@/components/site/prose-link";
 import { getAllPosts } from "@/lib/posts";
 import { pageMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = pageMetadata({
   title: "Blog",
@@ -25,17 +25,17 @@ export default function BlogIndex() {
 
   return (
     <>
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Blog", path: "/blog" },
-        ])}
-      />
       <Nav active="/blog" />
       <main className="flex-1">
         <section className="hero-wash">
           <div className="mx-auto w-full max-w-6xl px-5 pb-12 pt-16 sm:px-8 sm:pt-20">
             <div className="hero-rise flex max-w-2xl flex-col gap-4">
+              <Breadcrumbs
+                items={[
+                  { name: "Home", path: "/" },
+                  { name: "Blog", path: "/blog" },
+                ]}
+              />
               <span className="inline-flex w-fit items-center rounded-full bg-accent-soft px-3.5 py-1 text-sm font-medium text-accent-deep">
                 Blog
               </span>
@@ -44,7 +44,8 @@ export default function BlogIndex() {
               </h1>
               <p className="text-lg leading-relaxed text-ink-soft">
                 Product news, guides and practice tips for teams running on
-                Xero Practice Manager.
+                Xero Practice Manager. For step-by-step instructions, see the{" "}
+                <A href="/guides">user guides</A>.
               </p>
             </div>
           </div>

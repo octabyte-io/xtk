@@ -21,6 +21,9 @@ export const guide: Guide = {
     "document-templates",
     "bulk-file-actions",
   ],
+  relatedLinks: [
+    { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+  ],
   faq: [
     {
       q: "What happens if I apply the same folder template twice?",
@@ -46,7 +49,11 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "A folder template is your practice's standard client folder structure, saved once and applied to any client in a couple of clicks. You build the tree in the XTK panel — “Permanent”, “FY[DATE:yyyy] — Tax”, “Correspondence” and whatever else your workflow needs — and then, from a client's Documents tab, “Create ▾ → Folder from template” creates the whole structure inside that client's folder. Apply it as often as you like: XTK matches folders by name, so re-applying fills in what's missing and never duplicates anything.",
+      text: [
+        "A folder template is your practice's standard client folder structure, saved once and applied to any client in a couple of clicks. You build the tree in the XTK panel — “Permanent”, “FY[DATE:yyyy] — Tax”, “Correspondence” and whatever else your workflow needs — and then, from a client's ",
+        { text: "Documents tab", href: "/guides/manage-client-documents" },
+        ", “Create ▾ → Folder from template” creates the whole structure inside that client's folder. Apply it as often as you like: XTK matches folders by name, so re-applying fills in what's missing and never duplicates anything.",
+      ],
     },
     {
       type: "p",
@@ -64,7 +71,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "A folder template holds no files. It's a saved tree of folder names living with your practice's settings, which is why creating, editing and deleting templates never touches a document in Google Drive, OneDrive or SharePoint.",
+      text: [
+        "A folder template holds no files. It's a saved tree of folder names living with your practice's settings, which is why creating, editing and deleting templates never touches a document in ",
+        { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+        ".",
+      ],
     },
     { type: "h2", text: "How do I create a folder template?" },
     {
@@ -119,7 +130,11 @@ export const guide: Guide = {
     { type: "h2", text: "Putting the year in a folder name with [DATE]" },
     {
       type: "p",
-      text: "Folder names can carry a date token, resolved on your own clock at the moment you apply the template — not when you saved it. That's what lets one template serve every year: “FY[DATE:yyyy] — Tax” becomes “FY2026 — Tax” today and “FY2027 — Tax” next year, with nothing to edit in between. It's the same [DATE] grammar document templates use, and it's the only variable a folder name understands.",
+      text: [
+        "Folder names can carry a date token, resolved on your own clock at the moment you apply the template — not when you saved it. That's what lets one template serve every year: “FY[DATE:yyyy] — Tax” becomes “FY2026 — Tax” today and “FY2027 — Tax” next year, with nothing to edit in between. It's the same [DATE] grammar ",
+        { text: "document templates", href: "/guides/document-templates" },
+        " use, and it's the only variable a folder name understands.",
+      ],
     },
     {
       type: "table",
@@ -236,7 +251,10 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "The placeholder reference covers the [DATE] patterns in full, alongside every token document templates understand. And if you haven't set up the Documents tab itself yet — uploading, searching, sharing and the rest — start with the client documents guide.",
+      text: [
+        { text: "The placeholder reference", href: "/guides/placeholder-reference" },
+        " covers the [DATE] patterns in full, alongside every token document templates understand. And if you haven't set up the Documents tab itself yet — uploading, searching, sharing and the rest — start with the client documents guide.",
+      ],
     },
   ],
 };

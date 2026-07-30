@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllGuides } from "@/lib/guides";
 import { getAllPosts } from "@/lib/posts";
 import { LEGAL_UPDATED } from "@/lib/legal";
+import { assertContentLinks, STATIC_PATHS } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/structured-data";
 
 export const dynamic = "force-static";
@@ -12,19 +13,22 @@ function newest(dates: string[]): string | undefined {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Runs exactly once per `next build`, so this is the backstop that stops a
+  // broken internal link ever reaching production.
+  assertContentLinks();
+
   const posts = getAllPosts();
   const guides = getAllGuides();
 
   // Only pages with a date we actually track get a lastModified. The marketing
   // pages have no revision history to draw one from, and an invented date is
   // worse than none.
+  const dated: Partial<Record<(typeof STATIC_PATHS)[number], string>> = {
+    "/blog": newest(posts.map((p) => p.date)),
+    "/guides": newest(guides.map((g) => g.updated)),
+  };
   const staticPaths: { path: string; lastModified?: string }[] = [
-    { path: "/" },
-    { path: "/about" },
-    { path: "/pricing" },
-    { path: "/support" },
-    { path: "/blog", lastModified: newest(posts.map((p) => p.date)) },
-    { path: "/guides", lastModified: newest(guides.map((g) => g.updated)) },
+    ...STATIC_PATHS.map((path) => ({ path, lastModified: dated[path] })),
     ...Object.entries(LEGAL_UPDATED).map(([page, lastModified]) => ({
       path: `/legal/${page}`,
       lastModified,

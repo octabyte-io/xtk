@@ -20,6 +20,10 @@ export const guide: Guide = {
     "folder-templates",
     "manage-client-documents",
   ],
+  relatedLinks: [
+    { label: "Stop retyping client data", href: "/blog/stop-retyping-client-data" },
+    { label: "Support", href: "/support" },
+  ],
   faq: [
     {
       q: "What happens to a placeholder XTK can't fill in?",
@@ -49,7 +53,11 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "This is the complete reference for XTK placeholders — every token you can type into a document template and have XTK fill from a client's live details in Xero Practice Manager (XPM). It covers the client, contact, address, custom-field and date tokens, the :LASTn modifier, and the [IF …] … [ENDIF] conditional blocks, each with sample output.",
+      text: [
+        "This is the complete reference for XTK placeholders — every token you can type into ",
+        { text: "a document template", href: "/guides/document-templates" },
+        " and have XTK fill from a client's live details in Xero Practice Manager (XPM). It covers the client, contact, address, custom-field and date tokens, the :LASTn modifier, and the [IF …] … [ENDIF] conditional blocks, each with sample output.",
+      ],
     },
     {
       type: "p",
@@ -397,12 +405,20 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "For a worked example — an Australian-only GST paragraph in an engagement letter — see the document templates guide linked below.",
+      text: [
+        "For a worked example — an Australian-only GST paragraph in an engagement letter — see ",
+        { text: "the document templates guide", href: "/guides/document-templates" },
+        ".",
+      ],
     },
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "The document templates guide walks through uploading a template and generating a letter from it, with these tokens doing the filling. Folder templates use the same [DATE] tokens inside folder names, so a standard client folder structure can stamp itself with the right year as it's created.",
+      text: [
+        "The document templates guide walks through uploading a template and generating a letter from it, with these tokens doing the filling. ",
+        { text: "Folder templates", href: "/guides/folder-templates" },
+        " use the same [DATE] tokens inside folder names, so a standard client folder structure can stamp itself with the right year as it's created.",
+      ],
     },
   ],
 };

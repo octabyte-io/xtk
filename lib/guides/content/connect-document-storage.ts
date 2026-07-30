@@ -20,6 +20,12 @@ export const guide: Guide = {
     "how-xtk-handles-your-data",
     "connect-your-email",
     "getting-started-with-xtk",
+    "invite-your-team",
+  ],
+  relatedLinks: [
+    { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    { label: "Privacy Policy", href: "/legal/privacy" },
+    { label: "Sub-processors", href: "/legal/subprocessors" },
   ],
   faq: [
     {
@@ -46,7 +52,11 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "Connect your practice's own Google Drive, OneDrive or SharePoint to XTK and every client document you handle in Xero Practice Manager (XPM) stays in storage you control. It's a one-off job for the practice Admin: choose a provider, approve access, and pick one main storage folder. From then on the whole team works with the same client folders without leaving Practice Manager.",
+      text: [
+        "Connect your practice's own Google Drive, OneDrive or SharePoint to XTK and every client document you handle in Xero Practice Manager (XPM) stays in storage you control. It's a one-off job for ",
+        { text: "the practice Admin", href: "/guides/invite-your-team" },
+        ": choose a provider, approve access, and pick one main storage folder. From then on the whole team works with the same client folders without leaving Practice Manager.",
+      ],
     },
     {
       type: "p",
@@ -60,7 +70,13 @@ export const guide: Guide = {
     { type: "h2", text: "Why connect storage first?" },
     {
       type: "p",
-      text: "Almost everything XTK does ends up as a file: the Documents tab, generated letters, records clients send you, signed PDFs and their completion certificates, and everything you share through the client portal. Until storage is connected, none of that has anywhere to live — your colleagues will simply see “Your Practice Admin hasn't connected document storage yet.” Connect it once and every other feature lights up.",
+      text: [
+        "Almost everything XTK does ends up as a file: ",
+        { text: "the Documents tab", href: "/guides/manage-client-documents" },
+        ", generated letters, records clients send you, signed PDFs and their completion certificates, and everything you share through ",
+        { text: "the client portal", href: "/guides/set-up-client-portal" },
+        ". Until storage is connected, none of that has anywhere to live — your colleagues will simply see “Your Practice Admin hasn't connected document storage yet.” Connect it once and every other feature lights up.",
+      ],
     },
     { type: "h2", text: "Choose your provider and approve access" },
     {
@@ -126,7 +142,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "One more folder appears later without any setup: “XTK – Templates”, created automatically inside your Main Storage Folder the first time your practice uses document templates.",
+      text: [
+        "One more folder appears later without any setup: “XTK – Templates”, created automatically inside your Main Storage Folder the first time your practice uses ",
+        { text: "document templates", href: "/guides/document-templates" },
+        ".",
+      ],
     },
     { type: "h2", text: "What your team sees" },
     {
@@ -190,7 +210,13 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "With storage connected, open any client in Practice Manager and the Documents tab is ready to use — that's the next guide. And if you also connect your email, XTK can send document requests and portal invites for you from your own address.",
+      text: [
+        "With storage connected, open any client in Practice Manager and the Documents tab is ready to use — that's the next guide. And if you also ",
+        { text: "connect your email", href: "/guides/connect-your-email" },
+        ", XTK can send ",
+        { text: "document requests", href: "/guides/document-requests" },
+        " and portal invites for you from your own address.",
+      ],
     },
   ],
 };

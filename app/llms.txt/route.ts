@@ -31,6 +31,7 @@ export function GET() {
     `- [Blog](${absoluteUrl("/blog")}): product news and practice tips`,
     `- [About](${absoluteUrl("/about")}): who makes XTK`,
     `- [Support](${absoluteUrl("/support")}): how to get help (${company.supportEmail})`,
+    `- [Sitemap](${absoluteUrl("/sitemap")}): every page on the site, grouped by section`,
   ];
 
   if (guides.length > 0) {

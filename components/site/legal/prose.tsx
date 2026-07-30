@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 
 /**
@@ -60,29 +59,12 @@ export function LI({ children }: { children: ReactNode }) {
   return <li className="pl-1 marker:text-accent">{children}</li>;
 }
 
-export function A({ href, children }: { href: string; children: ReactNode }) {
-  const external = /^https?:\/\//.test(href) || href.startsWith("mailto:");
-  const cls =
-    "font-medium text-accent-deep underline decoration-accent/40 underline-offset-2 transition-colors hover:decoration-accent";
-  if (external) {
-    return (
-      <a
-        href={href}
-        className={cls}
-        {...(href.startsWith("mailto:")
-          ? {}
-          : { target: "_blank", rel: "noopener noreferrer" })}
-      >
-        {children}
-      </a>
-    );
-  }
-  return (
-    <Link href={href} className={cls}>
-      {children}
-    </Link>
-  );
-}
+/**
+ * Re-exported: `A` now lives in ../prose-link.tsx because guide and post bodies
+ * render inline links through it too (see ../inline-text.tsx). Importing it
+ * from here still works.
+ */
+export { A } from "../prose-link";
 
 export function Strong({ children }: { children: ReactNode }) {
   return <strong className="font-semibold text-ink">{children}</strong>;

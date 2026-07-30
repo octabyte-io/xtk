@@ -24,6 +24,7 @@ export const guide: Guide = {
   relatedLinks: [
     { label: "Pricing", href: "/pricing" },
     { label: "Refund & cancellation policy", href: "/legal/refunds" },
+    { label: "Support", href: "/support" },
   ],
   faq: [
     {
@@ -50,7 +51,13 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "XTK is one plan: $59 USD a month for your whole practice, every feature included, after a 30-day free trial that needs no credit card. The trial starts when you verify your email address, and if it ends without a subscription the practice becomes read-only — everyone can still browse and download, but nothing can be created or changed until an Admin subscribes. This guide covers what you pay for, how an Admin upgrades and manages the subscription, and exactly what read-only does and doesn't block.",
+      text: [
+        "XTK is one plan: $59 USD a month for your whole practice, every feature included, after a ",
+        { text: "30-day free trial", href: "/pricing" },
+        " that needs no credit card. The trial starts when you verify your email address, and if it ends without a subscription the practice becomes read-only — everyone can still browse and download, but nothing can be created or changed until ",
+        { text: "an Admin subscribes", href: "/guides/invite-your-team" },
+        ". This guide covers what you pay for, how an Admin upgrades and manages the subscription, and exactly what read-only does and doesn't block.",
+      ],
     },
     {
       type: "p",
@@ -210,7 +217,15 @@ export const guide: Guide = {
     { type: "h3", text: "What read-only blocks" },
     {
       type: "p",
-      text: "Anything that would change something. In the Documents tab the “Create” menu is disabled outright — no uploads, no new folders, no documents or folders from templates, no document requests — along with move, copy, rename, delete, convert to PDF, merge PDFs, “Send for signature” and “Change storage folder”. Elsewhere you can't invite or remove a team member, or write a template. Hover any of them and XTK explains itself: “Mutations are unavailable in this access state”. If a write does reach the server it is refused there too, and XTK says “Your Practice is read-only. Reactivate your subscription to make changes.”",
+      text: [
+        "Anything that would change something. In ",
+        { text: "the Documents tab", href: "/guides/manage-client-documents" },
+        " the “Create” menu is disabled outright — no uploads, no new folders, no documents or folders from templates, no ",
+        { text: "document requests", href: "/guides/document-requests" },
+        " — along with move, copy, rename, delete, convert to PDF, ",
+        { text: "merge PDFs", href: "/guides/bulk-file-actions" },
+        ", “Send for signature” and “Change storage folder”. Elsewhere you can't invite or remove a team member, or write a template. Hover any of them and XTK explains itself: “Mutations are unavailable in this access state”. If a write does reach the server it is refused there too, and XTK says “Your Practice is read-only. Reactivate your subscription to make changes.”",
+      ],
     },
     {
       type: "callout",
@@ -229,7 +244,13 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Nothing was lost while you waited. Your documents never belonged to XTK — they live in your practice's own Google Drive, OneDrive or SharePoint throughout — and every signature request, document request, portal contact, share and template is where you left it. Read-only pauses your practice; it doesn't unpick it.",
+      text: [
+        "Nothing was lost while you waited. Your documents never belonged to XTK — they live in your practice's own ",
+        { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+        " throughout — and ",
+        { text: "every signature request", href: "/guides/send-documents-for-signature" },
+        ", document request, portal contact, share and template is where you left it. Read-only pauses your practice; it doesn't unpick it.",
+      ],
     },
     { type: "h2", text: "Where next" },
     {

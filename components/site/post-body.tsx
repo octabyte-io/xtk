@@ -1,4 +1,5 @@
 import type { PostBlock } from "@/lib/posts";
+import { renderInline } from "./inline-text";
 
 function Block({ block }: { block: PostBlock }) {
   switch (block.type) {
@@ -9,12 +10,16 @@ function Block({ block }: { block: PostBlock }) {
         </h2>
       );
     case "p":
-      return <p className="mt-5 text-lg leading-relaxed text-ink-soft">{block.text}</p>;
+      return (
+        <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+          {renderInline(block.text)}
+        </p>
+      );
     case "list": {
       const cls = "mt-5 flex flex-col gap-2.5 pl-5 text-lg leading-relaxed text-ink-soft";
       const items = block.items.map((item, i) => (
         <li key={i} className="pl-1 marker:text-accent">
-          {item}
+          {renderInline(item)}
         </li>
       ));
       return block.ordered ? (
@@ -36,7 +41,9 @@ function Block({ block }: { block: PostBlock }) {
       return (
         <aside className="mt-8 rounded-2xl border border-accent/25 bg-accent-soft/50 p-5">
           <p className="text-sm font-semibold text-accent-deep">{block.title}</p>
-          <p className="mt-1.5 leading-relaxed text-ink-soft">{block.text}</p>
+          <p className="mt-1.5 leading-relaxed text-ink-soft">
+            {renderInline(block.text)}
+          </p>
         </aside>
       );
   }

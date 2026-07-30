@@ -20,6 +20,11 @@ export const guide: Guide = {
     "set-up-client-portal",
     "connect-your-email",
     "document-templates",
+    "placeholder-reference",
+  ],
+  relatedLinks: [
+    { label: "Stop retyping client data", href: "/blog/stop-retyping-client-data" },
+    { label: "Support", href: "/support" },
   ],
   faq: [
     {
@@ -67,7 +72,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "That's the full list today. E-signature emails are composed on the signing page and offer no template picker, and system mail like verification or team invites uses XTK's own fixed wording.",
+      text: [
+        "That's the full list today. E-signature emails are composed on ",
+        { text: "the signing page", href: "/guides/esignatures-what-your-client-sees" },
+        " and offer no template picker, and system mail like verification or team invites uses XTK's own fixed wording.",
+      ],
     },
     {
       type: "p",
@@ -126,7 +135,11 @@ export const guide: Guide = {
     { type: "h2", text: "Template variables: the links XTK fills in" },
     {
       type: "p",
-      text: "A template variable is a {{name}} placeholder XTK swaps for a real value when the email is sent. There are exactly two, both links, and the catalogue is fixed — you can reference them, but you can't invent new ones:",
+      text: [
+        "A template variable is a {{name}} ",
+        { text: "placeholder", href: "/guides/placeholder-reference" },
+        " XTK swaps for a real value when the email is sent. There are exactly two, both links, and the catalogue is fixed — you can reference them, but you can't invent new ones:",
+      ],
     },
     {
       type: "table",
@@ -225,7 +238,11 @@ export const guide: Guide = {
     { type: "h2", text: "The “Portal invite” starter template" },
     {
       type: "p",
-      text: "Every practice is created with one template already in the list, named “Portal invite”, subject “You're invited to your client portal”. Its body is deliberately plain — five short lines:",
+      text: [
+        "Every practice is created with one template already in the list, named “Portal invite”, subject “You're invited to ",
+        { text: "your client portal", href: "/guides/set-up-client-portal" },
+        "”. Its body is deliberately plain — five short lines:",
+      ],
     },
     {
       type: "list",
@@ -257,7 +274,13 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "For a document request, go to the client's Documents tab, choose “Create ▾ → Request documents”, and the final step has an “Email template” dropdown. This one starts on “No template (custom)” with XTK's own wording; choosing a template replaces the subject and body with yours.",
+      text: [
+        "For ",
+        { text: "a document request", href: "/guides/document-requests" },
+        ", go to ",
+        { text: "the client's Documents tab", href: "/guides/manage-client-documents" },
+        ", choose “Create ▾ → Request documents”, and the final step has an “Email template” dropdown. This one starts on “No template (custom)” with XTK's own wording; choosing a template replaces the subject and body with yours.",
+      ],
     },
     {
       type: "image",

@@ -21,35 +21,41 @@ export default function Features() {
             className="md:col-span-2"
             title="Document management, in your Drive"
             body="Browse, upload, rename, move and favourite client files. Merge PDFs and convert DOCX to PDF without leaving the panel — every file lives in the client's own folder in your Google Drive or OneDrive."
+            guide={{ href: "/guides/manage-client-documents" }}
             mock={<DocumentsMock />}
           />
           <FeatureCard
             delay={120}
             title="E-signatures"
             body="Place signature, date and text fields on any client PDF, set the signing order, and send. Recipients sign from a secure link — no account needed."
+            guide={{ href: "/guides/send-documents-for-signature" }}
             mock={<EsignMock />}
           />
           <FeatureCard
             title="Client portal"
             body="Invite clients to a secure portal and share files or folders as markers — the originals stay exactly where they are in your Drive."
+            guide={{ href: "/guides/set-up-client-portal" }}
             mock={<PortalMock />}
           />
           <FeatureCard
             delay={120}
             title="Document requests"
             body="Ask for records with one upload link and watch each item flip from outstanding to provided as files stream into the client's folder."
+            guide={{ href: "/guides/document-requests" }}
             mock={<RequestsMock />}
           />
           <FeatureCard
             delay={240}
             title="Email, from your inbox"
             body="Send from a shared practice Gmail or Outlook — or your own — with every message wrapped in your practice's branded shell."
+            guide={{ href: "/guides/connect-your-email" }}
             mock={<EmailMock />}
           />
           <FeatureCard
             className="md:col-span-3"
             title="Template automation"
             body="Drop placeholders into .docx documents, emails and folder structures, and XTK fills them from the client's live XPM details — names, addresses, contacts — the moment you generate."
+            guide={{ href: "/guides/document-templates" }}
             mock={<TemplatesMock />}
           />
         </div>

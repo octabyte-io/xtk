@@ -4,9 +4,9 @@ import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
 import Reveal from "@/components/site/reveal";
+import Breadcrumbs from "@/components/site/breadcrumbs";
 import GuideCard from "@/components/site/guide-card";
-import JsonLd from "@/components/json-ld";
-import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { A } from "@/components/site/prose-link";
 import { getGuidesBySeries } from "@/lib/guides";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -22,17 +22,17 @@ export default function GuidesIndex() {
 
   return (
     <>
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Guides", path: "/guides" },
-        ])}
-      />
       <Nav active="/guides" />
       <main className="flex-1">
         <section className="hero-wash">
           <div className="mx-auto w-full max-w-6xl px-5 pb-12 pt-16 sm:px-8 sm:pt-20">
             <div className="hero-rise flex max-w-2xl flex-col gap-4">
+              <Breadcrumbs
+                items={[
+                  { name: "Home", path: "/" },
+                  { name: "Guides", path: "/guides" },
+                ]}
+              />
               <span className="inline-flex w-fit items-center rounded-full bg-accent-soft px-3.5 py-1 text-sm font-medium text-accent-deep">
                 Guides
               </span>
@@ -42,6 +42,13 @@ export default function GuidesIndex() {
               <p className="text-lg leading-relaxed text-ink-soft">
                 Practical walkthroughs for everything XTK adds to Xero Practice
                 Manager — documents, e-signatures, client portals and templates.
+                New to XTK? Start with{" "}
+                <A href="/guides/getting-started-with-xtk">
+                  getting started
+                </A>
+                , see{" "}
+                <A href="/pricing">what it costs</A>, or read the{" "}
+                <A href="/blog">blog</A> for the thinking behind it.
               </p>
             </div>
           </div>

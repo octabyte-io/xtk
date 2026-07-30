@@ -25,6 +25,10 @@ export const guide: Guide = {
     "connect-document-storage",
     "getting-started-with-xtk",
   ],
+  relatedLinks: [
+    { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    { label: "Privacy Policy", href: "/legal/privacy" },
+  ],
   faq: [
     {
       q: "Where are the files actually stored?",
@@ -54,7 +58,11 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "Every client in Xero Practice Manager (XPM) gets a Documents tab from XTK: a full file manager for that client's folder in your practice's own Google Drive, OneDrive or SharePoint. You can browse, search, upload, rename, favourite, share and organise client files without leaving Practice Manager — and because it's your storage underneath, everything you do here is just ordinary files and folders in your own drive.",
+      text: [
+        "Every client in Xero Practice Manager (XPM) gets a Documents tab from XTK: a full file manager for that client's folder in your practice's own ",
+        { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+        ". You can browse, search, upload, rename, favourite, share and organise client files without leaving Practice Manager — and because it's your storage underneath, everything you do here is just ordinary files and folders in your own drive.",
+      ],
     },
     {
       type: "p",
@@ -138,7 +146,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "To add a folder, use “Create” → “Create folder”, name it, and it appears in the listing — inside the client's folder, like everything else here. If your practice files every client the same way, folder templates can create the whole structure in one action (see the related guide).",
+      text: [
+        "To add a folder, use “Create” → “Create folder”, name it, and it appears in the listing — inside the client's folder, like everything else here. If your practice files every client the same way, ",
+        { text: "folder templates", href: "/guides/folder-templates" },
+        " can create the whole structure in one action.",
+      ],
     },
     { type: "h2", text: "Rename, download and more: the row menu" },
     {
@@ -182,7 +194,11 @@ export const guide: Guide = {
     { type: "h2", text: "Working with several files at once" },
     {
       type: "p",
-      text: "Tick the checkboxes at the left of the list and a selection bar appears with bulk actions: move, copy, download as zip, merge PDFs, convert to PDF, delete and share. That's a guide of its own — see “Bulk file actions” in the related guides.",
+      text: [
+        "Tick the checkboxes at the left of the list and a selection bar appears with ",
+        { text: "bulk actions", href: "/guides/bulk-file-actions" },
+        ": move, copy, download as zip, merge PDFs, convert to PDF, delete and share — a guide of its own.",
+      ],
     },
     {
       type: "callout",
@@ -192,7 +208,15 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "With filing sorted, the rest of the Documents series builds on this tab: bulk actions for moving and merging, document templates that write client letters for you, and folder templates for a standard structure. When you need something from the client instead, “Create” → “Request documents” sends them a checklist — that's the document requests guide.",
+      text: [
+        "With filing sorted, the rest of the Documents series builds on this tab: bulk actions for moving and merging, ",
+        { text: "document templates", href: "/guides/document-templates" },
+        " that write client letters for you, and ",
+        { text: "folder templates", href: "/guides/folder-templates" },
+        " for a standard structure. When you need something from the client instead, “Create” → “Request documents” sends them a checklist — that's ",
+        { text: "the document requests guide", href: "/guides/document-requests" },
+        ".",
+      ],
     },
   ],
 };

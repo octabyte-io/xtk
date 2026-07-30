@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   // the brand tail lives here rather than being retyped in every page file.
   title: { default: SITE_TITLE, template: TITLE_TEMPLATE },
   description: SITE_DESCRIPTION,
+  // /llms.txt was generated but referenced by nothing — no <link>, not in
+  // robots.txt, not linked from any page. This advertises it sitewide; /sitemap
+  // links it for humans.
+  alternates: { types: { "text/plain": [{ url: "/llms.txt", title: "llms.txt" }] } },
   openGraph: {
     type: "website",
     siteName: "XTK",

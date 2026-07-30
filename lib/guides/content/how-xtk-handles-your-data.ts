@@ -26,6 +26,7 @@ export const guide: Guide = {
     { label: "Data Processing Addendum", href: "/legal/dpa" },
     { label: "Sub-processors", href: "/legal/subprocessors" },
     { label: "Your data rights & deletion", href: "/legal/data-deletion" },
+    { label: "About XTK", href: "/about" },
   ],
   faq: [
     {
@@ -52,7 +53,11 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "XTK is built on two promises. First, it has no connection to Xero of its own — no Xero sign-in, no Xero token, no server-side access to your practice's Xero data. It reads the client you have open inside your own authenticated Xero Practice Manager (XPM) tab. Second, your client documents live in your practice's own Google Drive, OneDrive or SharePoint, and are never copied to XTK's servers. This page explains how both work, what XTK's database really holds, and the places where data does move — so you can answer “is XTK safe?” with specifics rather than reassurances.",
+      text: [
+        "XTK is built on two promises. First, it has no connection to Xero of its own — no Xero sign-in, no Xero token, no server-side access to your practice's Xero data. It reads the client you have open inside your own authenticated Xero Practice Manager (XPM) tab. Second, your client documents live in your practice's own ",
+        { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+        ", and are never copied to XTK's servers. This page explains how both work, what XTK's database really holds, and the places where data does move — so you can answer “is XTK safe?” with specifics rather than reassurances.",
+      ],
     },
     {
       type: "p",
@@ -89,12 +94,20 @@ export const guide: Guide = {
     { type: "h3", text: "Where client details do reach XTK's servers" },
     {
       type: "p",
-      text: "Being precise matters more than sounding absolute. The snapshot itself is never uploaded, but some values in it travel when you act on them. Generating a document from a template sends the finished list of filled-in values — the ones you reviewed in the fill dialog — to the backend, because that's where the Word engine runs; they render your file and are not saved. Sending a signature or document request saves that request: the client's name, the recipient's name and email, your subject and message. Inviting a portal contact saves their name and email. Each notification keeps a snapshot line naming the client and files involved. All of it is data you typed or confirmed on the way to sending something — but it is on XTK's servers, and this page would be dishonest not to say so.",
+      text: [
+        "Being precise matters more than sounding absolute. The snapshot itself is never uploaded, but some values in it travel when you act on them. Generating a document from a template sends the finished list of filled-in values — the ones you reviewed in the fill dialog — to the backend, because that's where the Word engine runs; they render your file and are not saved. Sending a signature or ",
+        { text: "document request", href: "/guides/document-requests" },
+        " saves that request: the client's name, the recipient's name and email, your subject and message. Inviting a portal contact saves their name and email. Each notification keeps a snapshot line naming the client and files involved. All of it is data you typed or confirmed on the way to sending something — but it is on XTK's servers, and this page would be dishonest not to say so.",
+      ],
     },
     { type: "h2", text: "Where do our client files live?" },
     {
       type: "p",
-      text: "In your practice's own storage. Your Admin connects one provider — Google Drive, OneDrive or SharePoint — and picks one Main Storage Folder, usually named “XTK – XPM Storage”. Inside it each client gets a folder, adopted by name if you already have one. Everything in the Documents tab happens in those folders, as ordinary files you could open or move in Drive tomorrow without XTK's help. XTK's database holds the identifiers it needs to find them again — pointers, not contents.",
+      text: [
+        "In your practice's own storage. Your Admin connects one provider — Google Drive, OneDrive or SharePoint — and picks one Main Storage Folder, usually named “XTK – XPM Storage”. Inside it each client gets a folder, adopted by name if you already have one. Everything in ",
+        { text: "the Documents tab", href: "/guides/manage-client-documents" },
+        " happens in those folders, as ordinary files you could open or move in Drive tomorrow without XTK's help. XTK's database holds the identifiers it needs to find them again — pointers, not contents.",
+      ],
     },
     {
       type: "p",
@@ -134,7 +147,11 @@ export const guide: Guide = {
     { type: "h2", text: "Client portal shares are markers, not copies" },
     {
       type: "p",
-      text: "When you share a folder or file with a client through the Client Portal, nothing is duplicated and nothing moves: XTK records a marker saying “this item is visible to this client's portal” over a file already sitting in that client's folder. Your client sees the shared folder as the top of their world and cannot see, name or reach anything above or beside it — not the client folder, not your Main Storage Folder, not another client. Every portal request is checked against the share on the server, not merely hidden in the interface.",
+      text: [
+        "When you share a folder or file with a client through ",
+        { text: "the Client Portal", href: "/guides/set-up-client-portal" },
+        ", nothing is duplicated and nothing moves: XTK records a marker saying “this item is visible to this client's portal” over a file already sitting in that client's folder. Your client sees the shared folder as the top of their world and cannot see, name or reach anything above or beside it — not the client folder, not your Main Storage Folder, not another client. Every portal request is checked against the share on the server, not merely hidden in the interface.",
+      ],
     },
     {
       type: "p",

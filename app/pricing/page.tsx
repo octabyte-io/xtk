@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
 export default function PricingPage() {
   return (
     <>
-      <Nav active="/#pricing" />
+      <Nav active="/pricing" />
       <main className="flex-1">
         {/* The page's own h1 — the sections below only go down to h2. */}
         <header className="hero-wash">

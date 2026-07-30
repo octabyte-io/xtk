@@ -20,6 +20,12 @@ export const guide: Guide = {
     "email-templates",
     "notifications",
     "set-up-client-portal",
+    "client-portal-guide-for-clients",
+    "placeholder-reference",
+  ],
+  relatedLinks: [
+    { label: "Client portals your clients will actually use", href: "/blog/client-portals-clients-actually-use" },
+    { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [
     {
@@ -46,7 +52,11 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "A document request is a checklist you send a client with one secure link. You list what you need — bank statements, a logbook, a signed letter — and XTK emails your client a page where they upload against each line. No account, no password. Files land in that client's folder in your own Google Drive, OneDrive or SharePoint, and in Xero Practice Manager (XPM) each item turns from Outstanding to Provided as it arrives.",
+      text: [
+        "A document request is a checklist you send a client with one secure link. You list what you need — bank statements, a logbook, a signed letter — and XTK emails your client a page where they upload against each line. No account, no password. Files land in that client's folder in your own ",
+        { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+        ", and in Xero Practice Manager (XPM) each item turns from Outstanding to Provided as it arrives.",
+      ],
     },
     {
       type: "p",
@@ -60,7 +70,11 @@ export const guide: Guide = {
     { type: "h2", text: "How do I request documents from a client?" },
     {
       type: "p",
-      text: "Requests start in the client's Documents tab, because that's where the files end up: one wizard, three steps — “1. Recipient”, “2. Items”, “3. Email” — under a live line reading “Ask Sophie Baxter to upload files into Client provided.”",
+      text: [
+        "Requests start in ",
+        { text: "the client's Documents tab", href: "/guides/manage-client-documents" },
+        ", because that's where the files end up: one wizard, three steps — “1. Recipient”, “2. Items”, “3. Email” — under a live line reading “Ask Sophie Baxter to upload files into Client provided.”",
+      ],
     },
     {
       type: "steps",
@@ -309,7 +323,13 @@ export const guide: Guide = {
     { type: "h2", text: "What if the email doesn't send?" },
     {
       type: "p",
-      text: "If your mailbox connection has gone stale the request is still created, and XTK says so: “The request was saved but the email couldn't be sent. Reconnect Gmail and try again.” Don't press “Send request” again — that creates a duplicate request. Close the dialog, reconnect your mailbox, then “Resend email” on the row already in the list. A notification about the failed send arrives too.",
+      text: [
+        "If your mailbox connection has gone stale the request is still created, and XTK says so: “The request was saved but the email couldn't be sent. ",
+        { text: "Reconnect Gmail", href: "/guides/connect-your-email" },
+        " and try again.” Don't press “Send request” again — that creates a duplicate request. Close the dialog, reconnect your mailbox, then “Resend email” on the row already in the list. ",
+        { text: "A notification", href: "/guides/notifications" },
+        " about the failed send arrives too.",
+      ],
     },
     { type: "h2", text: "Notifications you'll get" },
     {
@@ -328,7 +348,15 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "Write your request wording once with email templates so composing becomes two clicks, and turn on the notifications you want. If a client sends records regularly, a client portal gives them a permanent, logged-in place to do it — requests suit the one-off ask, the portal the ongoing relationship.",
+      text: [
+        "Write your request wording once with ",
+        { text: "email templates", href: "/guides/email-templates" },
+        " so composing becomes two clicks, and turn on ",
+        { text: "the notifications you want", href: "/guides/notifications" },
+        ". If a client sends records regularly, ",
+        { text: "a client portal", href: "/guides/set-up-client-portal" },
+        " gives them a permanent, logged-in place to do it — requests suit the one-off ask, the portal the ongoing relationship.",
+      ],
     },
   ],
 };

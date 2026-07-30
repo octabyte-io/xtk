@@ -1,9 +1,18 @@
+import type { Inline, RelatedLink } from "./inline";
+
+export type { RelatedLink };
+
+/**
+ * `Inline` fields may carry inline links; `string` fields deliberately may not.
+ * Headings are landmarks and anchor targets, a pull-quote's display type fights
+ * an underlined link, and a callout title is a label rather than a sentence.
+ */
 export type PostBlock =
-  | { type: "p"; text: string }
+  | { type: "p"; text: Inline }
   | { type: "h2"; text: string }
-  | { type: "list"; items: string[]; ordered?: boolean }
+  | { type: "list"; items: Inline[]; ordered?: boolean }
   | { type: "quote"; text: string; cite?: string }
-  | { type: "callout"; title: string; text: string };
+  | { type: "callout"; title: string; text: Inline };
 
 export type PostCategory = "Product" | "Guides" | "Practice tips" | "Company";
 
@@ -16,6 +25,17 @@ export type Post = {
   category: PostCategory;
   author: { name: string; role: string };
   featured?: boolean;
+  /**
+   * Slugs of related posts, in the order they should appear. Omit to fall back
+   * to `getRelatedPosts`'s same-category-then-newest heuristic, which is thin
+   * on a five-post blog.
+   */
+  relatedSlugs?: string[];
+  /**
+   * Destinations that aren't posts — guides, /pricing, a legal page — rendered
+   * alongside the related posts. The blog's only way out of its own silo.
+   */
+  relatedLinks?: RelatedLink[];
   /** Path under public/ to the 1200×630 OG image; falls back to the site default. */
   ogImage?: string;
   /**
@@ -51,6 +71,15 @@ export const posts: Post[] = [
       src: "/images/blog/introducing-xtk/thumb.png",
       alt: "The XTK panel open beside a client record in Practice Manager, listing that client's folders and documents",
     },
+    relatedSlugs: [
+      "e-signatures-inside-xpm",
+      "client-portals-clients-actually-use",
+    ],
+    relatedLinks: [
+      { label: "Getting started with XTK", href: "/guides/getting-started-with-xtk" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "About XTK", href: "/about" },
+    ],
     body: [
       {
         type: "p",
@@ -63,15 +92,33 @@ export const posts: Post[] = [
       { type: "h2", text: "One panel, inside Practice Manager" },
       {
         type: "p",
-        text: "XTK is a browser extension that adds a panel directly inside Xero Practice Manager. Open a client in XPM and the panel shows that client's documents, e-signature requests, portal activity and templates — in context, without leaving the page you were already on.",
+        text: [
+          "XTK is a browser extension that adds a panel directly inside Xero Practice Manager. Open a client in XPM and the panel shows that client's ",
+          { text: "documents", href: "/guides/manage-client-documents" },
+          ", e-signature requests, portal activity and templates — in context, without leaving the page you were already on.",
+        ],
       },
       {
         type: "list",
         items: [
-          "Documents live in your practice's own Google Drive, organised per client automatically.",
-          "E-signature requests are created from the client record and tracked to completion.",
-          "A client portal gives clients one place to upload, sign and see what you need from them.",
-          "Templates fill themselves from the client data XPM already holds.",
+          [
+            "Documents live in ",
+            { text: "your practice's own Google Drive", href: "/guides/connect-document-storage" },
+            ", organised per client automatically.",
+          ],
+          [
+            { text: "E-signature requests", href: "/guides/send-documents-for-signature" },
+            " are created from the client record and tracked to completion.",
+          ],
+          [
+            "A ",
+            { text: "client portal", href: "/guides/set-up-client-portal" },
+            " gives clients one place to upload, sign and see what you need from them.",
+          ],
+          [
+            { text: "Templates", href: "/guides/document-templates" },
+            " fill themselves from the client data XPM already holds.",
+          ],
         ],
       },
       { type: "h2", text: "Your data stays yours" },
@@ -86,7 +133,13 @@ export const posts: Post[] = [
       { type: "h2", text: "Try it with your whole practice" },
       {
         type: "p",
-        text: "XTK is a two-minute install: add the extension, connect your Drive, and open your first client. Every plan starts with a 30-day free trial for your whole practice — no credit card required. We'd love to hear what your team thinks.",
+        text: [
+          "XTK is a two-minute install: ",
+          { text: "add the extension", href: "/guides/getting-started-with-xtk" },
+          ", connect your Drive, and open your first client. Every plan starts with a ",
+          { text: "30-day free trial", href: "/pricing" },
+          " for your whole practice — no credit card required. We'd love to hear what your team thinks.",
+        ],
       },
     ],
   },
@@ -104,14 +157,30 @@ export const posts: Post[] = [
       src: "/images/blog/e-signatures-inside-xpm/thumb.png",
       alt: "Signature and date fields being placed on an engagement letter, ready to send for signature",
     },
+    relatedSlugs: [
+      "introducing-xtk",
+      "client-portals-clients-actually-use",
+    ],
+    relatedLinks: [
+      { label: "Send documents for e-signature", href: "/guides/send-documents-for-signature" },
+      { label: "How clients sign documents online", href: "/guides/esignatures-what-your-client-sees" },
+    ],
     body: [
       {
         type: "p",
-        text: "Signature season in most practices looks like this: generate the engagement letter from a template, download it, upload it to an e-signature tool, retype the client's email address, send, and then — days later — try to remember which client's letter is still sitting unsigned.",
+        text: [
+          "Signature season in most practices looks like this: ",
+          { text: "generate the engagement letter from a template", href: "/guides/document-templates" },
+          ", download it, upload it to an e-signature tool, retype the client's email address, send, and then — days later — try to remember which client's letter is still sitting unsigned.",
+        ],
       },
       {
         type: "p",
-        text: "Every one of those steps exists because the e-sign tool doesn't know about your practice. It doesn't know the client, the job, or where the signed copy should end up. XTK closes that gap by starting the signature request from the client record itself.",
+        text: [
+          "Every one of those steps exists because the e-sign tool doesn't know about your practice. It doesn't know the client, the job, or where the signed copy should end up. XTK closes that gap by ",
+          { text: "starting the signature request from the client record", href: "/guides/send-documents-for-signature" },
+          " itself.",
+        ],
       },
       { type: "h2", text: "From client record to signed copy" },
       {
@@ -120,8 +189,16 @@ export const posts: Post[] = [
         items: [
           "Open the client in Practice Manager and pick a document — or generate one from a template, pre-filled with the client's details.",
           "Drop signature, initial and date fields onto the page. XTK already knows the signer's name and email from the client record.",
-          "Send. The client signs from any device — no account, no app, no password.",
-          "The signed PDF and its completion certificate land in the client's Drive folder automatically.",
+          [
+            "Send. ",
+            { text: "The client signs from any device", href: "/guides/esignatures-what-your-client-sees" },
+            " — no account, no app, no password.",
+          ],
+          [
+            "The signed PDF and its completion certificate ",
+            { text: "land in the client's Drive folder", href: "/guides/manage-client-documents" },
+            " automatically.",
+          ],
         ],
       },
       { type: "h2", text: "The part you'll feel in July" },
@@ -154,6 +231,15 @@ export const posts: Post[] = [
       src: "/images/blog/organise-client-documents-google-drive/thumb.png",
       alt: "A client's Drive folders listed in the XTK Documents tab, one folder per year and work type",
     },
+    relatedSlugs: [
+      "stop-retyping-client-data",
+      "introducing-xtk",
+    ],
+    relatedLinks: [
+      { label: "Manage client documents", href: "/guides/manage-client-documents" },
+      { label: "Folder templates", href: "/guides/folder-templates" },
+      { label: "Connect Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+    ],
     body: [
       {
         type: "p",
@@ -166,7 +252,13 @@ export const posts: Post[] = [
       { type: "h2", text: "1. Predictable: one folder per client, named by the system" },
       {
         type: "p",
-        text: "The client folder should be created by software, not by whoever touches the client first. When folder names come from your practice management system, “ACME Trading Ltd” can't also exist as “Acme” and “ACME (new)”. XTK creates each client's folder from the XPM record the first time anyone files a document — same name, same place, every time.",
+        text: [
+          "The client folder should be created by software, not by whoever touches the client first. When folder names come from your practice management system, “ACME Trading Ltd” can't also exist as “Acme” and “ACME (new)”. XTK ",
+          { text: "creates each client's folder", href: "/guides/folder-templates" },
+          " from the XPM record the first time anyone ",
+          { text: "files a document", href: "/guides/manage-client-documents" },
+          " — same name, same place, every time.",
+        ],
       },
       { type: "h2", text: "2. Shallow: years and work types, nothing deeper" },
       {
@@ -184,7 +276,15 @@ export const posts: Post[] = [
       { type: "h2", text: "3. Automatic: filing shouldn't be a skill" },
       {
         type: "p",
-        text: "The structure that wins is the one nobody can deviate from. When documents arrive through XTK — a signed letter, a portal upload, a generated template — they file themselves into the right client and year. The humans never choose a destination, so the destination is never wrong.",
+        text: [
+          "The structure that wins is the one nobody can deviate from. When documents arrive through XTK — ",
+          { text: "a signed letter", href: "/guides/send-documents-for-signature" },
+          ", ",
+          { text: "a portal upload", href: "/guides/set-up-client-portal" },
+          ", ",
+          { text: "a generated template", href: "/guides/document-templates" },
+          " — they file themselves into the right client and year. The humans never choose a destination, so the destination is never wrong.",
+        ],
       },
       {
         type: "quote",
@@ -211,6 +311,14 @@ export const posts: Post[] = [
       src: "/images/blog/client-portals-clients-actually-use/thumb.png",
       alt: "The client portal's folder view, where a client downloads what the practice shared and uploads their own files",
     },
+    relatedSlugs: [
+      "e-signatures-inside-xpm",
+      "introducing-xtk",
+    ],
+    relatedLinks: [
+      { label: "Set up a client portal", href: "/guides/set-up-client-portal" },
+      { label: "Request documents from clients", href: "/guides/document-requests" },
+    ],
     body: [
       {
         type: "p",
@@ -223,12 +331,22 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "That's why XTK's portal works from a secure link. The client clicks through from your request, proves they own their email address, and they're in — on a phone, at a kitchen table, with no password to forget.",
+        text: [
+          "That's why ",
+          { text: "XTK's portal works from a secure link", href: "/guides/set-up-client-portal" },
+          ". The client clicks through from your request, ",
+          { text: "proves they own their email address", href: "/guides/client-portal-guide-for-clients" },
+          ", and they're in — on a phone, at a kitchen table, with no password to forget.",
+        ],
       },
       { type: "h2", text: "Ask for things, not for visits" },
       {
         type: "p",
-        text: "The second failure mode is treating the portal as a place clients should check. They won't, and they shouldn't have to. The portal earns its keep when every visit is prompted by a specific, concrete request:",
+        text: [
+          "The second failure mode is treating the portal as a place clients should check. They won't, and they shouldn't have to. The portal earns its keep when every visit is prompted by ",
+          { text: "a specific, concrete request", href: "/guides/document-requests" },
+          ":",
+        ],
       },
       {
         type: "list",
@@ -241,7 +359,13 @@ export const posts: Post[] = [
       { type: "h2", text: "Close the loop automatically" },
       {
         type: "p",
-        text: "When a client uploads to an XTK request, the file lands in their Drive folder, the checklist ticks itself, and the team sees it from the client record in Practice Manager. Nobody forwards attachments. Nobody saves-as. The portal isn't a destination — it's a doorway that files things.",
+        text: [
+          "When a client uploads to an XTK request, the file ",
+          { text: "lands in their Drive folder", href: "/guides/manage-client-documents" },
+          ", the checklist ticks itself, and ",
+          { text: "the team sees it", href: "/guides/notifications" },
+          " from the client record in Practice Manager. Nobody forwards attachments. Nobody saves-as. The portal isn't a destination — it's a doorway that files things.",
+        ],
       },
       {
         type: "callout",
@@ -264,6 +388,15 @@ export const posts: Post[] = [
       src: "/images/blog/stop-retyping-client-data/thumb.png",
       alt: "The File from template dialog with every client placeholder already filled in from the client record",
     },
+    relatedSlugs: [
+      "organise-client-documents-google-drive",
+      "e-signatures-inside-xpm",
+    ],
+    relatedLinks: [
+      { label: "Document templates", href: "/guides/document-templates" },
+      { label: "Placeholder reference", href: "/guides/placeholder-reference" },
+      { label: "Email templates", href: "/guides/email-templates" },
+    ],
     body: [
       {
         type: "p",
@@ -272,11 +405,21 @@ export const posts: Post[] = [
       { type: "h2", text: "The data already exists" },
       {
         type: "p",
-        text: "Practice Manager already holds the client's legal name, trading name, addresses, contacts, and entity details. The only reason anyone retypes them is that Word can't see XPM. XTK's templates can.",
+        text: [
+          "Practice Manager already holds the client's legal name, trading name, addresses, contacts, and entity details. The only reason anyone retypes them is that Word can't see XPM. ",
+          { text: "XTK's templates", href: "/guides/document-templates" },
+          " can.",
+        ],
       },
       {
         type: "p",
-        text: "You write the document once, dropping placeholders where client data belongs — the client's name, a postal address, the primary contact's first name. When someone generates the document from a client record, XTK fills every placeholder from XPM and files the result in the client's folder.",
+        text: [
+          "You write the document once, dropping ",
+          { text: "placeholders", href: "/guides/placeholder-reference" },
+          " where client data belongs — the client's name, a postal address, the primary contact's first name. When someone generates the document from a client record, XTK fills every placeholder from XPM and ",
+          { text: "files the result in the client's folder", href: "/guides/manage-client-documents" },
+          ".",
+        ],
       },
       { type: "h2", text: "Where it compounds" },
       {
@@ -293,7 +436,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Pair templates with e-signatures and the whole chain collapses into one motion: generate from the client record, send for signing, and watch the signed copy file itself. The only typing left is the parts that genuinely need a human.",
+        text: [
+          "Pair templates with ",
+          { text: "e-signatures", href: "/guides/send-documents-for-signature" },
+          " and the whole chain collapses into one motion: generate from the client record, send for signing, and watch the signed copy file itself. The only typing left is the parts that genuinely need a human.",
+        ],
       },
     ],
   },
@@ -308,13 +455,30 @@ export function getAllPosts(): Post[] {
   return [...posts].sort((a, b) => b.date.localeCompare(a.date));
 }
 
-/** Other posts to suggest under an article: same category first, then newest. */
+/**
+ * Other posts to suggest under an article. Curated `relatedSlugs` win; without
+ * them, fall back to same category first, then newest.
+ */
 export function getRelatedPosts(slug: string, count = 2): Post[] {
   const current = getPost(slug);
   const others = getAllPosts().filter((p) => p.slug !== slug);
   if (!current) return others.slice(0, count);
+  if (current.relatedSlugs?.length) {
+    return current.relatedSlugs
+      .map((s) => getPost(s))
+      .filter((p): p is Post => p !== undefined && p.slug !== slug)
+      .slice(0, count);
+  }
   return [
     ...others.filter((p) => p.category === current.category),
     ...others.filter((p) => p.category !== current.category),
   ].slice(0, count);
+}
+
+/**
+ * The post's declared non-post related links, in declaration order. Mirrors
+ * `getRelatedLinks` in lib/guides/index.ts.
+ */
+export function getPostRelatedLinks(slug: string): RelatedLink[] {
+  return getPost(slug)?.relatedLinks ?? [];
 }

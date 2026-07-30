@@ -6,6 +6,7 @@ import EsignSpotlight from "@/components/site/esign-spotlight";
 import DriveTrust from "@/components/site/drive-trust";
 import Pricing from "@/components/site/pricing";
 import Faq from "@/components/site/faq";
+import LearnMore from "@/components/site/learn-more";
 import CtaBand from "@/components/site/cta-band";
 import Footer from "@/components/site/footer";
 import type { Metadata } from "next";
@@ -34,6 +35,7 @@ export default function Home() {
         <DriveTrust />
         <Pricing />
         <Faq />
+        <LearnMore />
         <CtaBand />
       </main>
       <Footer />

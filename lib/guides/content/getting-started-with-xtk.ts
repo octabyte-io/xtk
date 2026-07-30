@@ -21,6 +21,11 @@ export const guide: Guide = {
     "invite-your-team",
     "billing-trial-and-subscription",
   ],
+  relatedLinks: [
+    { label: "Introducing XTK", href: "/blog/introducing-xtk" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Support", href: "/support" },
+  ],
   faq: [
     {
       q: "Does XTK need access to my Xero account?",
@@ -46,7 +51,19 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "XTK is a browser extension for Chrome and Firefox that adds document management, e-signatures, document requests and a client portal to Xero Practice Manager (XPM) — with every file stored in your practice's own Google Drive, OneDrive or SharePoint. This guide shows you how to install the extension, register your practice and find your way around the XTK tools that appear inside Practice Manager. Setup takes about ten minutes, and your 30-day free trial only starts once you verify your email.",
+      text: [
+        "XTK is a browser extension for Chrome and Firefox that adds document management, ",
+        { text: "e-signatures", href: "/guides/send-documents-for-signature" },
+        ", ",
+        { text: "document requests", href: "/guides/document-requests" },
+        " and ",
+        { text: "a client portal", href: "/guides/set-up-client-portal" },
+        " to Xero Practice Manager (XPM) — with every file stored in your practice's own ",
+        { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
+        ". This guide shows you how to install the extension, register your practice and find your way around the XTK tools that appear inside Practice Manager. Setup takes about ten minutes, and your ",
+        { text: "30-day free trial", href: "/pricing" },
+        " only starts once you verify your email.",
+      ],
     },
     {
       type: "p",
@@ -158,7 +175,15 @@ export const guide: Guide = {
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "XTK is installed, but it isn't connected to anything yet. Two short setup jobs finish the picture: connect your document storage (Google Drive, OneDrive or SharePoint — an Admin-only job, and the one to do first), then connect your email so XTK can send portal invites and document requests on your behalf. Both are covered in the related guides below.",
+      text: [
+        "XTK is installed, but it isn't connected to anything yet. Two short setup jobs finish the picture: ",
+        { text: "connect your document storage", href: "/guides/connect-document-storage" },
+        " (Google Drive, OneDrive or SharePoint — ",
+        { text: "an Admin-only job", href: "/guides/invite-your-team" },
+        ", and the one to do first), then ",
+        { text: "connect your email", href: "/guides/connect-your-email" },
+        " so XTK can send portal invites and document requests on your behalf.",
+      ],
     },
   ],
 };

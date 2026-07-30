@@ -20,6 +20,11 @@ export const guide: Guide = {
     "manage-client-documents",
     "notifications",
     "bulk-file-actions",
+    "how-xtk-handles-your-data",
+  ],
+  relatedLinks: [
+    { label: "E-signatures that never leave Practice Manager", href: "/blog/e-signatures-inside-xpm" },
+    { label: "Terms of Service", href: "/legal/terms" },
   ],
   faq: [
     {
@@ -136,7 +141,11 @@ export const guide: Guide = {
     { type: "h2", text: "How does signing order work?" },
     {
       type: "p",
-      text: "Order comes from each signer's step number: same step means together, different steps mean one after another.",
+      text: [
+        "Order comes from ",
+        { text: "each signer's step number", href: "/guides/esignatures-what-your-client-sees" },
+        ": same step means together, different steps mean one after another.",
+      ],
     },
     {
       type: "list",
@@ -345,12 +354,24 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "The row flips to Completed and its ⋮ menu gains “Download” and “Open folder”, which jumps to the Documents tab with the new file highlighted. You also get a notification as each person signs and on completion.",
+      text: [
+        "The row flips to Completed and its ⋮ menu gains “Download” and “Open folder”, which jumps to ",
+        { text: "the Documents tab", href: "/guides/manage-client-documents" },
+        " with the new file highlighted. You also get ",
+        { text: "a notification", href: "/guides/notifications" },
+        " as each person signs and on completion.",
+      ],
     },
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "For the other side of this — the email your client gets, the signing page, declining, and what the Certificate of Completion actually prints — read the companion guide on what your client sees. The client documents guide covers the Documents tab the flow starts from, including “Convert to PDF”.",
+      text: [
+        "For the other side of this — the email your client gets, the signing page, declining, and what the Certificate of Completion actually prints — read the companion guide on ",
+        { text: "what your client sees", href: "/guides/esignatures-what-your-client-sees" },
+        ". ",
+        { text: "The client documents guide", href: "/guides/manage-client-documents" },
+        " covers the Documents tab the flow starts from, including “Convert to PDF”.",
+      ],
     },
   ],
 };

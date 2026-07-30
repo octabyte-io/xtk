@@ -2,8 +2,7 @@ import type { ReactNode } from "react";
 import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
-import JsonLd from "@/components/json-ld";
-import { breadcrumbJsonLd } from "@/lib/structured-data";
+import Breadcrumbs from "@/components/site/breadcrumbs";
 import { formatLegalDate } from "@/lib/legal";
 
 /**
@@ -26,25 +25,29 @@ export default function LegalLayout({
   updated?: string;
   /** Highlights a nav item, matching the blog pages' `active` prop. */
   activeNav?: string;
-  /** Site-relative path of this page; emits a BreadcrumbList when given. */
+  /**
+   * Site-relative path of this page; renders breadcrumbs when given. These
+   * pages all sit directly under the root — there is no /legal index — so the
+   * trail is just Home / <title>.
+   */
   path?: string;
   children: ReactNode;
 }) {
   return (
     <>
-      {path && (
-        <JsonLd
-          data={breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: title, path },
-          ])}
-        />
-      )}
       <Nav active={activeNav} />
       <main className="flex-1">
         <header className="hero-wash">
           <div className="mx-auto w-full max-w-3xl px-5 pb-10 pt-14 sm:px-8 sm:pt-18">
             <div className="hero-rise flex flex-col gap-4">
+              {path && (
+                <Breadcrumbs
+                  items={[
+                    { name: "Home", path: "/" },
+                    { name: title, path },
+                  ]}
+                />
+              )}
               <span className="inline-flex w-fit items-center rounded-full bg-accent-soft px-3.5 py-1 text-sm font-medium text-accent-deep">
                 {eyebrow}
               </span>

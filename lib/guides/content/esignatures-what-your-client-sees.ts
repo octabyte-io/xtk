@@ -19,6 +19,11 @@ export const guide: Guide = {
     "send-documents-for-signature",
     "notifications",
     "manage-client-documents",
+    "client-portal-guide-for-clients",
+  ],
+  relatedLinks: [
+    { label: "E-signatures that never leave Practice Manager", href: "/blog/e-signatures-inside-xpm" },
+    { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [
     {
@@ -45,7 +50,11 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "When you send a document for e-signature from XTK, your client gets an email with a link. They open it in whatever browser they already have, fill in the fields you placed, add a signature — reused, typed or drawn — and click “Finish signing”. There is no account to create, no password and nothing to install. When the last signer finishes, each document comes back as a flattened “… (signed).pdf” with a Certificate of Completion appended as its final page, filed beside the original in the client's folder and emailed to everyone who signed.",
+      text: [
+        "When you ",
+        { text: "send a document for e-signature", href: "/guides/send-documents-for-signature" },
+        " from XTK, your client gets an email with a link. They open it in whatever browser they already have, fill in the fields you placed, add a signature — reused, typed or drawn — and click “Finish signing”. There is no account to create, no password and nothing to install. When the last signer finishes, each document comes back as a flattened “… (signed).pdf” with a Certificate of Completion appended as its final page, filed beside the original in the client's folder and emailed to everyone who signed.",
+      ],
     },
     {
       type: "p",
@@ -294,12 +303,22 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "None of this costs your client anything, and nothing is billed per signature or per envelope: e-signatures come with the practice subscription. So the small things are worth sending too — a one-line authority, a change of details.",
+      text: [
+        "None of this costs your client anything, and nothing is billed per signature or per envelope: e-signatures come with ",
+        { text: "the practice subscription", href: "/guides/billing-trial-and-subscription" },
+        ". So the small things are worth sending too — a one-line authority, a change of details.",
+      ],
     },
     { type: "h2", text: "Where next" },
     {
       type: "p",
-      text: "The companion guide on sending documents for e-signature covers your side of the same flow: documents, signers, order, fields, sending, tracking and voiding. The notifications guide explains the bell, and the client documents guide covers the folder the signed PDF lands in.",
+      text: [
+        "The companion guide on sending documents for e-signature covers your side of the same flow: documents, signers, order, fields, sending, tracking and voiding. ",
+        { text: "The notifications guide", href: "/guides/notifications" },
+        " explains the bell, and ",
+        { text: "the client documents guide", href: "/guides/manage-client-documents" },
+        " covers the folder the signed PDF lands in.",
+      ],
     },
   ],
 };

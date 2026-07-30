@@ -2,13 +2,19 @@ import Link from "next/link";
 import Logo from "./logo";
 import ButtonLink from "./button-link";
 
+/**
+ * Pricing points at the /pricing page rather than the home-page #pricing
+ * anchor: the page carries the plan detail, the trial terms and the refund
+ * policy, and it was previously reachable only from the footer.
+ */
 const links = [
   { href: "/#features", label: "Features" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#esign", label: "E-signatures" },
-  { href: "/#pricing", label: "Pricing" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/guides", label: "Guides" },
   { href: "/blog", label: "Blog" },
+  { href: "/support", label: "Support" },
 ];
 
 export default function Nav({ active }: { active?: string }) {
@@ -18,7 +24,8 @@ export default function Nav({ active }: { active?: string }) {
         <Link href="/" aria-label="XTK home">
           <Logo />
         </Link>
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
+        {/* gap-4 until lg: seven links at gap-8 overflow the md container. */}
+        <nav className="hidden items-center gap-4 md:flex lg:gap-8" aria-label="Main">
           {links.map((l) => (
             <Link
               key={l.href}
