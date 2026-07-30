@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import OptimizedImage from "@/components/optimized-image";
 import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
@@ -31,6 +32,7 @@ export async function generateMetadata({
     absoluteTitle: true,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
+    image: post.ogImage,
     type: "article",
     publishedTime: post.date,
   });
@@ -80,6 +82,17 @@ export default async function BlogPost({
                   {" · "}
                   {post.author.role}
                 </p>
+                {post.thumbnail && (
+                  <OptimizedImage
+                    src={post.thumbnail.src}
+                    alt={post.thumbnail.alt}
+                    width={1200}
+                    height={675}
+                    preload
+                    className="mt-4 w-full rounded-2xl border border-line"
+                    sizes="(max-width: 768px) 100vw, 720px"
+                  />
+                )}
               </div>
             </div>
           </header>

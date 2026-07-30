@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import OptimizedImage from "@/components/optimized-image";
 import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
@@ -51,24 +52,42 @@ export default function BlogIndex() {
 
         <section className="mx-auto w-full max-w-6xl px-5 pb-20 sm:px-8 sm:pb-24">
           <Reveal>
-            <article className="rounded-3xl border border-line bg-surface transition-shadow hover:shadow-[0_32px_64px_-40px_rgba(13,34,66,0.4)]">
+            <article className="overflow-hidden rounded-3xl border border-line bg-surface transition-shadow hover:shadow-[0_32px_64px_-40px_rgba(13,34,66,0.4)]">
               <Link
                 href={`/blog/${featured.slug}`}
-                className="flex flex-col gap-4 p-7 sm:p-10"
+                className="flex flex-col sm:flex-row sm:items-stretch"
               >
-                <div className="flex items-center gap-3">
-                  <CategoryChip category={featured.category} />
-                  <PostMeta post={featured} />
+                {featured.thumbnail && (
+                  // Half-width keeps the 16:9 cover almost exactly as tall as
+                  // the text column, so it centres on paper — which the cover's
+                  // own background blends into — rather than cropping.
+                  <div className="flex items-center border-b border-line bg-paper sm:w-1/2 sm:shrink-0 sm:border-b-0 sm:border-r">
+                    <OptimizedImage
+                      src={featured.thumbnail.src}
+                      alt={featured.thumbnail.alt}
+                      width={1200}
+                      height={675}
+                      preload
+                      className="w-full"
+                      sizes="(max-width: 768px) 100vw, 560px"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-col gap-4 p-7 sm:flex-1 sm:p-10">
+                  <div className="flex items-center gap-3">
+                    <CategoryChip category={featured.category} />
+                    <PostMeta post={featured} />
+                  </div>
+                  <h2 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+                    {featured.title}
+                  </h2>
+                  <p className="text-lg leading-relaxed text-ink-soft">
+                    {featured.excerpt}
+                  </p>
+                  <span className="text-sm font-medium text-accent-deep">
+                    Read post →
+                  </span>
                 </div>
-                <h2 className="max-w-3xl font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-                  {featured.title}
-                </h2>
-                <p className="max-w-2xl text-lg leading-relaxed text-ink-soft">
-                  {featured.excerpt}
-                </p>
-                <span className="text-sm font-medium text-accent-deep">
-                  Read post →
-                </span>
               </Link>
             </article>
           </Reveal>

@@ -16,6 +16,14 @@ export type Post = {
   category: PostCategory;
   author: { name: string; role: string };
   featured?: boolean;
+  /** Path under public/ to the 1200×630 OG image; falls back to the site default. */
+  ogImage?: string;
+  /**
+   * Path under public/ to the 1200×675 card/post cover (rendered from
+   * user-guide/assets/thumb-template.html when the post has a screenshot to
+   * frame, else blog-cover-template.html); omitted → text-only card.
+   */
+  thumbnail?: { src: string; alt: string };
   body: PostBlock[];
 };
 
@@ -38,6 +46,11 @@ export const posts: Post[] = [
     category: "Company",
     author: { name: "The XTK team", role: "Product" },
     featured: true,
+    ogImage: "/images/blog/introducing-xtk/og.png",
+    thumbnail: {
+      src: "/images/blog/introducing-xtk/thumb.png",
+      alt: "The XTK panel open beside a client record in Practice Manager, listing that client's folders and documents",
+    },
     body: [
       {
         type: "p",
@@ -86,6 +99,11 @@ export const posts: Post[] = [
     readingTime: "4 min read",
     category: "Product",
     author: { name: "The XTK team", role: "Product" },
+    ogImage: "/images/blog/e-signatures-inside-xpm/og.png",
+    thumbnail: {
+      src: "/images/blog/e-signatures-inside-xpm/thumb.png",
+      alt: "Signature and date fields being placed on an engagement letter, ready to send for signature",
+    },
     body: [
       {
         type: "p",
@@ -131,6 +149,11 @@ export const posts: Post[] = [
     readingTime: "6 min read",
     category: "Guides",
     author: { name: "The XTK team", role: "Product" },
+    ogImage: "/images/blog/organise-client-documents-google-drive/og.png",
+    thumbnail: {
+      src: "/images/blog/organise-client-documents-google-drive/thumb.png",
+      alt: "A client's Drive folders listed in the XTK Documents tab, one folder per year and work type",
+    },
     body: [
       {
         type: "p",
@@ -183,6 +206,11 @@ export const posts: Post[] = [
     readingTime: "5 min read",
     category: "Practice tips",
     author: { name: "The XTK team", role: "Product" },
+    ogImage: "/images/blog/client-portals-clients-actually-use/og.png",
+    thumbnail: {
+      src: "/images/blog/client-portals-clients-actually-use/thumb.png",
+      alt: "The client portal's folder view, where a client downloads what the practice shared and uploads their own files",
+    },
     body: [
       {
         type: "p",
@@ -231,6 +259,11 @@ export const posts: Post[] = [
     readingTime: "4 min read",
     category: "Product",
     author: { name: "The XTK team", role: "Product" },
+    ogImage: "/images/blog/stop-retyping-client-data/og.png",
+    thumbnail: {
+      src: "/images/blog/stop-retyping-client-data/thumb.png",
+      alt: "The File from template dialog with every client placeholder already filled in from the client record",
+    },
     body: [
       {
         type: "p",

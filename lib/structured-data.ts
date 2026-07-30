@@ -89,7 +89,7 @@ export function blogPostingJsonLd(post: Post) {
     articleSection: post.category,
     mainEntityOfPage: url,
     url,
-    image: absoluteUrl(DEFAULT_OG_IMAGE),
+    image: absoluteUrl(post.ogImage ?? DEFAULT_OG_IMAGE),
     isPartOf: { "@id": WEBSITE_ID },
   };
 }

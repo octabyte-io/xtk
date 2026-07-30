@@ -1,4 +1,5 @@
 import Link from "next/link";
+import OptimizedImage from "@/components/optimized-image";
 import type { Post, PostCategory } from "@/lib/posts";
 import { formatPostDate } from "@/lib/posts";
 import Reveal from "./reveal";
@@ -33,21 +34,33 @@ export function PostMeta({ post, className = "" }: { post: Post; className?: str
 export default function PostCard({ post, delay = 0 }: { post: Post; delay?: number }) {
   return (
     <Reveal delay={delay} className="h-full">
-      <article className="h-full rounded-2xl border border-line bg-surface transition-shadow hover:shadow-[0_24px_48px_-32px_rgba(13,34,66,0.35)]">
-        <Link href={`/blog/${post.slug}`} className="flex h-full flex-col gap-3 p-6">
-          <div className="flex items-center gap-3">
-            <CategoryChip category={post.category} />
-            <PostMeta post={post} />
+      <article className="h-full overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-[0_24px_48px_-32px_rgba(13,34,66,0.35)]">
+        <Link href={`/blog/${post.slug}`} className="flex h-full flex-col">
+          {post.thumbnail && (
+            <OptimizedImage
+              src={post.thumbnail.src}
+              alt={post.thumbnail.alt}
+              width={1200}
+              height={675}
+              className="w-full border-b border-line"
+              sizes="(max-width: 768px) 100vw, 480px"
+            />
+          )}
+          <div className="flex h-full flex-col gap-3 p-6">
+            <div className="flex items-center gap-3">
+              <CategoryChip category={post.category} />
+              <PostMeta post={post} />
+            </div>
+            <h3 className="font-display text-xl font-bold tracking-tight text-ink">
+              {post.title}
+            </h3>
+            <p className="flex-1 text-[15px] leading-relaxed text-ink-soft">
+              {post.excerpt}
+            </p>
+            <span className="text-sm font-medium text-accent-deep">
+              Read post →
+            </span>
           </div>
-          <h3 className="font-display text-xl font-bold tracking-tight text-ink">
-            {post.title}
-          </h3>
-          <p className="flex-1 text-[15px] leading-relaxed text-ink-soft">
-            {post.excerpt}
-          </p>
-          <span className="text-sm font-medium text-accent-deep">
-            Read post →
-          </span>
         </Link>
       </article>
     </Reveal>
