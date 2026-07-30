@@ -187,7 +187,7 @@ export const guide: Guide = {
         ],
         [
           "Portal contacts",
-          "Yes — name, email, hashed password, the invite link",
+          "Yes — name, email, hashed password, a fingerprint of the invite link",
           "XTK's database",
         ],
         ["Portal shares", "Yes — one marker per shared item", "Nothing is copied"],
@@ -218,7 +218,7 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Two rows deserve a word more. Signature records are deliberately detailed, because that is what makes a signature defensible: each signer's captured values, the times they acted, and the IP address and browser they used are kept, and printed on the Certificate of Completion filed alongside the signed PDF. And a portal invite link is stored in full, not just as a fingerprint, so that reopening the compose box or resending an invite rebuilds the same link instead of silently killing the one your client already has.",
+      text: "One row deserves a word more. Signature records are deliberately detailed, because that is what makes a signature defensible: each signer's captured values, the times they acted, and the IP address and browser they used are kept, and printed on the Certificate of Completion filed alongside the signed PDF. Every link XTK emails — portal invites, signing links, upload links — is stored only as a fingerprint, never in full, so a copy of the database is no use to anyone: the trade-off is that XTK cannot show you a link again after it has gone out, and sending an invite again replaces the earlier one.",
     },
     { type: "h2", text: "What access does XTK ask for?" },
     {

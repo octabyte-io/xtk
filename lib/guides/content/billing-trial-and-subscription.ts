@@ -21,10 +21,14 @@ export const guide: Guide = {
     "notifications",
     "how-xtk-handles-your-data",
   ],
+  relatedLinks: [
+    { label: "Pricing", href: "/pricing" },
+    { label: "Refund & cancellation policy", href: "/legal/refunds" },
+  ],
   faq: [
     {
       q: "How much does XTK cost?",
-      a: "One plan at $59 USD per month, billed in advance, covering your whole practice — every feature, every team member, no per-seat charge and no tiers. Before that you get a 30-day free trial with full functionality and no credit card. Nothing is charged automatically when the trial ends: if you don't subscribe, the practice becomes read-only. Current pricing is at xtk.octabyte.io/pricing.",
+      a: "One plan at $59 USD per month, billed in advance, covering your whole practice — every feature, every team member, no per-seat charge and no tiers. Before that you get a 30-day free trial with full functionality and no credit card. Nothing is charged automatically when the trial ends: if you don't subscribe, the practice becomes read-only. Current pricing lives on XTK's pricing page, linked at the end of this guide.",
     },
     {
       q: "When does the free trial start, and how long is it?",
@@ -55,7 +59,7 @@ export const guide: Guide = {
     {
       type: "callout",
       title: "Before you start",
-      text: "Only your practice's Admin can upgrade or manage billing — there is exactly one Admin per practice, and Members see the status without the actions. The read-only section further down is written for everyone, because it affects every team member and your clients too. Current pricing is at xtk.octabyte.io/pricing, and the cancellation and refund terms are at xtk.octabyte.io/legal/refunds.",
+      text: "Only your practice's Admin can upgrade or manage billing — there is exactly one Admin per practice, and Members see the status without the actions. The read-only section further down is written for everyone, because it affects every team member and your clients too. Current pricing and the full cancellation and refund terms both live on this site — the pricing page and the “Refund & cancellation policy” — and both are linked at the end of this guide.",
     },
     { type: "h2", text: "What does XTK cost, and what does the trial include?" },
     {
@@ -147,7 +151,7 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Cancelling takes effect at the end of the period you have already paid for, so you keep full access until then; after that the practice becomes read-only. Fees are billed in advance and are generally non-refundable, because the trial exists to let you evaluate XTK before paying — full terms at xtk.octabyte.io/legal/refunds. If the button answers “No active subscription found for this Practice.”, the practice has never paid, so Stripe has nothing to manage yet.",
+      text: "Cancelling takes effect at the end of the period you have already paid for, so you keep full access until then; after that the practice becomes read-only. Fees are billed in advance and are generally non-refundable, because the trial exists to let you evaluate XTK before paying — the “Refund & cancellation policy”, linked at the end of this guide, gives the full terms. If the button answers “No active subscription found for this Practice.”, the practice has never paid, so Stripe has nothing to manage yet.",
     },
     { type: "h2", text: "What happens if a payment fails?" },
     {

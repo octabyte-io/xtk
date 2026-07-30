@@ -169,7 +169,7 @@ export const guide: Guide = {
     {
       type: "callout",
       title: "A portal invite needs its link variable",
-      text: "Email is the only way to deliver a portal invite — there's no copy-a-link fallback — and the link reaches the client only through {{portal_invite_url}}. An invite template without it sends an email with no way in, so always keep the variable in the body. Document requests are more forgiving: if your wording doesn't mention {{document_request_url}}, XTK appends the link at the end.",
+      text: "Email is the only way to deliver a portal invite — there's no copy-a-link fallback — and the link reaches the client through {{portal_invite_url}}. Keep the variable in the body so the link lands where you want it; if your wording leaves it out, XTK adds the link at the end rather than sending an email with no way in. Document requests work the same way with {{document_request_url}}.",
     },
     {
       type: "p",
@@ -242,7 +242,7 @@ export const guide: Guide = {
     { type: "h2", text: "Picking a template when you send" },
     {
       type: "p",
-      text: "For a client portal invite, open the client's “Client Portal” tab and start an invite for a contact. The compose box carries a “Template” dropdown; XTK pre-selects “Portal invite” and fills the subject and message from it. For a contact you're inviting for the first time, the message still shows the literal {{portal_invite_url}}, with a note underneath explaining that the personal invite link replaces it automatically when you send — the link only exists once the invite goes out. Re-inviting an existing contact resolves their real link into the text, so you can read the exact email before it goes. The recipient is locked to the contact's own address — subject, message and CC are yours to adjust.",
+      text: "For a client portal invite, open the client's “Client Portal” tab and start an invite for a contact. The compose box carries a “Template” dropdown; XTK pre-selects “Portal invite” and fills the subject and message from it. The message keeps the literal {{portal_invite_url}}, with a note underneath explaining that the personal invite link replaces it automatically when you send — and that is the same whether the contact is new or you're re-inviting someone. XTK cannot show you the finished link beforehand, by design: it keeps only a fingerprint of each invite link, never the link itself, so nobody reading the database can let themselves into your client's documents. The recipient is locked to the contact's own address — subject, message and CC are yours to adjust.",
     },
     {
       type: "image",

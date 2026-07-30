@@ -36,7 +36,7 @@ export const guide: Guide = {
     },
     {
       q: "Can I copy the invite link and send it myself?",
-      a: "No — email is the only delivery path, and there's no copy-a-link fallback anywhere in the panel. That means a contact you've added but never emailed has no way to accept, and it makes your invite email template load-bearing: if its body doesn't contain {{portal_invite_url}}, the person receives a normal-looking email with nothing to click and no error is shown to you.",
+      a: "No — email is the only delivery path, and there's no copy-a-link fallback anywhere in the panel. XTK can't show you the link even if you want to see it: it stores only a fingerprint of each invite link, never the link itself, so nobody with a copy of the database can let themselves into your client's documents. That means a contact you've added but never emailed has no way to accept, and it makes your invite email template worth keeping tidy — if its body leaves out {{portal_invite_url}}, XTK adds the link at the end so the email still works, but it lands wherever XTK puts it rather than where your wording leads.",
     },
     {
       q: "Why can't my client upload anything?",
@@ -134,7 +134,7 @@ export const guide: Guide = {
         },
         {
           title: "Choose a template and read the email",
-          text: "“Step 2 of 2 — Send portal invite” shows the recipient in a locked chip, so a personal invite link can't reach the wrong person, and a line reading “Sending from …”. Pick a “Template” — XTK preselects “Portal invite” — then adjust “Subject”, “Message” and “CC”. For a new contact the message still shows the literal {{portal_invite_url}}, with a note saying their personal link replaces it on send.",
+          text: "“Step 2 of 2 — Send portal invite” shows the recipient in a locked chip, so a personal invite link can't reach the wrong person, and a line reading “Sending from …”. Pick a “Template” — XTK preselects “Portal invite” — then adjust “Subject”, “Message” and “CC”. The message shows the literal {{portal_invite_url}}, with a note saying their personal link replaces it on send — the same for a brand-new contact and for someone you're re-inviting, because XTK never keeps a copy of the link it can show you.",
           image: {
             src: "/images/guides/set-up-client-portal/04-invite-compose.png",
             alt: "Step 2 of XTK's client portal invite dialog with the locked recipient, template picker, subject, message containing the portal_invite_url variable and a CC field",
@@ -150,8 +150,8 @@ export const guide: Guide = {
     },
     {
       type: "callout",
-      title: "An invite template with no link in it is a dead letter",
-      text: "The picker offers no “no template” option, and XTK won't add the link if your wording leaves it out — unlike a document request, where it's appended. A template that has lost {{portal_invite_url}} sends a polite email your client can do nothing with, and nothing warns you. Keep the variable in every invite template, and keep at least one in the list. See “Email templates: write once, reuse for invites and requests”.",
+      title: "Keep the link variable in every invite template",
+      text: "The picker offers no “no template” option, so whatever is selected is what goes out. If a template has lost {{portal_invite_url}}, XTK adds the link at the end of the email rather than sending your client something they can do nothing with — but it lands wherever XTK puts it, not where your wording leads up to it. Keep the variable in every invite template, and keep at least one template in the list. See “Email templates: write once, reuse for invites and requests”.",
     },
     {
       type: "p",
@@ -192,7 +192,7 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Two details catch people out. The filter box matches the email address only, not the name. And “Resend invite” appears only while a contact is “Invited”: once someone is “Active” there's nothing to resend, and a forgotten password is theirs to reset from the portal's sign-in page. For an existing contact the compose box also offers “Regenerate link”, which mints a new link and kills the one you sent before.",
+      text: "Two details catch people out. The filter box matches the email address only, not the name. And “Resend invite” appears only while a contact is “Invited”: once someone is “Active” there's nothing to resend, and a forgotten password is theirs to reset from the portal's sign-in page. For an existing contact the compose box also offers “Invalidate link already sent”, which kills the link in any invite you have already emailed without sending anything new — useful if an invite went to the wrong address or was forwarded on. Sending the invite again gives that person a fresh link, and the older one stops working at that point too.",
     },
     {
       type: "image",
