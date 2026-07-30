@@ -2,17 +2,19 @@ import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { company } from "@/lib/legal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/support" },
-  title: "Support — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "Support",
   description:
     "Get help with OctaByte XTK — contact support, report a problem, or read the FAQ.",
-};
+  path: "/support",
+});
 
 export default function Support() {
   return (
     <LegalLayout
+      path="/support"
       eyebrow="Help"
       title="Support"
       lede="We’re here to help you get the most out of XTK inside Xero Practice Manager."

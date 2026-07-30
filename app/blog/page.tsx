@@ -5,14 +5,17 @@ import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
 import Reveal from "@/components/site/reveal";
 import PostCard, { CategoryChip, PostMeta } from "@/components/site/post-card";
+import JsonLd from "@/components/json-ld";
 import { getAllPosts } from "@/lib/posts";
+import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/blog" },
-  title: "Blog — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "Blog",
   description:
     "Product news, guides and practice tips from XTK — the toolkit that adds documents, e-signatures, client portals and templates to Xero Practice Manager.",
-};
+  path: "/blog",
+});
 
 export default function BlogIndex() {
   const all = getAllPosts();
@@ -21,6 +24,12 @@ export default function BlogIndex() {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+        ])}
+      />
       <Nav active="/blog" />
       <main className="flex-1">
         <section className="hero-wash">

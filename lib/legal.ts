@@ -27,16 +27,31 @@ export type LegalPage =
  *
  * `satisfies Record<LegalPage, string>` keeps this exhaustive: adding a page to
  * `LegalPage` without a date here is a compile error, not a blank date.
+ *
+ * Stored as ISO so the sitemap can use them as `lastModified` directly; render
+ * them with `formatLegalDate()`.
  */
 export const LEGAL_UPDATED = {
-  privacy: "29 July 2026",
-  terms: "28 July 2026",
-  dpa: "28 July 2026",
-  subprocessors: "28 July 2026",
-  cookies: "28 July 2026",
-  refunds: "28 July 2026",
-  "data-deletion": "28 July 2026",
+  privacy: "2026-07-29",
+  terms: "2026-07-28",
+  dpa: "2026-07-28",
+  subprocessors: "2026-07-28",
+  cookies: "2026-07-28",
+  refunds: "2026-07-28",
+  "data-deletion": "2026-07-28",
 } as const satisfies Record<LegalPage, string>;
+
+const legalDateFormat = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+/** "2026-07-29" → "29 July 2026", for display in the page header. */
+export function formatLegalDate(iso: string): string {
+  return legalDateFormat.format(new Date(`${iso}T00:00:00Z`));
+}
 
 export const company = {
   /** Marketing / brand name used in body copy. */

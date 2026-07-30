@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { LEGAL_UPDATED, company } from "@/lib/legal";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/legal/cookies" },
-  title: "Cookies & Tracking — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "Cookies & Tracking",
   description:
     "The cookies, local storage and diagnostics XTK uses across the website, portal and extension.",
-};
+  path: "/legal/cookies",
+});
 
 export default function Cookies() {
   return (
     <LegalLayout
+      path="/legal/cookies"
       eyebrow="Legal"
       title="Cookies & tracking"
       lede="What XTK stores on your device and the diagnostics we collect — and how to control them."

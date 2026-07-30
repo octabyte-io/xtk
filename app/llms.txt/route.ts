@@ -27,6 +27,8 @@ export function GET() {
     "",
     `- [Home](${absoluteUrl("/")}): what XTK adds to Xero Practice Manager`,
     `- [Pricing](${absoluteUrl("/pricing")}): one plan, whole practice, ${pricing.trialDays}-day free trial`,
+    `- [User guides](${absoluteUrl("/guides")}): index of every step-by-step guide`,
+    `- [Blog](${absoluteUrl("/blog")}): product news and practice tips`,
     `- [About](${absoluteUrl("/about")}): who makes XTK`,
     `- [Support](${absoluteUrl("/support")}): how to get help (${company.supportEmail})`,
   ];
@@ -57,6 +59,9 @@ export function GET() {
     `- [Terms of Service](${absoluteUrl("/legal/terms")})`,
     `- [Data Processing Addendum](${absoluteUrl("/legal/dpa")})`,
     `- [Sub-processors](${absoluteUrl("/legal/subprocessors")})`,
+    `- [Cookies & Tracking](${absoluteUrl("/legal/cookies")})`,
+    `- [Refund & Cancellation Policy](${absoluteUrl("/legal/refunds")})`,
+    `- [Your Data Rights & Deletion](${absoluteUrl("/legal/data-deletion")})`,
     ""
   );
 

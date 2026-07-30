@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Bricolage_Grotesque,
   Caveat,
@@ -6,7 +6,16 @@ import {
   Instrument_Sans,
 } from "next/font/google";
 import "./globals.css";
-import { SITE_URL } from "@/lib/site";
+import JsonLd from "@/components/json-ld";
+import {
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+  THEME_COLOR,
+  TITLE_TEMPLATE,
+} from "@/lib/site";
+import { DEFAULT_OG_IMAGE } from "@/lib/metadata";
+import { organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -30,20 +39,28 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "XTK — The toolkit for Xero Practice Manager",
-  description:
-    "XTK adds document management, e-signatures, client portals and template automation to Xero Practice Manager — in a panel that opens right inside it.",
+  // Pages pass a bare title ("Pricing") and the template adds the suffix, so
+  // the brand tail lives here rather than being retyped in every page file.
+  title: { default: SITE_TITLE, template: TITLE_TEMPLATE },
+  description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
     siteName: "XTK",
-    title: "XTK — The toolkit for Xero Practice Manager",
-    description:
-      "XTK adds document management, e-signatures, client portals and template automation to Xero Practice Manager — in a panel that opens right inside it.",
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630 }],
+    url: SITE_URL,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_TITLE }],
   },
   twitter: {
     card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_TITLE }],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: THEME_COLOR,
 };
 
 export default function RootLayout({
@@ -53,10 +70,15 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${bricolage.variable} ${instrument.variable} ${caveat.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/* Sitewide entity graph — every Article/HowTo publisher points at it. */}
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={webSiteJsonLd()} />
+        {children}
+      </body>
     </html>
   );
 }

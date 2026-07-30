@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { LEGAL_UPDATED, company, pricing } from "@/lib/legal";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/legal/terms" },
-  title: "Terms of Service — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of Service",
   description:
     "The terms governing use of the OctaByte XTK browser extension and web portal.",
-};
+  path: "/legal/terms",
+});
 
 export default function TermsOfService() {
   return (
     <LegalLayout
+      path="/legal/terms"
       eyebrow="Legal"
       title="Terms of Service"
       lede="The agreement between your practice and XTK for using the extension and portal."

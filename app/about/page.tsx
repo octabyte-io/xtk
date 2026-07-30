@@ -2,17 +2,19 @@ import type { Metadata } from "next";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { company } from "@/lib/legal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/about" },
-  title: "About — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "About",
   description:
     "What OctaByte XTK is, who makes it, and how it works with Xero Practice Manager.",
-};
+  path: "/about",
+});
 
 export default function About() {
   return (
     <LegalLayout
+      path="/about"
       eyebrow="Company"
       title="About XTK"
       lede="XTK gives Xero Practice Manager its missing half — documents, e-signatures, client portals and templates, right where you already work."

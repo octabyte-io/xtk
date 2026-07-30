@@ -4,19 +4,56 @@
  */
 
 import { company, pricing } from "./legal";
-import { SITE_URL } from "./site";
+import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_URL } from "./site";
 import type { Guide, GuideFaq } from "./guides";
+import type { Post } from "./posts";
 
 /** Absolute URL from a site-relative path. */
 export function absoluteUrl(path: string): string {
   return new URL(path, SITE_URL).toString();
 }
 
-const publisher = {
-  "@type": "Organization",
-  name: company.legalName,
-  url: SITE_URL,
-} as const;
+/** Stable node ids so every graph on the site points at one Organization. */
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+
+/** Reference to the Organization node emitted sitewide by the root layout. */
+const publisher = { "@id": ORGANIZATION_ID } as const;
+
+/** Emitted once, from app/layout.tsx. */
+export function organizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": ORGANIZATION_ID,
+    name: company.legalName,
+    alternateName: company.product,
+    url: SITE_URL,
+    logo: absoluteUrl("/apple-icon.png"),
+    description: SITE_DESCRIPTION,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: company.supportEmail,
+      url: absoluteUrl("/support"),
+    },
+  };
+}
+
+/** Emitted once, from app/layout.tsx. */
+export function webSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    name: company.shortName,
+    alternateName: company.product,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    inLanguage: "en-GB",
+    publisher,
+  };
+}
 
 export function articleJsonLd(guide: Guide) {
   const url = absoluteUrl(`/guides/${guide.slug}`);
@@ -32,6 +69,28 @@ export function articleJsonLd(guide: Guide) {
     mainEntityOfPage: url,
     url,
     ...(guide.ogImage && { image: absoluteUrl(guide.ogImage) }),
+  };
+}
+
+export function blogPostingJsonLd(post: Post) {
+  const url = absoluteUrl(`/blog/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author.name,
+      jobTitle: post.author.role,
+    },
+    publisher,
+    articleSection: post.category,
+    mainEntityOfPage: url,
+    url,
+    image: absoluteUrl(DEFAULT_OG_IMAGE),
+    isPartOf: { "@id": WEBSITE_ID },
   };
 }
 

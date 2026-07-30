@@ -11,10 +11,15 @@ import Footer from "@/components/site/footer";
 import type { Metadata } from "next";
 import JsonLd from "@/components/json-ld";
 import { softwareApplicationJsonLd } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/metadata";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = pageMetadata({
+  title: SITE_TITLE,
+  absoluteTitle: true,
+  description: SITE_DESCRIPTION,
+  path: "/",
+});
 
 export default function Home() {
   return (

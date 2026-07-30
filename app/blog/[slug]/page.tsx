@@ -6,7 +6,10 @@ import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
 import PostBody from "@/components/site/post-body";
 import PostCard, { CategoryChip, PostMeta } from "@/components/site/post-card";
+import JsonLd from "@/components/json-ld";
 import { getPost, getRelatedPosts, posts } from "@/lib/posts";
+import { pageMetadata } from "@/lib/metadata";
+import { blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -22,17 +25,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return {
+  return pageMetadata({
     title: `${post.title} — XTK Blog`,
+    socialTitle: post.title,
+    absoluteTitle: true,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      publishedTime: post.date,
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+    publishedTime: post.date,
+  });
 }
 
 export default async function BlogPost({
@@ -47,6 +48,14 @@ export default async function BlogPost({
 
   return (
     <>
+      <JsonLd data={blogPostingJsonLd(post)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
+      />
       <Nav active="/blog" />
       <main className="flex-1">
         <article>

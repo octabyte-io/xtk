@@ -28,14 +28,28 @@ function CheckIcon() {
   );
 }
 
-export default function Pricing() {
+export default function Pricing({
+  /**
+   * Off on /pricing, where the page's own <h1> header already says this — the
+   * section heading is only needed when this sits among the home page's
+   * sections.
+   */
+  showHeading = true,
+}: {
+  showHeading?: boolean;
+} = {}) {
   return (
-    <section id="pricing" className="mx-auto w-full max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <SectionHeading
-        eyebrow="Pricing"
-        title="Try everything free for 30 days"
-        lede="No credit card, no feature tiers, no per-seat surprises. Start your trial, put your whole practice on it, and only pay if it earns its keep."
-      />
+    <section
+      id="pricing"
+      className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${showHeading ? "py-20 sm:py-28" : "pb-20 sm:pb-28"}`}
+    >
+      {showHeading && (
+        <SectionHeading
+          eyebrow="Pricing"
+          title="Try everything free for 30 days"
+          lede="No credit card, no feature tiers, no per-seat surprises. Start your trial, put your whole practice on it, and only pay if it earns its keep."
+        />
+      )}
       <Reveal delay={120}>
         <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-line bg-surface shadow-[0_32px_64px_-40px_rgba(13,34,66,0.3)] sm:mt-12">
           <div className="grid sm:grid-cols-[5fr_6fr]">

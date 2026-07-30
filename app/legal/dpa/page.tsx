@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, Callout, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { LEGAL_UPDATED, company } from "@/lib/legal";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/legal/dpa" },
-  title: "Data Processing Addendum — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "Data Processing Addendum",
   description:
     "The DPA governing XTK's processing of personal data on behalf of practices under GDPR / UK GDPR.",
-};
+  path: "/legal/dpa",
+});
 
 export default function DPA() {
   return (
     <LegalLayout
+      path="/legal/dpa"
       eyebrow="Legal"
       title="Data Processing Addendum"
       lede="How XTK processes personal data on behalf of your practice, and the commitments we make as your processor."

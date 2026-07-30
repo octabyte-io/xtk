@@ -2,6 +2,9 @@ import type { ReactNode } from "react";
 import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { formatLegalDate } from "@/lib/legal";
 
 /**
  * Shared chrome for policy / content pages: hero header, a review banner while
@@ -13,19 +16,30 @@ export default function LegalLayout({
   lede,
   updated,
   activeNav,
+  path,
   children,
 }: {
   eyebrow: string;
   title: string;
   lede?: string;
-  /** e.g. "22 July 2026" — omit for evergreen pages like Support / About. */
+  /** ISO date, e.g. "2026-07-22" — omit for evergreen pages like Support / About. */
   updated?: string;
   /** Highlights a nav item, matching the blog pages' `active` prop. */
   activeNav?: string;
+  /** Site-relative path of this page; emits a BreadcrumbList when given. */
+  path?: string;
   children: ReactNode;
 }) {
   return (
     <>
+      {path && (
+        <JsonLd
+          data={breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: title, path },
+          ])}
+        />
+      )}
       <Nav active={activeNav} />
       <main className="flex-1">
         <header className="hero-wash">
@@ -42,7 +56,10 @@ export default function LegalLayout({
               )}
               {updated && (
                 <p className="text-sm text-ink-soft">
-                  Last updated: <span className="font-medium text-ink">{updated}</span>
+                  Last updated:{" "}
+                  <time dateTime={updated} className="font-medium text-ink">
+                    {formatLegalDate(updated)}
+                  </time>
                 </p>
               )}
             </div>

@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, UL } from "@/components/site/legal/prose";
 import { LEGAL_UPDATED, company, pricing } from "@/lib/legal";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/legal/refunds" },
-  title: "Refund & Cancellation Policy — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "Refund & Cancellation Policy",
   description:
     "How trials, cancellations and refunds work for OctaByte XTK subscriptions.",
-};
+  path: "/legal/refunds",
+});
 
 export default function Refunds() {
   return (
     <LegalLayout
+      path="/legal/refunds"
       eyebrow="Legal"
       title="Refund & cancellation policy"
       lede="How the free trial, cancellations and refunds work."

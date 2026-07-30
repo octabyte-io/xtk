@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
@@ -7,13 +8,14 @@ import GuideCard from "@/components/site/guide-card";
 import JsonLd from "@/components/json-ld";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { getGuidesBySeries } from "@/lib/guides";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "User guides — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "User guides",
   description:
     "Step-by-step guides to XTK: set up documents, e-signatures, client portals and templates inside Xero Practice Manager.",
-  alternates: { canonical: "/guides" },
-};
+  path: "/guides",
+});
 
 export default function GuidesIndex() {
   const groups = getGuidesBySeries();
@@ -54,9 +56,9 @@ export default function GuidesIndex() {
                 </h2>
                 <p className="mx-auto mt-3 max-w-md leading-relaxed text-ink-soft">
                   We’re writing them now. In the meantime, the{" "}
-                  <a href="/blog" className="font-medium text-accent-deep">
+                  <Link href="/blog" className="font-medium text-accent-deep">
                     blog
-                  </a>{" "}
+                  </Link>{" "}
                   covers what XTK does and why.
                 </p>
               </div>

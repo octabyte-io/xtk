@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import LegalLayout from "@/components/site/legal/legal-layout";
 import {
   A,
@@ -12,16 +13,17 @@ import {
 } from "@/components/site/legal/prose";
 import { LEGAL_UPDATED, company } from "@/lib/legal";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/legal/privacy" },
-  title: "Privacy Policy — XTK",
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy",
   description:
     "How OctaByte XTK collects, uses, shares and protects data across the browser extension, web portal and backend.",
-};
+  path: "/legal/privacy",
+});
 
 export default function PrivacyPolicy() {
   return (
     <LegalLayout
+      path="/legal/privacy"
       eyebrow="Legal"
       title="Privacy Policy"
       lede="How XTK handles personal data across the browser extension, the client portal and our backend."

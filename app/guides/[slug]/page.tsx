@@ -8,6 +8,7 @@ import CtaBand from "@/components/site/cta-band";
 import GuideBody from "@/components/site/guide-body";
 import GuideCard, { GuideMeta, SeriesChip } from "@/components/site/guide-card";
 import JsonLd from "@/components/json-ld";
+import { pageMetadata } from "@/lib/metadata";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
@@ -36,21 +37,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return {};
-  return {
+  // Guide titles already carry their own keyword tail, so skip the "— XTK"
+  // template rather than push them past ~60 characters.
+  return pageMetadata({
     title: guide.title,
+    absoluteTitle: true,
     description: guide.description,
-    alternates: { canonical: `/guides/${guide.slug}` },
-    openGraph: {
-      title: guide.title,
-      description: guide.description,
-      type: "article",
-      publishedTime: guide.date,
-      modifiedTime: guide.updated,
-      ...(guide.ogImage && {
-        images: [{ url: guide.ogImage, width: 1200, height: 630 }],
-      }),
-    },
-  };
+    path: `/guides/${guide.slug}`,
+    image: guide.ogImage,
+    type: "article",
+    publishedTime: guide.date,
+    modifiedTime: guide.updated,
+  });
 }
 
 export default async function GuidePage({
