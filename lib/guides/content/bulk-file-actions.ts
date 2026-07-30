@@ -146,7 +146,9 @@ export const guide: Guide = {
     },
     {
       type: "video",
-      src: "/images/guides/bulk-file-actions/merge-pdfs.gif",
+      src: "/images/guides/bulk-file-actions/merge-pdfs.mp4",
+      width: 1512,
+      height: 794,
       alt: "Selecting three bank statement PDFs in the Documents tab, opening Merge PDFs, naming the output and merging — the combined PDF appears in the client's folder",
       caption:
         "Three bank statements in, one “Bank statements – Q1 FY25.pdf” out — a few seconds, no other tools.",

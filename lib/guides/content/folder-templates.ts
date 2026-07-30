@@ -197,7 +197,9 @@ export const guide: Guide = {
     },
     {
       type: "video",
-      src: "/images/guides/folder-templates/apply-folder-template.gif",
+      src: "/images/guides/folder-templates/apply-folder-template.mp4",
+      width: 1456,
+      height: 822,
       alt: "Applying a folder template in XTK: choosing Folder from template in the client's Documents tab, picking the template, checking the resolved folder preview, applying it and the new folders appearing in the client's storage",
       caption:
         "Choose, check, apply — a standard folder structure in three clicks.",

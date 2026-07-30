@@ -165,7 +165,9 @@ export const guide: Guide = {
     },
     {
       type: "video",
-      src: "/images/guides/esignatures-what-your-client-sees/draw-a-signature.gif",
+      src: "/images/guides/esignatures-what-your-client-sees/draw-a-signature.mp4",
+      width: 720,
+      height: 554,
       alt: "A client drawing a signature on XTK's signature pad and applying it to a signature field on the document",
       caption:
         "Drawing a signature on the pad. Typing one is a single field instead.",

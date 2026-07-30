@@ -106,6 +106,7 @@ export default async function GuidePage({
                 width={1200}
                 height={675}
                 preload
+                fetchPriority="high"
                 className="mt-4 w-full rounded-2xl border border-line"
                 sizes="(max-width: 768px) 100vw, 720px"
               />

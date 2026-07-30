@@ -1,7 +1,9 @@
+import { caveat } from "@/app/fonts";
+
 /** A document card where a signature writes itself (driven by .in-view). */
 export default function EsignMock() {
   return (
-    <div className="rounded-xl border border-line bg-paper p-3">
+    <div className={`${caveat.variable} rounded-xl border border-line bg-paper p-3`}>
       <div className="rounded-lg bg-surface p-3.5 shadow-[0_1px_2px_rgba(13,34,66,0.06)]">
         <div className="space-y-1.5" aria-hidden="true">
           <div className="h-1.5 w-3/4 rounded-full bg-ink/10" />

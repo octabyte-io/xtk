@@ -1,3 +1,4 @@
+import { caveat, geistMono } from "@/app/fonts";
 import Reveal from "./reveal";
 
 const flow = [
@@ -23,7 +24,10 @@ const audit = [
 
 export default function EsignSpotlight() {
   return (
-    <section id="esign" className="mx-auto w-full max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+    <section
+      id="esign"
+      className={`${caveat.variable} ${geistMono.variable} mx-auto w-full max-w-6xl px-5 py-20 sm:px-8 sm:py-28`}
+    >
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal className="order-2 lg:order-1">
           {/* Signing surface mock */}

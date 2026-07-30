@@ -37,11 +37,14 @@ export type GuideBlock =
     }
   | {
       type: "video";
-      /** Path under public/ to an .mp4/.webm (or .gif — rendered as <img>). */
+      /** Path under public/ to an .mp4/.webm. */
       src: string;
       /** Static-fallback description, also used as alt/aria-label. */
       alt: string;
       caption?: string;
+      /** Intrinsic pixel size; required so the player reserves space. */
+      width: number;
+      height: number;
     }
   | {
       type: "table";

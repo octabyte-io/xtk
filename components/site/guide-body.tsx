@@ -1,3 +1,4 @@
+import { geistMono } from "@/app/fonts";
 import OptimizedImage from "@/components/optimized-image";
 import type { GuideBlock, GuideStep } from "@/lib/guides";
 
@@ -196,30 +197,24 @@ function Block({ block }: { block: GuideBlock }) {
         />
       );
     case "video": {
-      const src = `${basePath}${block.src}`;
       return (
         <figure className="mt-6">
-          {block.src.endsWith(".gif") ? (
-            // Animated GIFs bypass the image optimizer (it would flatten them).
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={src}
-              alt={block.alt}
-              loading="lazy"
-              className="w-full rounded-2xl border border-line"
-            />
-          ) : (
-            <video
-              src={src}
-              aria-label={block.alt}
-              className="w-full rounded-2xl border border-line"
-              autoPlay
-              loop
-              muted
-              playsInline
-              controls
-            />
-          )}
+          {/* width/height reserve the aspect ratio before metadata arrives, and
+              preload="metadata" keeps a below-the-fold clip off the initial
+              load. The first frame stands in as the poster. */}
+          <video
+            src={`${basePath}${block.src}`}
+            aria-label={block.alt}
+            width={block.width}
+            height={block.height}
+            preload="metadata"
+            className="h-auto w-full rounded-2xl border border-line"
+            autoPlay
+            loop
+            muted
+            playsInline
+            controls
+          />
           {block.caption && (
             <figcaption className="mt-2 text-center text-sm text-ink-soft">
               {block.caption}
@@ -233,7 +228,7 @@ function Block({ block }: { block: GuideBlock }) {
 
 export default function GuideBody({ body }: { body: GuideBlock[] }) {
   return (
-    <div>
+    <div className={geistMono.variable}>
       {body.map((block, i) => (
         <Block key={i} block={block} />
       ))}

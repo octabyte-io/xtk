@@ -186,7 +186,9 @@ export const guide: Guide = {
     },
     {
       type: "video",
-      src: "/images/guides/send-documents-for-signature/place-signature-field.gif",
+      src: "/images/guides/send-documents-for-signature/place-signature-field.mp4",
+      width: 1440,
+      height: 756,
       alt: "Dragging a signature field from XTK's field palette onto a PDF on the e-signature authoring page, then opening the placed field's settings",
       caption:
         "Drag, drop, adjust — placing a field takes seconds.",

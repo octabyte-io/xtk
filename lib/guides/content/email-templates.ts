@@ -116,7 +116,9 @@ export const guide: Guide = {
     },
     {
       type: "video",
-      src: "/images/guides/email-templates/write-email-template.gif",
+      src: "/images/guides/email-templates/write-email-template.mp4",
+      width: 1488,
+      height: 812,
       alt: "Creating an email template in XTK: opening the Email Templates tab, clicking Create template, typing a subject and body, completing the portal_invite_url template variable from the autocomplete list, previewing the branded email and saving",
       caption:
         "Name, subject, body, a variable and a preview — a reusable template in under a minute.",

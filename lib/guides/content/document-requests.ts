@@ -163,7 +163,9 @@ export const guide: Guide = {
     },
     {
       type: "video",
-      src: "/images/guides/document-requests/request-documents.gif",
+      src: "/images/guides/document-requests/request-documents.mp4",
+      width: 1562,
+      height: 784,
       alt: "A client uploading files to an XTK document request: choosing a file for a requested item, the item flipping to provided with its filename, the progress bar advancing, and pressing Submit",
       caption:
         "Add a file, the item ticks over, the count advances, Submit closes the request.",

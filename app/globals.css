@@ -34,8 +34,11 @@
   --color-mint-soft: var(--mint-soft);
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-  --font-script: var(--font-caveat), cursive;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Caveat and Geist Mono are scoped to the components that use them (see
+     app/fonts.ts), so their vars are undefined elsewhere — the inner fallback
+     keeps the declaration valid outside those subtrees. */
+  --font-script: var(--font-caveat, cursive), cursive;
+  --font-mono: var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
 }
 
 body {
@@ -57,17 +60,25 @@ body {
 
 /* ---------- Scroll reveal ---------- */
 
-.reveal {
+/* `.reveal` stays visible in the static HTML — only Reveal's effect adds
+   `.reveal-armed`, and only to elements still below the fold. Content is
+   therefore never blank while the JS loads, and arming can never flash. */
+
+/* Arming is deliberately untransitioned — the element is off-screen and should
+   hide instantly. The transition lives on the in-view state so it only ever
+   plays on the way in. */
+
+.reveal-armed {
   opacity: 0;
   transform: translateY(22px);
+}
+
+.reveal-armed.in-view {
+  opacity: 1;
+  transform: none;
   transition:
     opacity 0.7s ease,
     transform 0.7s cubic-bezier(0.22, 0.9, 0.3, 1);
-}
-
-.reveal.in-view {
-  opacity: 1;
-  transform: none;
 }
 
 /* ---------- Hero load sequence ---------- */
@@ -132,12 +143,14 @@ body {
   }
 }
 
-/* Script signature "writing itself" (clip reveal, triggered by .in-view) */
-.sig-write {
+/* Script signature "writing itself" (clip reveal, triggered by .in-view).
+   Scoped to `.reveal-armed` for the same reason as `.reveal` above: unclipped
+   in the static HTML, hidden only once JS has armed an off-screen ancestor. */
+.reveal-armed .sig-write {
   clip-path: inset(-20% 100% -20% 0);
 }
 
-.in-view .sig-write {
+.reveal-armed.in-view .sig-write {
   animation: sig-write 1.4s ease-in-out 0.4s forwards;
 }
 
@@ -147,8 +160,9 @@ body {
   }
 }
 
-/* Checkmark pop after the signature lands */
-.in-view .pop-late {
+/* Checkmark pop after the signature lands. Armed-only, so an above-the-fold
+   card never hides its badge for the animation's 1.9s delay. */
+.reveal-armed.in-view .pop-late {
   animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.9s both;
 }
 
@@ -239,7 +253,8 @@ details.faq-item[open] .faq-icon {
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal-armed,
+  .reveal-armed.in-view {
     opacity: 1;
     transform: none;
     transition: none;
@@ -249,8 +264,8 @@ details.faq-item[open] .faq-icon {
   .xtk-panel-slide,
   .launcher-glow,
   .sig-underline path,
-  .in-view .sig-write,
-  .in-view .pop-late,
+  .reveal-armed.in-view .sig-write,
+  .reveal-armed.in-view .pop-late,
   .token-raw,
   .token-filled {
     animation: none;
@@ -260,7 +275,7 @@ details.faq-item[open] .faq-icon {
     stroke-dashoffset: 0;
   }
 
-  .sig-write {
+  .reveal-armed .sig-write {
     clip-path: none;
   }
 

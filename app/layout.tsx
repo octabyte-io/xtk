@@ -1,10 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import {
-  Bricolage_Grotesque,
-  Caveat,
-  Geist_Mono,
-  Instrument_Sans,
-} from "next/font/google";
+import { bricolage, instrument } from "./fonts";
 import "./globals.css";
 import JsonLd from "@/components/json-ld";
 import {
@@ -16,26 +11,6 @@ import {
 } from "@/lib/site";
 import { DEFAULT_OG_IMAGE } from "@/lib/metadata";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data";
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
-  subsets: ["latin"],
-});
-
-const instrument = Instrument_Sans({
-  variable: "--font-instrument",
-  subsets: ["latin"],
-});
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -71,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${bricolage.variable} ${instrument.variable} ${caveat.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${bricolage.variable} ${instrument.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {/* Sitewide entity graph — every Article/HowTo publisher points at it. */}

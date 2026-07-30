@@ -1,3 +1,5 @@
+import { geistMono } from "@/app/fonts";
+
 /** Placeholder tokens cycling into real client values. */
 
 const pairs = [
@@ -8,7 +10,7 @@ const pairs = [
 
 export default function TemplatesMock() {
   return (
-    <div className="rounded-xl border border-line bg-paper p-4">
+    <div className={`${geistMono.variable} rounded-xl border border-line bg-paper p-4`}>
       <div className="mb-3 flex items-center justify-between text-[11px] font-medium text-ink-soft">
         <span>Engagement Letter.docx</span>
         <span className="rounded-full bg-pen-soft px-2 py-0.5 font-semibold text-pen">

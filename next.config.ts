@@ -10,8 +10,13 @@ const nextConfig: NextConfig = {
   basePath,
   images: {
     loader: "custom",
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    // Every <OptimizedImage> passes `sizes` with a 100vw branch, so Next drops
+    // every candidate narrower than the smallest deviceSize — imageSizes would
+    // only make the export optimizer write files no srcset ever references.
+    imageSizes: [],
+    // The widest source is 1562px, so anything above ~1600 is the same clamped
+    // image under a different filename.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1600],
   },
   transpilePackages: ["next-image-export-optimizer"],
   env: {

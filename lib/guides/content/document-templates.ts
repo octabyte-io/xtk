@@ -225,7 +225,9 @@ export const guide: Guide = {
     },
     {
       type: "video",
-      src: "/images/guides/document-templates/generate-letter.gif",
+      src: "/images/guides/document-templates/generate-letter.mp4",
+      width: 1440,
+      height: 756,
       alt: "Generating an engagement letter in XTK: choosing File from template in the Documents tab, picking the template, reviewing auto-filled placeholder values, naming the output and the finished letter appearing in the client's folder",
       caption:
         "Template to finished engagement letter in under a minute, without leaving Practice Manager.",
