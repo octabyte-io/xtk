@@ -70,7 +70,17 @@ export default function Footer() {
       </div>
       <div className="border-t border-line">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-1 px-5 py-5 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <span>© {new Date().getFullYear()} XTK</span>
+          <span>
+            © {new Date().getFullYear()} XTK · Powered by{" "}
+            <a
+              href="https://octabyte.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-ink transition-colors hover:text-accent"
+            >
+              OctaByte
+            </a>
+          </span>
           <span>
             XTK is an independent product and is not affiliated with or endorsed
             by Xero Limited.
