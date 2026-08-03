@@ -7,6 +7,7 @@ import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
 import Breadcrumbs from "@/components/site/breadcrumbs";
 import GuideBody from "@/components/site/guide-body";
+import FaqAccordion from "@/components/site/faq-accordion";
 import GuideCard, { GuideMeta, SeriesChip } from "@/components/site/guide-card";
 import RelatedReading from "@/components/site/related-reading";
 import JsonLd from "@/components/json-ld";
@@ -113,24 +114,8 @@ export default async function GuidePage({
                 <h2 className="font-display text-2xl font-bold tracking-tight text-ink">
                   Frequently asked questions
                 </h2>
-                <div className="mt-6 space-y-3">
-                  {guide.faq.map((f) => (
-                    <details
-                      key={f.q}
-                      className="faq-item group rounded-2xl border border-line bg-surface px-6 py-5"
-                    >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base font-bold text-ink">
-                        {f.q}
-                        <span
-                          className="faq-icon flex size-6 shrink-0 items-center justify-center rounded-full bg-accent-soft text-sm font-medium text-accent-deep"
-                          aria-hidden="true"
-                        >
-                          +
-                        </span>
-                      </summary>
-                      <p className="mt-3 leading-relaxed text-ink-soft">{f.a}</p>
-                    </details>
-                  ))}
+                <div className="mt-6">
+                  <FaqAccordion items={guide.faq} />
                 </div>
               </section>
             )}

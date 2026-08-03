@@ -135,7 +135,7 @@ export const posts: Post[] = [
         type: "p",
         text: [
           "XTK is a two-minute install: ",
-          { text: "add the extension", href: "/guides/getting-started-with-xtk" },
+          { text: "add the extension", href: "/get-started" },
           ", connect your Drive, and open your first client. Every plan starts with a ",
           { text: "30-day free trial", href: "/pricing" },
           " for your whole practice — no credit card required. We'd love to hear what your team thinks.",

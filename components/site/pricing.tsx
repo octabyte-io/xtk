@@ -2,6 +2,7 @@ import Reveal from "./reveal";
 import SectionHeading from "./section-heading";
 import ButtonLink from "./button-link";
 import { A } from "./prose-link";
+import { GET_STARTED_PATH } from "@/lib/site";
 
 const included = [
   "Every XTK feature — e-signatures, client portal, document requests and templates",
@@ -69,7 +70,7 @@ export default function Pricing({
                   after your trial ends — cancel anytime
                 </p>
               </div>
-              <ButtonLink href="#get-xtk" className="w-fit">
+              <ButtonLink href={GET_STARTED_PATH} className="w-fit">
                 Start free trial
               </ButtonLink>
             </div>

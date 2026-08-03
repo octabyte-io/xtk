@@ -25,6 +25,7 @@ export const metadata: Metadata = pageMetadata({
 
 const MAIN_PAGES: { href: string; label: string; blurb: string }[] = [
   { href: "/", label: "Home", blurb: "What XTK adds to Xero Practice Manager." },
+  { href: "/get-started", label: "Get started", blurb: "Install the extension and set up your practice." },
   { href: "/pricing", label: "Pricing", blurb: "One price per practice, and what the trial covers." },
   { href: "/guides", label: "User guides", blurb: "Step-by-step walkthroughs of every feature." },
   { href: "/blog", label: "Blog", blurb: "Product news and practice tips." },

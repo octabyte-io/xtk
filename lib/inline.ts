@@ -31,6 +31,7 @@ import type { LegalPage } from "./legal";
  */
 export type SitePath =
   | "/"
+  | "/get-started"
   | "/about"
   | "/pricing"
   | "/support"

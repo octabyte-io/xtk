@@ -25,22 +25,28 @@ export const THEME_COLOR = "#0077C7";
 export const DEFAULT_OG_IMAGE = "/images/og-default.png";
 
 /**
- * Browser extension store listings. The extension is not yet published to
- * either store (see user-guide/PRODUCT-FACTS.md → Known gaps), so both are
- * null and CTAs fall back to the on-page install section. Replace with the
- * real listing URLs when the store submissions go live — every CTA and guide
- * picks them up from here.
+ * Browser extension store listings — the single source of truth for every
+ * install CTA on the site. A `null` here is not a gap to work around: the
+ * helpers below fall back to /get-started, which explains the state of that
+ * store rather than offering a dead button.
  */
-export const CHROME_STORE_URL: string | null = null;
+export const CHROME_STORE_URL: string | null =
+  "https://chromewebstore.google.com/detail/octabyte-xtk/kgkoohdbndecnpacdnpobbdbcecbncpo";
+
+/**
+ * The Firefox Add-ons listing is still in review, so Firefox CTAs route to
+ * /get-started, where the browser picker shows a "coming soon" card. Setting
+ * this constant is the only edit needed to light Firefox up everywhere.
+ */
 export const FIREFOX_STORE_URL: string | null = null;
 
-/** Where "get XTK" CTAs point until the store listings exist. */
-export const GET_XTK_FALLBACK = "/#get-xtk";
+/** The install-and-onboard page. Also where a CTA points if its store is null. */
+export const GET_STARTED_PATH = "/get-started";
 
 export function chromeStoreHref(): string {
-  return CHROME_STORE_URL ?? GET_XTK_FALLBACK;
+  return CHROME_STORE_URL ?? GET_STARTED_PATH;
 }
 
 export function firefoxStoreHref(): string {
-  return FIREFOX_STORE_URL ?? GET_XTK_FALLBACK;
+  return FIREFOX_STORE_URL ?? GET_STARTED_PATH;
 }

@@ -11,6 +11,11 @@ const styles: Record<Variant, string> = {
   ghost: "text-ink-soft hover:text-ink",
 };
 
+/**
+ * The store-listing CTAs point off-site, so — as in ./prose-link.tsx — an
+ * external href renders a plain <a> with target/rel. Internal ones keep going
+ * through next/link, which applies the GitHub Pages `basePath` for us.
+ */
 export default function ButtonLink({
   href,
   variant = "primary",
@@ -22,11 +27,18 @@ export default function ButtonLink({
   children: ReactNode;
   className?: string;
 }) {
+  const cls = `inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-base font-medium transition-colors ${styles[variant]} ${className}`;
+
+  if (/^https?:\/\//.test(href)) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-base font-medium transition-colors ${styles[variant]} ${className}`}
-    >
+    <Link href={href} className={cls}>
       {children}
     </Link>
   );

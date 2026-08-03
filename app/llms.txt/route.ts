@@ -2,6 +2,7 @@ import { getAllGuides, getGuidesBySeries } from "@/lib/guides";
 import { getAllPosts } from "@/lib/posts";
 import { company, pricing } from "@/lib/legal";
 import { absoluteUrl } from "@/lib/structured-data";
+import { CHROME_STORE_URL, FIREFOX_STORE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -26,6 +27,7 @@ export function GET() {
     "## Site",
     "",
     `- [Home](${absoluteUrl("/")}): what XTK adds to Xero Practice Manager`,
+    `- [Get started](${absoluteUrl("/get-started")}): install the extension, create a practice account, first steps in XPM`,
     `- [Pricing](${absoluteUrl("/pricing")}): one plan, whole practice, ${pricing.trialDays}-day free trial`,
     `- [User guides](${absoluteUrl("/guides")}): index of every step-by-step guide`,
     `- [Blog](${absoluteUrl("/blog")}): product news and practice tips`,
@@ -33,6 +35,21 @@ export function GET() {
     `- [Support](${absoluteUrl("/support")}): how to get help (${company.supportEmail})`,
     `- [Sitemap](${absoluteUrl("/sitemap")}): every page on the site, grouped by section`,
   ];
+
+  // Only the listings that are actually live — a store still in review would
+  // send an assistant's reader to a 404.
+  lines.push("", "## Install", "");
+  if (CHROME_STORE_URL) {
+    lines.push(`- [Chrome Web Store](${CHROME_STORE_URL}): install XTK in Google Chrome`);
+  }
+  if (FIREFOX_STORE_URL) {
+    lines.push(`- [Firefox Add-ons](${FIREFOX_STORE_URL}): install XTK in Firefox`);
+  } else {
+    lines.push("- Firefox: the Firefox Add-ons listing is not published yet.");
+  }
+  lines.push(
+    `- [Web portal](${company.portal}): register a practice, sign in, manage billing`
+  );
 
   if (guides.length > 0) {
     lines.push("", "## User guides", "");

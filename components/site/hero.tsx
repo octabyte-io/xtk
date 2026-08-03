@@ -1,5 +1,6 @@
 import ButtonLink from "./button-link";
 import XpmMock from "./xpm-mock";
+import { chromeStoreHref, firefoxStoreHref } from "@/lib/site";
 
 function SigUnderline() {
   return (
@@ -56,8 +57,8 @@ export default function Hero() {
             className="hero-rise flex flex-col items-center gap-3 sm:flex-row"
             style={{ animationDelay: "300ms" }}
           >
-            <ButtonLink href="#get-xtk">Add to Chrome</ButtonLink>
-            <ButtonLink href="#get-xtk" variant="secondary">
+            <ButtonLink href={chromeStoreHref()}>Add to Chrome</ButtonLink>
+            <ButtonLink href={firefoxStoreHref()} variant="secondary">
               Add to Firefox
             </ButtonLink>
           </div>

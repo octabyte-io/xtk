@@ -1,15 +1,9 @@
-import Link from "next/link";
-import Reveal from "./reveal";
 import SectionHeading from "./section-heading";
+import FaqAccordion, { type FaqItem } from "./faq-accordion";
 import JsonLd from "@/components/json-ld";
 import { faqPageJsonLd } from "@/lib/structured-data";
 
-/**
- * `q`/`a` are plain strings because they feed FAQPage JSON-LD. `more` is the
- * guide that answers the question in full — rendered under the answer, and
- * ignored by the structured data.
- */
-const faqs: { q: string; a: string; more?: { href: string; label: string } }[] = [
+const faqs: FaqItem[] = [
   {
     q: "Where do my files live?",
     a: "In your practice's own Google Drive or OneDrive, in one folder per client. XTK operates on them in place: operations that need a document engine — downloads, zips, PDF merges, generating from a template — stream the bytes through our backend in flight, but nothing is written to disk or kept in our database, and portal shares are markers pointing at your files, not duplicates.",
@@ -45,31 +39,8 @@ export default function Faq() {
         eyebrow="FAQ"
         title="Questions practices ask us"
       />
-      <div className="mt-10 space-y-3 sm:mt-12">
-        {faqs.map((f, i) => (
-          <Reveal key={f.q} delay={i * 60}>
-            <details className="faq-item group rounded-2xl border border-line bg-surface px-6 py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base font-bold text-ink">
-                {f.q}
-                <span
-                  className="faq-icon flex size-6 shrink-0 items-center justify-center rounded-full bg-accent-soft text-sm font-medium text-accent-deep"
-                  aria-hidden="true"
-                >
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 leading-relaxed text-ink-soft">{f.a}</p>
-              {f.more && (
-                <Link
-                  href={f.more.href}
-                  className="mt-3 inline-block text-sm font-medium text-accent-deep transition-colors hover:text-accent"
-                >
-                  {f.more.label} →
-                </Link>
-              )}
-            </details>
-          </Reveal>
-        ))}
+      <div className="mt-10 sm:mt-12">
+        <FaqAccordion items={faqs} reveal />
       </div>
     </section>
   );

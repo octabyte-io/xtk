@@ -5,7 +5,13 @@
 
 import { company, pricing } from "./legal";
 import { plainText } from "./inline";
-import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_URL } from "./site";
+import {
+  CHROME_STORE_URL,
+  DEFAULT_OG_IMAGE,
+  FIREFOX_STORE_URL,
+  SITE_DESCRIPTION,
+  SITE_URL,
+} from "./site";
 import type { Guide, GuideFaq } from "./guides";
 import type { Post } from "./posts";
 
@@ -96,10 +102,14 @@ export function blogPostingJsonLd(post: Post) {
 }
 
 /**
- * HowTo built from the guide's `steps` blocks (all of them, flattened, in
- * article order). Only emit this for guides that are genuinely step-driven.
+ * HowTo built from the `steps` blocks of a body (all of them, flattened, in
+ * article order). Only emit this for pages that are genuinely step-driven.
+ *
+ * Typed as the structural subset it reads rather than `Guide`, so /get-started
+ * — which authors a `GuideBlock[]` inline instead of registering a guide — can
+ * pass its own title, description and blocks.
  */
-export function howToJsonLd(guide: Guide) {
+export function howToJsonLd(guide: Pick<Guide, "title" | "description" | "body">) {
   const steps = guide.body
     .flatMap((b) => (b.type === "steps" ? b.steps : []))
     .map((s, i) => ({
@@ -149,6 +159,10 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
 
 /** For the home page. */
 export function softwareApplicationJsonLd() {
+  /** Only listings that are actually published — see lib/site.ts. */
+  const listings = [CHROME_STORE_URL, FIREFOX_STORE_URL].filter(
+    (url): url is string => url !== null
+  );
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -158,6 +172,11 @@ export function softwareApplicationJsonLd() {
     description:
       "XTK adds document management, e-signatures, client portals and template automation to Xero Practice Manager — in a panel that opens right inside it.",
     url: SITE_URL,
+    ...(listings.length > 0 && {
+      downloadUrl: listings[0],
+      installUrl: listings[0],
+      sameAs: listings,
+    }),
     offers: {
       "@type": "Offer",
       price: pricing.amount.replace(/[^0-9.]/g, ""),

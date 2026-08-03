@@ -7,7 +7,7 @@ const steps = [
     n: "1",
     title: "Install the extension",
     body: "Add XTK to Chrome or Firefox. An XTK launcher appears in XPM's own navigation — nothing else to deploy.",
-    guide: { href: "/guides/getting-started-with-xtk", label: "Getting started" },
+    guide: { href: "/get-started", label: "Install XTK" },
   },
   {
     n: "2",

@@ -23,6 +23,7 @@ import { inlineHrefs, type Href, type Inline, type RelatedLink } from "./inline"
  */
 export const STATIC_PATHS = [
   "/",
+  "/get-started",
   "/about",
   "/pricing",
   "/support",

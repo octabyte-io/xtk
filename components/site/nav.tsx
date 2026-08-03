@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./logo";
 import ButtonLink from "./button-link";
+import { GET_STARTED_PATH } from "@/lib/site";
 
 /**
  * Pricing points at the /pricing page rather than the home-page #pricing
@@ -39,8 +40,10 @@ export default function Nav({ active }: { active?: string }) {
             </Link>
           ))}
         </nav>
-        <ButtonLink href="/#get-xtk" className="!h-10 !px-5 !text-sm">
-          Get XTK
+        {/* Not in `links`: this is the CTA, and duplicating it as a nav item
+            would overflow the md container. */}
+        <ButtonLink href={GET_STARTED_PATH} className="!h-10 !px-5 !text-sm">
+          Get started
         </ButtonLink>
       </div>
     </header>
