@@ -43,3 +43,6 @@ next-env.d.ts
 # next-image-export-optimizer build artifacts
 /public/images/nextImageExportOptimizer/
 /public/images/next-image-export-optimizer-hashes.json
+
+# raw content ideas / article briefs — working notes, not shipped content
+/content-plan/

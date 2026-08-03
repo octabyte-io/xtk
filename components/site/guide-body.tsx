@@ -1,7 +1,7 @@
 import { geistMono } from "@/app/fonts";
 import OptimizedImage from "@/components/optimized-image";
 import type { GuideBlock, GuideStep } from "@/lib/guides";
-import { plainText, type Inline } from "@/lib/inline";
+import ContentTable from "./content-table";
 import { renderInline } from "./inline-text";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -76,66 +76,6 @@ function Steps({ title, steps }: { title?: string; steps: GuideStep[] }) {
   );
 }
 
-function Table({
-  head,
-  rows,
-  caption,
-  codeColumns = [],
-}: {
-  head: string[];
-  rows: Inline[][];
-  caption?: string;
-  codeColumns?: number[];
-}) {
-  // Code columns hold literal tokens like [CLIENT:NAME] — always plain text,
-  // never a link, so they flatten rather than render inline nodes.
-  const cell = (value: Inline, col: number) =>
-    codeColumns.includes(col) ? (
-      <code className="whitespace-nowrap rounded bg-accent-soft/60 px-1.5 py-0.5 font-mono text-[13px] text-accent-deep">
-        {plainText(value)}
-      </code>
-    ) : (
-      renderInline(value)
-    );
-  return (
-    <figure className="mt-6">
-      <div className="overflow-x-auto rounded-2xl border border-line">
-        <table className="w-full border-collapse text-left text-[15px] leading-relaxed">
-          <thead>
-            <tr className="border-b border-line bg-accent-soft/40">
-              {head.map((h, i) => (
-                <th
-                  key={i}
-                  scope="col"
-                  className="px-4 py-2.5 font-display text-sm font-bold tracking-tight text-ink"
-                >
-                  {h}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, r) => (
-              <tr key={r} className="border-b border-line/60 last:border-b-0">
-                {row.map((c, i) => (
-                  <td key={i} className="px-4 py-2.5 align-top text-ink-soft">
-                    {cell(c, i)}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {caption && (
-        <figcaption className="mt-2 text-center text-sm text-ink-soft">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
-}
-
 function Block({ block }: { block: GuideBlock }) {
   switch (block.type) {
     case "h2":
@@ -201,7 +141,7 @@ function Block({ block }: { block: GuideBlock }) {
       return <Steps title={block.title} steps={block.steps} />;
     case "table":
       return (
-        <Table
+        <ContentTable
           head={block.head}
           rows={block.rows}
           caption={block.caption}

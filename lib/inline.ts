@@ -62,6 +62,14 @@ export type InlineNode = string | InlineLink;
 export type Inline = string | InlineNode[];
 
 /**
+ * One question and answer in an article's FAQ section. Both fields are plain
+ * strings, not `Inline`: the same objects feed `faqPageJsonLd`, where an answer
+ * has to be a JSON string, and `<summary>` is a landmark rather than a sentence.
+ * Shared by guides and posts — see `GuideFaq` in lib/guides/types.ts.
+ */
+export type Faq = { q: string; a: string };
+
+/**
  * A structural link to a page that isn't resolvable from a slug — used by the
  * `relatedLinks` field on both guides and posts, and rendered in the article
  * footer's Related-reading block.

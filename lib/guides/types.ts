@@ -3,7 +3,7 @@
  * files in ./content and the store entry point ./index.ts.
  */
 
-import type { Inline, RelatedLink } from "../inline";
+import type { Faq, Inline, RelatedLink } from "../inline";
 
 export type GuideStep = {
   /**
@@ -82,7 +82,8 @@ export const guideSeriesOrder: GuideSeries[] = [
   "Account & trust",
 ];
 
-export type GuideFaq = { q: string; a: string };
+/** Aliases `Faq` from lib/inline, which posts share. */
+export type GuideFaq = Faq;
 
 /**
  * A related destination that is not a guide — a site page such as

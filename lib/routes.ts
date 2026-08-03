@@ -126,6 +126,9 @@ export function assertContentLinks(): void {
         case "list":
           for (const item of block.items) walk(at, item);
           break;
+        case "table":
+          for (const row of block.rows) for (const cell of row) walk(at, cell);
+          break;
       }
     }
   }

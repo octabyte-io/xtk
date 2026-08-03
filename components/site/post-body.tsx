@@ -1,4 +1,5 @@
 import type { PostBlock } from "@/lib/posts";
+import ContentTable from "./content-table";
 import { renderInline } from "./inline-text";
 
 function Block({ block }: { block: PostBlock }) {
@@ -36,6 +37,10 @@ function Block({ block }: { block: PostBlock }) {
           </p>
           {block.cite && <cite className="mt-2 block text-sm text-ink-soft not-italic">— {block.cite}</cite>}
         </blockquote>
+      );
+    case "table":
+      return (
+        <ContentTable head={block.head} rows={block.rows} caption={block.caption} />
       );
     case "callout":
       return (

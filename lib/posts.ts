@@ -1,18 +1,32 @@
-import type { Inline, RelatedLink } from "./inline";
+import type { Faq, Inline, RelatedLink } from "./inline";
 
-export type { RelatedLink };
+export type { Faq, RelatedLink };
 
 /**
  * `Inline` fields may carry inline links; `string` fields deliberately may not.
  * Headings are landmarks and anchor targets, a pull-quote's display type fights
- * an underlined link, and a callout title is a label rather than a sentence.
+ * an underlined link, a callout title is a label rather than a sentence, and
+ * table headers and captions are plain-text sinks by definition.
  */
 export type PostBlock =
   | { type: "p"; text: Inline }
   | { type: "h2"; text: string }
   | { type: "list"; items: Inline[]; ordered?: boolean }
   | { type: "quote"; text: string; cite?: string }
-  | { type: "callout"; title: string; text: Inline };
+  | { type: "callout"; title: string; text: Inline }
+  | {
+      /**
+       * Renders through the same component as a guide's table. Worth reaching
+       * for only when the content is genuinely tabular — a comparison across
+       * options — because a table is the densest thing on the page to read on a
+       * phone, and the widest thing to get wrong.
+       */
+      type: "table";
+      /** Column headers. */
+      head: string[];
+      rows: Inline[][];
+      caption?: string;
+    };
 
 export type PostCategory = "Product" | "Guides" | "Practice tips" | "Company";
 
@@ -45,6 +59,14 @@ export type Post = {
    */
   thumbnail?: { src: string; alt: string };
   body: PostBlock[];
+  /**
+   * Optional FAQ, rendered as an accordion under the body and emitted as
+   * `FAQPage` JSON-LD — the same treatment guides get, where a guide's `faq` is
+   * required. Most posts don't want one: only add it where the questions are
+   * ones readers actually arrive with, since an FAQ of invented questions is
+   * the most obvious form of SEO padding there is.
+   */
+  faq?: Faq[];
 };
 
 export function formatPostDate(iso: string): string {
@@ -65,7 +87,6 @@ export const posts: Post[] = [
     readingTime: "5 min read",
     category: "Company",
     author: { name: "The XTK team", role: "Product" },
-    featured: true,
     ogImage: "/images/blog/introducing-xtk/og.png",
     thumbnail: {
       src: "/images/blog/introducing-xtk/thumb.png",
@@ -232,8 +253,8 @@ export const posts: Post[] = [
       alt: "A client's Drive folders listed in the XTK Documents tab, one folder per year and work type",
     },
     relatedSlugs: [
+      "xero-practice-manager-document-management",
       "stop-retyping-client-data",
-      "introducing-xtk",
     ],
     relatedLinks: [
       { label: "Manage client documents", href: "/guides/manage-client-documents" },
@@ -243,7 +264,14 @@ export const posts: Post[] = [
     body: [
       {
         type: "p",
-        text: "Nobody sets out to build a messy Drive. It happens one shortcut at a time: a file saved to the root “just for now”, a client folder named three different ways by three different people, a year folder that quietly becomes two.",
+        text: [
+          "Nobody sets out to build a messy Drive. It happens one shortcut at a time: a file saved to the root “just for now”, a client folder named three different ways by three different people, a year folder that quietly becomes two. (If you are still deciding ",
+          {
+            text: "whether a drive is the right home at all",
+            href: "/blog/xero-practice-manager-document-management",
+          },
+          ", start there instead.)",
+        ],
       },
       {
         type: "p",
@@ -313,7 +341,7 @@ export const posts: Post[] = [
     },
     relatedSlugs: [
       "e-signatures-inside-xpm",
-      "introducing-xtk",
+      "xero-practice-manager-document-management",
     ],
     relatedLinks: [
       { label: "Set up a client portal", href: "/guides/set-up-client-portal" },
@@ -441,6 +469,239 @@ export const posts: Post[] = [
           { text: "e-signatures", href: "/guides/send-documents-for-signature" },
           " and the whole chain collapses into one motion: generate from the client record, send for signing, and watch the signed copy file itself. The only typing left is the parts that genuinely need a human.",
         ],
+      },
+    ],
+  },
+  {
+    slug: "xero-practice-manager-document-management",
+    title: "Document management in Xero Practice Manager: four options",
+    excerpt:
+      "XPM stores documents, but it was never built to be a document management system. Here's what it does, where it stops, and the four ways practices fill the gap.",
+    date: "2026-08-04",
+    readingTime: "9 min read",
+    category: "Guides",
+    author: { name: "The XTK team", role: "Product" },
+    featured: true,
+    ogImage: "/images/blog/xero-practice-manager-document-management/og.png",
+    thumbnail: {
+      src: "/images/blog/xero-practice-manager-document-management/thumb.png",
+      alt: "A client record open in Practice Manager with the XTK panel beside it, listing that client's folders and documents",
+    },
+    relatedSlugs: [
+      "organise-client-documents-google-drive",
+      "client-portals-clients-actually-use",
+    ],
+    relatedLinks: [
+      { label: "Manage client documents", href: "/guides/manage-client-documents" },
+      { label: "How XTK handles your data", href: "/guides/how-xtk-handles-your-data" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Xero Practice Manager can store documents against a client, a job or a quote, and for a small number of small files that is genuinely enough. What it does not have is a folder structure worth the name, a generous upload limit, version history, anything client-facing, or e-signing. So practices past their first dozen clients keep documents somewhere else — and there are four somewhere-elses worth knowing about.",
+      },
+      {
+        type: "p",
+        text: "This is not a knock on XPM. It is a jobs, time and billing system, and it is a good one. Document management is simply a different product, and the useful question is not whether XPM should have built it. It is how far from the client record your documents end up living — because that distance is what decides whether your team files things properly or not at all.",
+      },
+      { type: "h2", text: "What XPM gives you today" },
+      {
+        type: "p",
+        text: [
+          "The Documents tab attaches files to a client, a job or a quote, and any other user in your practice can see and download them. You can group them into folders inside Practice Manager, and you can email documents and notes from a job or quote using XPM's collaboration features. Uploads are capped at ",
+          {
+            text: "16MB per file",
+            href: "https://central.xero.com/s/article/Upload-manage-documents-in-Practice-Manager-US-CA-SG-SA-HK-MY-ROW",
+          },
+          ", and documents list alphabetically.",
+        ],
+      },
+      {
+        type: "p",
+        text: "That set of features has a real sweet spot: a signed form that belongs to one particular job, a note with a screenshot attached, a piece of correspondence that only ever needs to be found again from the job it relates to. If that describes your document flow, stop reading — you don't have a problem to solve.",
+      },
+      { type: "h2", text: "Where it stops" },
+      {
+        type: "p",
+        text: "Five gaps show up in roughly this order as a practice grows.",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "No structure that survives people. Folders inside Practice Manager have no template and no enforcement, so “2026 / Tax / Workpapers” is a convention rather than a rule, and three people will express it three ways.",
+          "The 16MB ceiling. A scanned bundle of source records, a financial statement pack, a set of photographed receipts — these routinely exceed it, and the workaround is always email.",
+          "No version history. When you cannot see what changed, filenames start doing that job, which is how a folder ends up holding Accounts_FINAL, Accounts_FINAL_v2 and Accounts_FINAL_JS.",
+          "Nothing client-facing. There is no portal and no upload link, so collecting records means asking for email attachments — and a file that arrives in an inbox has to be filed by a human before it counts as filed at all.",
+          "No signing. Engagement letters leave for a separate e-signature tool and come back by hand, which means the signed copy lands wherever the person who downloaded it put it.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Every one of these gaps has the same shape: the documents end up further from the client record than the work does.",
+      },
+      { type: "h2", text: "The four ways practices fill the gap" },
+      {
+        type: "p",
+        text: "Almost every firm running on XPM has landed on one of these four. They are not four levels of sophistication — they suit genuinely different practices, and two of them are free.",
+      },
+      { type: "h2", text: "1. Stay in the Documents tab" },
+      {
+        type: "p",
+        text: "Free, already configured, nothing to learn. It holds up for a sole practitioner with light document flow and no client sharing to do. It stops holding up the first time a client needs to see something, or a file is too big — and because both of those arrive without warning, the practice usually discovers the limit mid-deadline.",
+      },
+      { type: "h2", text: "2. A cloud drive on its own" },
+      {
+        type: "p",
+        text: [
+          "One folder per client in Google Drive, OneDrive or SharePoint. You already pay for the storage, you own everything in it, there is nothing to migrate and no vendor to leave. This is where most practices actually are, and it is a perfectly respectable place to be — provided you are honest about the failure mode, which is ",
+          { text: "distance", href: "/blog/organise-client-documents-google-drive" },
+          ". The drive is a different tab from the client record, so naming and filing rest entirely on discipline, and discipline is the first thing busy season takes.",
+        ],
+      },
+      {
+        type: "p",
+        text: "There is also no portal and no signing here. Sharing means provider link-sharing, which is a permissions decision made in a hurry by whoever is sending the file.",
+      },
+      { type: "h2", text: "3. A document management system built for practices" },
+      {
+        type: "p",
+        text: "SuiteFiles, FYI, Virtual Cabinet, Nimbus, Workiro — or a practice platform such as Karbon or TaxDome that absorbs documents into a wider workflow suite. You get proper filing, retention controls, portals, signing and audit trails, designed by people who have seen a lot of accounting practices.",
+      },
+      {
+        type: "p",
+        text: "The costs are real and worth stating plainly: a migration project, a rollout somebody has to own, per-seat or banded pricing at a materially higher level than the options above, and your documents now living inside a vendor's system. That last one is a trade rather than a flaw — a purpose-built repository is exactly what you are paying for. If you are ten or more people, or you have retention and records obligations that need enforcing rather than encouraging, this is the category to shop in.",
+      },
+      { type: "h2", text: "4. A layer over the drive you already have" },
+      {
+        type: "p",
+        text: "The newest option: leave the files in your own Google Drive, OneDrive or SharePoint, and add the missing pieces — the folder-per-client structure, the portal, the upload links, the signing, the templates — inside the Practice Manager tab where the client record already is. Nothing moves, so there is no migration, and the drive stops being a separate destination people have to remember.",
+      },
+      {
+        type: "p",
+        text: "What you give up is the depth of a mature DMS: no retention engine, no records-management policy enforcement, and you need a Google or Microsoft storage account for it to sit on top of. This is the category XTK is in, and the honest summary is that it suits small-to-mid Xero-centric firms who want the gaps closed without moving anything.",
+      },
+      {
+        type: "table",
+        head: ["Compared on", "XPM alone", "Drive alone", "Practice DMS", "Layer over your drive"],
+        rows: [
+          ["Files live in", "XPM", "Your storage", "Vendor's system", "Your storage"],
+          ["Upload limit", "16MB", "Provider's", "Generous", "100MB"],
+          ["Folder structure", "Flat, by hand", "Ad hoc", "Enforced", "Templated"],
+          ["Version history", "None", "Provider's", "Built in", "Provider's"],
+          ["Client portal", "None", "Link sharing", "Yes", "Yes"],
+          ["E-signatures", "None", "None", "Usually", "Yes"],
+          ["Inside XPM", "Yes", "No, separate tab", "Varies", "Yes, a panel"],
+          ["Migration", "None", "None", "Yes, a project", "None"],
+          ["Pricing shape", "Included", "Storage you own", "Per seat or band", "Flat, per practice"],
+          ["If you stop paying", "Stays in XPM", "Nothing changes", "Export on request", "Stays in your drive"],
+        ],
+        caption:
+          "As of August 2026. The cost row compares pricing models rather than quoting prices — check each vendor's own page.",
+      },
+      {
+        type: "callout",
+        title: "The row most people skip",
+        text: "“If you stop paying” is worth more thought than it usually gets. It is not a prediction that you will leave — it is a test of how much of your filing system belongs to you. Ask it of every option, including ours.",
+      },
+      { type: "h2", text: "Whichever you pick, fix the client folder name first" },
+      {
+        type: "p",
+        text: [
+          "One rule matters more than the rest, and it is free: one folder per client entity, named exactly as that client is named in XPM. That name is the only key your two systems share, so the moment “ACME Trading Ltd” also exists as “Acme” and “ACME (new)”, no amount of tooling will reconcile them. The ",
+          { text: "wider structure question", href: "/blog/organise-client-documents-google-drive" },
+          " — how many levels, which evergreen folders, what to do with history — is worth a read on its own.",
+        ],
+      },
+      { type: "h2", text: "How XTK fits" },
+      {
+        type: "p",
+        text: [
+          "XTK is the fourth option. Your practice ",
+          { text: "connects one storage provider", href: "/guides/connect-document-storage" },
+          " — Google Drive, OneDrive or SharePoint — and picks a Main Storage Folder. Each client then gets one folder inside it: if a folder of that name already exists it is adopted rather than duplicated, if none exists it is created, and if two match you choose. From then on the ",
+          { text: "Documents tab in the XTK panel", href: "/guides/manage-client-documents" },
+          " opens against whichever client you have open in Practice Manager, and takes the place of Xero's own Documents tab.",
+        ],
+      },
+      {
+        type: "p",
+        text: [
+          "Files are ordinary files in a drive you own, which is why the version-history row above says “your provider's” rather than “none”: Google's and Microsoft's own file history applies, because XTK never took your documents anywhere. Uploads are capped at 100MB, deletes go to your provider's trash rather than vanishing, and ",
+          { text: "bulk actions", href: "/guides/bulk-file-actions" },
+          " — move, copy, zip, merge PDFs — are fenced to the current client's folder, so one client's document cannot land in another's.",
+        ],
+      },
+      {
+        type: "p",
+        text: [
+          "The gaps from the list above close in the same panel: ",
+          { text: "a client portal", href: "/guides/set-up-client-portal" },
+          " where shares are markers pointing at your files rather than copies, ",
+          { text: "document requests", href: "/guides/document-requests" },
+          " that land straight in the client's folder, ",
+          { text: "e-signatures", href: "/guides/send-documents-for-signature" },
+          " that file the completed PDF beside the original, and ",
+          { text: "templates", href: "/guides/document-templates" },
+          " that fill themselves from the client's XPM details.",
+        ],
+      },
+      {
+        type: "p",
+        text: [
+          "Two things worth saying because they cut against the pitch. Uploads go from your browser straight to Google or Microsoft, but downloads and any job that needs a document engine — zipping a selection, merging PDFs, generating from a template, flattening a signed PDF — stream through XTK's backend in flight; nothing is written to disk or kept. And “Convert to PDF” hands that one file to CloudConvert, an external service. The ",
+          { text: "full account of what moves where", href: "/guides/how-xtk-handles-your-data" },
+          " is a guide of its own, and it is the one to read before you decide anything.",
+        ],
+      },
+      {
+        type: "p",
+        text: [
+          "Pricing is one flat ",
+          { text: "$59 a month for the whole practice", href: "/pricing" },
+          " — no per-seat maths, which matters more than it sounds when your headcount includes part-timers and seasonal help. Anyone you would have skipped buying a seat for is the person who keeps filing in email.",
+        ],
+      },
+      {
+        type: "p",
+        text: [
+          "If you want to try the fourth option against one client rather than in theory, ",
+          { text: "getting set up", href: "/guides/getting-started-with-xtk" },
+          " takes about ten minutes: install, connect a drive, open a client in Practice Manager.",
+        ],
+      },
+      { type: "h2", text: "The test that actually matters" },
+      {
+        type: "p",
+        text: "Whichever of the four you land on, judge it the same way: can somebody who joined last week find last year's engagement letter for a client they have never worked on, in under a minute, without asking anyone? A practice that can do that has a document management system. A practice that cannot has a folder of files and a set of people who remember things.",
+      },
+      {
+        type: "callout",
+        title: "XTK and Xero",
+        text: "XTK is an independent product and is not affiliated with or endorsed by Xero Limited. XPM limits described here were checked against Xero Central in August 2026 — Xero changes its product, so check anything you plan to rely on.",
+      },
+    ],
+    faq: [
+      {
+        q: "Does Xero Practice Manager have a client portal?",
+        a: "No. XPM has no client-facing portal for document exchange. You can email documents from a job or quote, but clients cannot log in to view or upload files, so practices that need a portal add a third-party product — a document management system, or a layer over their own cloud storage.",
+      },
+      {
+        q: "What is the file size limit for documents in Xero Practice Manager?",
+        a: "16MB per file in XPM's Documents tab, as of August 2026. Larger files — scanned record bundles, financial statement packs — have to go somewhere else, which in most practices means email or a cloud drive.",
+      },
+      {
+        q: "Can I connect Google Drive to Xero Practice Manager?",
+        a: "Not natively — XPM has no built-in Google Drive integration. You can keep client folders in Drive alongside XPM and switch between tabs, or use a third-party tool that brings your Drive folders into the Practice Manager screen. XTK does the latter for Google Drive, OneDrive and SharePoint.",
+      },
+      {
+        q: "Does XPM keep version history for documents?",
+        a: "No. XPM's Documents tab does not keep document version history, which is why filenames in practice folders tend to carry version information instead. Storing files in Google Drive, OneDrive or SharePoint gives you that provider's own file history.",
+      },
+      {
+        q: "Do I have to migrate my existing client folders?",
+        a: "It depends which option you choose. Moving to a practice DMS means a migration project. Staying on your own cloud storage — with or without a layer on top of it — means no migration, because the files never move. XTK adopts an existing client folder by name rather than creating a duplicate.",
       },
     ],
   },

@@ -5,6 +5,7 @@ import Nav from "@/components/site/nav";
 import Footer from "@/components/site/footer";
 import CtaBand from "@/components/site/cta-band";
 import Breadcrumbs from "@/components/site/breadcrumbs";
+import FaqAccordion from "@/components/site/faq-accordion";
 import PostBody from "@/components/site/post-body";
 import PostCard, { CategoryChip, PostMeta } from "@/components/site/post-card";
 import RelatedReading from "@/components/site/related-reading";
@@ -17,7 +18,7 @@ import {
 } from "@/lib/posts";
 import { pageMetadata } from "@/lib/metadata";
 import { assertContentLinks } from "@/lib/routes";
-import { blogPostingJsonLd } from "@/lib/structured-data";
+import { blogPostingJsonLd, faqPageJsonLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -62,6 +63,7 @@ export default async function BlogPost({
   return (
     <>
       <JsonLd data={blogPostingJsonLd(post)} />
+      <JsonLd data={faqPageJsonLd(post.faq ?? [])} />
       <Nav active="/blog" />
       <main className="flex-1">
         <article>
@@ -104,6 +106,17 @@ export default async function BlogPost({
 
           <div className="mx-auto w-full max-w-3xl px-5 pb-16 pt-2 sm:px-8">
             <PostBody body={post.body} />
+
+            {post.faq && post.faq.length > 0 && (
+              <section aria-label="Frequently asked questions" className="mt-12">
+                <h2 className="font-display text-2xl font-bold tracking-tight text-ink">
+                  Frequently asked questions
+                </h2>
+                <div className="mt-6">
+                  <FaqAccordion items={post.faq} />
+                </div>
+              </section>
+            )}
           </div>
         </article>
 
