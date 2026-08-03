@@ -225,7 +225,18 @@ export const posts: Post[] = [
       { type: "h2", text: "The part you'll feel in July" },
       {
         type: "p",
-        text: "The real win isn't sending — it's tracking. Because every request is tied to a client, XTK can show you one list of everything outstanding across the practice, send polite reminders on a schedule you set, and stop you from ever again searching an inbox for the words “signed copy attached”.",
+        text: [
+          "The real win isn't sending — it's tracking. Because every request is tied to a client, that client's Signatures tab lists every request against them and how far each one has got: who has been emailed, who has viewed, who has signed, who declined. ",
+          {
+            text: "The Status dialog",
+            href: "/guides/send-documents-for-signature",
+          },
+          " goes further, down to a timestamped history of every event — the record behind the Certificate of Completion.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Two things it deliberately doesn't do. There is no scheduler, so chasing a slow signer is a decision you make — “Resend link”, from the same dialog — rather than one XTK makes for you. And the tracking is per client rather than one practice-wide queue: you check a client, not a dashboard. What it does buy you is never again searching an inbox for the words “signed copy attached”.",
       },
       {
         type: "callout",
