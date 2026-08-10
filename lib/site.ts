@@ -34,11 +34,12 @@ export const CHROME_STORE_URL: string | null =
   "https://chromewebstore.google.com/detail/octabyte-xtk/kgkoohdbndecnpacdnpobbdbcecbncpo";
 
 /**
- * The Firefox Add-ons listing is still in review, so Firefox CTAs route to
- * /get-started, where the browser picker shows a "coming soon" card. Setting
- * this constant is the only edit needed to light Firefox up everywhere.
+ * Locale-free path on purpose — AMO redirects to the visitor's own locale.
+ * Should a listing ever be pulled, setting this back to null is the only edit
+ * needed: every Firefox CTA falls back to /get-started, which explains why.
  */
-export const FIREFOX_STORE_URL: string | null = null;
+export const FIREFOX_STORE_URL: string | null =
+  "https://addons.mozilla.org/firefox/addon/octabyte-xtk/";
 
 /** The install-and-onboard page. Also where a CTA points if its store is null. */
 export const GET_STARTED_PATH = "/get-started";

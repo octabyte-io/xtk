@@ -1027,8 +1027,11 @@ export const posts: Post[] = [
           " is a guide of its own. XTK is one flat ",
           { text: "$59 a month for the whole practice", href: "/pricing" },
           " after a 30-day trial, and ",
-          { text: "installs from the Chrome Web Store", href: "/get-started" },
-          "; the Firefox listing is still in review.",
+          {
+            text: "installs from the Chrome Web Store or Firefox Add-ons",
+            href: "/get-started",
+          },
+          ".",
         ],
       },
       { type: "h2", text: "The one number worth tracking" },

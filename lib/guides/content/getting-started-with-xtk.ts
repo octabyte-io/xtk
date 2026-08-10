@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Getting started",
   order: 1,
   date: "2026-07-27",
-  updated: "2026-08-03",
+  updated: "2026-08-10",
   readingTime: "5 min read",
   ogImage: "/images/guides/getting-started-with-xtk/og.png",
   thumbnail: {
@@ -38,7 +38,7 @@ export const guide: Guide = {
     },
     {
       q: "Does XTK work in both Chrome and Firefox?",
-      a: "It is built for both and behaves identically in each. Google Chrome is available now in the Chrome Web Store; the Firefox Add-ons listing is in review, so Firefox users can install it shortly.",
+      a: "It is built for both and behaves identically in each. The same extension is published in the Chrome Web Store and on Firefox Add-ons — install it in whichever browser you use for Practice Manager.",
     },
     {
       q: "Can my whole team use XTK?",
@@ -87,14 +87,19 @@ export const guide: Guide = {
         {
           title: "Open the store listing",
           text: [
-            "Open the XTK listing in the ",
+            "Open the XTK listing for your browser — the ",
             {
               text: "Chrome Web Store",
               href: "https://chromewebstore.google.com/detail/octabyte-xtk/kgkoohdbndecnpacdnpobbdbcecbncpo",
             },
-            ". The Firefox Add-ons listing is still in review — the ",
+            " or ",
+            {
+              text: "Firefox Add-ons",
+              href: "https://addons.mozilla.org/firefox/addon/octabyte-xtk/",
+            },
+            ". Both buttons are also on the ",
             { text: "Get started page", href: "/get-started" },
-            " always shows which stores are live.",
+            ".",
           ],
         },
         {
