@@ -90,7 +90,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/introducing-xtk/og.png",
     thumbnail: {
       src: "/images/blog/introducing-xtk/thumb.png",
-      alt: "The XTK panel open beside a client record in Practice Manager, listing that client's folders and documents",
+      alt: "Two columns: what Practice Manager runs — jobs, time, WIP, invoicing — beside the half it is silent on, where documents sit in a Drive nobody tidies, signatures in a separate e-sign tool, client requests scattered across inboxes and templates retyped client by client",
     },
     relatedSlugs: [
       "e-signatures-inside-xpm",
@@ -180,7 +180,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/e-signatures-inside-xpm/og.png",
     thumbnail: {
       src: "/images/blog/e-signatures-inside-xpm/thumb.png",
-      alt: "Signature and date fields being placed on an engagement letter, ready to send for signature",
+      alt: "Two sequences compared: signature season as it is, in six steps across two tools, ending in trying to remember whose letter is unsigned — and the same job from the client record in four, ending with the signed PDF and its certificate filing themselves",
     },
     relatedSlugs: [
       "introducing-xtk",
@@ -269,7 +269,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/organise-client-documents-google-drive/og.png",
     thumbnail: {
       src: "/images/blog/organise-client-documents-google-drive/thumb.png",
-      alt: "A client's Drive folders listed in the XTK Documents tab, one folder per year and work type",
+      alt: "A folder tree two levels deep — one client folder named from the Practice Manager record, a 2026 year folder, and evergreen Engagement, Identity and Correspondence folders — with a Misc folder crossed out, beside the three properties that make a structure survive: predictable, shallow, automatic",
     },
     relatedSlugs: [
       "xero-practice-manager-document-management",
@@ -360,7 +360,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/client-portals-clients-actually-use/og.png",
     thumbnail: {
       src: "/images/blog/client-portals-clients-actually-use/thumb.png",
-      alt: "The client portal's folder view, where a client downloads what the practice shared and uploads their own files",
+      alt: "Two paths for the same client: four gates before a portal — create a password, forget it, verify your device, download the app — ending in a photo of a bank statement emailed instead, above a single-gate path where a link from the request lets them prove their email address and get in",
     },
     relatedSlugs: [
       "e-signatures-inside-xpm",
@@ -437,7 +437,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/stop-retyping-client-data/og.png",
     thumbnail: {
       src: "/images/blog/stop-retyping-client-data/thumb.png",
-      alt: "The File from template dialog with every client placeholder already filled in from the client record",
+      alt: "Placeholders resolving against a client record: [CLIENT:NAME] filling as ACME Trading Ltd, a postal address, the primary contact's name, a custom GST period field and today's date — with a note that a primary-contact placeholder resolves to nothing if no contact is flagged primary in Practice Manager",
     },
     relatedSlugs: [
       "organise-client-documents-google-drive",
@@ -508,7 +508,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/xero-practice-manager-document-management/og.png",
     thumbnail: {
       src: "/images/blog/xero-practice-manager-document-management/thumb.png",
-      alt: "A client record open in Practice Manager with the XTK panel beside it, listing that client's folders and documents",
+      alt: "The four options laid along an axis measuring distance from the client record — Practice Manager's own Documents tab and a layer over your own drive together in the client record, a cloud drive a tab away, and a practice document management system a whole system away — each labelled with what it costs you",
     },
     relatedSlugs: [
       "document-management-for-xero-practices-compared",
@@ -772,7 +772,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/stop-chasing-clients-for-documents/og.png",
     thumbnail: {
       src: "/images/blog/stop-chasing-clients-for-documents/thumb.png",
-      alt: "The XTK panel open in Practice Manager, showing a document request with each item marked outstanding or provided",
+      alt: "The same request written two ways: a vague paragraph asking for “your 2025 records”, annotated with the five reasons requests stall, beside an itemised checklist naming periods and formats, three of seven items marked provided and the rest outstanding, with one upload link",
     },
     relatedSlugs: [
       "xero-practice-manager-document-management",
@@ -1058,7 +1058,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/esignature-legality-for-accountants/og.png",
     thumbnail: {
       src: "/images/blog/esignature-legality-for-accountants/thumb.png",
-      alt: "The XTK panel open beside a client record in Practice Manager, listing that client's documents and each one's signature status",
+      alt: "The easy half — seven jurisdictions each ticked with the effect its own statute gives an electronic signature — above the half that decides it: the four things a signature has to prove, intent, consent, attribution and integrity, plus retention as a fifth no statute frames as a signature requirement",
     },
     relatedSlugs: [
       "e-signatures-inside-xpm",
@@ -1340,7 +1340,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/accounting-client-onboarding-checklist/og.png",
     thumbnail: {
       src: "/images/blog/accounting-client-onboarding-checklist/thumb.png",
-      alt: "The XTK panel open in Practice Manager, showing a new client's folder structure and engagement letter created from templates",
+      alt: "The onboarding timeline as ten rows, each with its elapsed time and who it waits on — eight of them the practice's own work, with rows one to four bracketed as a single ninety-minute sitting, and only two rows, the client signing and the records arriving, waiting on anybody outside the practice",
     },
     relatedSlugs: [
       "xero-practice-manager-document-management",
@@ -1710,7 +1710,7 @@ export const posts: Post[] = [
       "/images/blog/document-management-for-xero-practices-compared/og.png",
     thumbnail: {
       src: "/images/blog/document-management-for-xero-practices-compared/thumb.png",
-      alt: "The XTK panel open beside a client record in Practice Manager, listing that client's folders and files in the practice's own Drive",
+      alt: "Cost per person per month against practice headcount for three pricing shapes: per seat flat at about $59 a person at any size, banded per firm falling from about $70 to $29 and then stopping at price on application, and flat per practice falling from about $20 to $3 as the practice grows",
     },
     relatedSlugs: [
       "xero-practice-manager-document-management",
