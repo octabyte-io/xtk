@@ -2136,7 +2136,7 @@ export const posts: Post[] = [
     ogImage: "/images/blog/how-long-accountants-keep-client-records/og.png",
     thumbnail: {
       src: "/images/blog/how-long-accountants-keep-client-records/thumb.png",
-      alt: "A client's folders in the XTK Documents tab: one folder per year — 2026, 2025, 2024 — beside evergreen Engagement, Identity and Correspondence folders",
+      alt: "A bar chart of statutory record-retention periods — New Zealand 7 tax years, Canada 6, the United Kingdom 5, Australia 5, the United States 3 — each with a paler extension for its notable longer period, above a separate AML/CDD bar of 5 to 7 years that starts only when the client leaves",
     },
     relatedSlugs: [
       "esignature-legality-for-accountants",
