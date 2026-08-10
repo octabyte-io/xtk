@@ -22,6 +22,10 @@ export const guide: Guide = {
     "billing-trial-and-subscription",
   ],
   relatedLinks: [
+    {
+      label: "How long must accountants keep client records?",
+      href: "/blog/how-long-accountants-keep-client-records",
+    },
     { label: "Privacy Policy", href: "/legal/privacy" },
     { label: "Data Processing Addendum", href: "/legal/dpa" },
     { label: "Sub-processors", href: "/legal/subprocessors" },
@@ -267,6 +271,17 @@ export const guide: Guide = {
         "Disconnect storage: XTK's access to the account is removed. Every folder and file stays where it is, and your client-to-folder mapping is remembered if you reconnect with the same account.",
         "Trial lapses or subscription cancelled: the practice becomes read-only, enforced on the server. Everyone can still browse and download; nothing can be created or changed, and your clients can't upload or sign either. Billing, sign-out and Help & Support keep working so you can put it right.",
         "Close the account: XTK deletes your accounts, your encrypted connection tokens, and the practice records, requests and signature metadata it holds. Documents in your own Drive are untouched — closing an XTK account never deletes a file from your storage provider.",
+      ],
+    },
+    {
+      type: "p",
+      text: [
+        "That is the part worth checking against your own obligations rather than taking on trust, because a retention period usually outlives a subscription: ",
+        {
+          text: "how long you must keep client records, and whether you could still open them in year seven",
+          href: "/blog/how-long-accountants-keep-client-records",
+        },
+        " is a separate article.",
       ],
     },
     { type: "h2", text: "How do I ask a privacy question?" },

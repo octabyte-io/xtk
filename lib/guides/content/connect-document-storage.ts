@@ -24,6 +24,10 @@ export const guide: Guide = {
   ],
   relatedLinks: [
     { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    {
+      label: "SuiteFiles, FYI, Karbon or your own Drive, compared",
+      href: "/blog/document-management-for-xero-practices-compared",
+    },
     { label: "Privacy Policy", href: "/legal/privacy" },
     { label: "Sub-processors", href: "/legal/subprocessors" },
   ],
@@ -55,7 +59,12 @@ export const guide: Guide = {
       text: [
         "Connect your practice's own Google Drive, OneDrive or SharePoint to XTK and every client document you handle in Xero Practice Manager (XPM) stays in storage you control. It's a one-off job for ",
         { text: "the practice Admin", href: "/guides/invite-your-team" },
-        ": choose a provider, approve access, and pick one main storage folder. From then on the whole team works with the same client folders without leaving Practice Manager.",
+        ": choose a provider, approve access, and pick one main storage folder. From then on the whole team works with the same client folders without leaving Practice Manager. Still weighing this against a purpose-built document system? ",
+        {
+          text: "SuiteFiles, FYI, Karbon and your own Drive, compared",
+          href: "/blog/document-management-for-xero-practices-compared",
+        },
+        " says plainly which firms should buy which.",
       ],
     },
     {

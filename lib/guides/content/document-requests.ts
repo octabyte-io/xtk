@@ -25,6 +25,10 @@ export const guide: Guide = {
   ],
   relatedLinks: [
     { label: "Client portals your clients will actually use", href: "/blog/client-portals-clients-actually-use" },
+    {
+      label: "How to stop chasing clients for documents",
+      href: "/blog/stop-chasing-clients-for-documents",
+    },
     { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [
@@ -55,7 +59,12 @@ export const guide: Guide = {
       text: [
         "A document request is a checklist you send a client with one secure link. You list what you need — bank statements, a logbook, a signed letter — and XTK emails your client a page where they upload against each line. No account, no password. Files land in that client's folder in your own ",
         { text: "Google Drive, OneDrive or SharePoint", href: "/guides/connect-document-storage" },
-        ", and in Xero Practice Manager (XPM) each item turns from Outstanding to Provided as it arrives.",
+        ", and in Xero Practice Manager (XPM) each item turns from Outstanding to Provided as it arrives. The mechanics are below; ",
+        {
+          text: "the five-step system that stops the chasing",
+          href: "/blog/stop-chasing-clients-for-documents",
+        },
+        " is the practice habit to build around them.",
       ],
     },
     {

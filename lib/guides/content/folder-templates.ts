@@ -23,6 +23,10 @@ export const guide: Guide = {
   ],
   relatedLinks: [
     { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    {
+      label: "The accounting client onboarding checklist: seven steps",
+      href: "/blog/accounting-client-onboarding-checklist",
+    },
   ],
   faq: [
     {
@@ -52,7 +56,12 @@ export const guide: Guide = {
       text: [
         "A folder template is your practice's standard client folder structure, saved once and applied to any client in a couple of clicks. You build the tree in the XTK panel — “Permanent”, “FY[DATE:yyyy] — Tax”, “Correspondence” and whatever else your workflow needs — and then, from a client's ",
         { text: "Documents tab", href: "/guides/manage-client-documents" },
-        ", “Create ▾ → Folder from template” creates the whole structure inside that client's folder. Apply it as often as you like: XTK matches folders by name, so re-applying fills in what's missing and never duplicates anything.",
+        ", “Create ▾ → Folder from template” creates the whole structure inside that client's folder. Apply it as often as you like: XTK matches folders by name, so re-applying fills in what's missing and never duplicates anything. Applying one is usually step two of ",
+        {
+          text: "onboarding a new client",
+          href: "/blog/accounting-client-onboarding-checklist",
+        },
+        ".",
       ],
     },
     {

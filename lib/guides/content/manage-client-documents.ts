@@ -27,6 +27,10 @@ export const guide: Guide = {
   ],
   relatedLinks: [
     { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    {
+      label: "Document management in Xero Practice Manager: four options",
+      href: "/blog/xero-practice-manager-document-management",
+    },
     { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [
@@ -76,7 +80,14 @@ export const guide: Guide = {
     { type: "h2", text: "Open a client's documents" },
     {
       type: "p",
-      text: "Open any client in Practice Manager and click the “Documents” tab — XTK replaces Xero's native Documents tab with its own. What you're looking at is the client's own folder in your practice's storage: files and folders listed with size and modified date, a search box, and a toolbar for everything you can create.",
+      text: [
+        "Open any client in Practice Manager and click the “Documents” tab — XTK replaces ",
+        {
+          text: "Xero's native Documents tab",
+          href: "/blog/xero-practice-manager-document-management",
+        },
+        " with its own. What you're looking at is the client's own folder in your practice's storage: files and folders listed with size and modified date, a search box, and a toolbar for everything you can create.",
+      ],
     },
     {
       type: "image",

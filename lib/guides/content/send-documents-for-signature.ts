@@ -24,6 +24,10 @@ export const guide: Guide = {
   ],
   relatedLinks: [
     { label: "E-signatures that never leave Practice Manager", href: "/blog/e-signatures-inside-xpm" },
+    {
+      label: "E-signature legality for accountants, by jurisdiction",
+      href: "/blog/esignature-legality-for-accountants",
+    },
     { label: "Terms of Service", href: "/legal/terms" },
   ],
   faq: [
@@ -51,7 +55,14 @@ export const guide: Guide = {
   body: [
     {
       type: "p",
-      text: "XTK adds e-signatures to Xero Practice Manager (XPM): pick a PDF from a client's folder, add the people who need to sign, drag fields onto the page, and send. Signers get an emailed link and sign in an ordinary browser — no account, no app, no per-signature fee. When the last one signs, a flattened “… (signed).pdf” with a Certificate of Completion appended lands back in that client's folder.",
+      text: [
+        "XTK adds e-signatures to Xero Practice Manager (XPM): pick a PDF from a client's folder, add the people who need to sign, drag fields onto the page, and send. Signers get an emailed link and sign in an ordinary browser — no account, no app, no per-signature fee. When the last one signs, a flattened “… (signed).pdf” with a Certificate of Completion appended lands back in that client's folder. If the question you actually need answered first is whether an e-signed engagement letter holds up, ",
+        {
+          text: "the legality and the evidence it has to carry",
+          href: "/blog/esignature-legality-for-accountants",
+        },
+        " are covered separately.",
+      ],
     },
     {
       type: "p",
