@@ -16,6 +16,7 @@ export const guide: Guide = {
     alt: "XTK's Documents tab open on a job in Xero Practice Manager, listing the job's working papers, bank statement and engagement letter",
   },
   relatedSlugs: [
+    "quote-documents",
     "manage-client-documents",
     "bulk-file-actions",
     "folder-templates",
@@ -210,7 +211,7 @@ export const guide: Guide = {
     { type: "h2", text: "Everything stays inside the client's folder" },
     {
       type: "p",
-      text: "Move, copy and merge destinations are all fenced to the client that owns the job, and so is search — searching a job's folder never turns up a file from somewhere else in your storage. There is no path through the job tab that files a document into another client's folder, which is the whole point of filing by job rather than by habit.",
+      text: "Move, copy and merge destinations are rooted at the job's own folder, and so is search — searching a job's folder never turns up a file from somewhere else in your storage. There is no path through the job tab that files a document into another client's folder, which is the whole point of filing by job rather than by habit. Re-pointing is the one exception, and it browses one level wider: the client's folder.",
     },
     { type: "h3", text: "Re-point a job to a different folder" },
     {
@@ -277,7 +278,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "In a read-only practice you can still browse and download everything already filed; it's only new folders and uploads that stop. And if you sign out of XTK entirely, the job page goes back to exactly how Xero serves it — Xero's own Documents tab included.",
+      text: [
+        "In a read-only practice you can still browse and download everything already filed; it's only new folders and uploads that stop. And if you sign out of XTK entirely, the job page goes back to exactly how Xero serves it — Xero's own Documents tab included. The same tab, and the same rules, are on every quote page too: see ",
+        { text: "quote documents in Xero Practice Manager", href: "/guides/quote-documents" },
+        ".",
+      ],
     },
   ],
 };

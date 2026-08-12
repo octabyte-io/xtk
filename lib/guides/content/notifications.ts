@@ -78,6 +78,16 @@ export const guide: Guide = {
       width: 1440,
       height: 757,
     },
+    {
+      type: "p",
+      text: [
+        "The bell isn't only on the client-facing pages. It renders on Practice Manager's older screens too — the ",
+        { text: "job", href: "/guides/job-documents" },
+        " and ",
+        { text: "quote", href: "/guides/quote-documents" },
+        " pages, which Xero serves from a different address — with the same tray and the same detail dialogs, so you don't have to go back to the client list to see what's happened.",
+      ],
+    },
     { type: "h2", text: "How do I read and clear the tray?" },
     {
       type: "steps",

@@ -41,6 +41,7 @@ import { guide as setUpClientPortal } from "./content/set-up-client-portal";
 import { guide as billingTrialAndSubscription } from "./content/billing-trial-and-subscription";
 import { guide as clientPortalGuideForClients } from "./content/client-portal-guide-for-clients";
 import { guide as jobDocuments } from "./content/job-documents";
+import { guide as quoteDocuments } from "./content/quote-documents";
 
 /**
  * The guide registry, in no particular order — helpers below sort. To publish
@@ -67,6 +68,7 @@ export const guides: Guide[] = [
   billingTrialAndSubscription,
   clientPortalGuideForClients,
   jobDocuments,
+  quoteDocuments,
 ];
 
 export function formatGuideDate(iso: string): string {

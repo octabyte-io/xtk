@@ -180,6 +180,16 @@ export const guide: Guide = {
     },
     {
       type: "p",
+      text: [
+        "The banner, the launcher and the bell follow you onto Practice Manager's older pages too — the job and quote screens, which Xero serves from a different address. Those two pages get a Documents tab of their own as well: see ",
+        { text: "job documents", href: "/guides/job-documents" },
+        " and ",
+        { text: "quote documents", href: "/guides/quote-documents" },
+        ".",
+      ],
+    },
+    {
+      type: "p",
       text: "The XTK icon in your browser toolbar is a status window rather than a control panel: it shows the email you're signed in with and your trial countdown, plus Upgrade and Log out buttons. Everything you actually do with XTK happens inside Practice Manager itself.",
     },
     {

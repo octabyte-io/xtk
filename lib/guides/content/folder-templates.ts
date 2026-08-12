@@ -19,6 +19,7 @@ export const guide: Guide = {
     "placeholder-reference",
     "manage-client-documents",
     "job-documents",
+    "quote-documents",
     "document-templates",
     "bulk-file-actions",
   ],

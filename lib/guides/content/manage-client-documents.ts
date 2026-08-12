@@ -18,6 +18,7 @@ export const guide: Guide = {
   relatedSlugs: [
     "bulk-file-actions",
     "job-documents",
+    "quote-documents",
     "document-templates",
     "folder-templates",
     "document-requests",
@@ -229,6 +230,8 @@ export const guide: Guide = {
         { text: "the document requests guide", href: "/guides/document-requests" },
         ". And when a document belongs to one piece of work rather than the client as a whole, XTK puts the same Documents tab on the job itself — see ",
         { text: "job documents in Xero Practice Manager", href: "/guides/job-documents" },
+        " — and on the quote, in ",
+        { text: "quote documents in Xero Practice Manager", href: "/guides/quote-documents" },
         ".",
       ],
     },
