@@ -17,6 +17,7 @@ export const guide: Guide = {
   },
   relatedSlugs: [
     "bulk-file-actions",
+    "job-documents",
     "document-templates",
     "folder-templates",
     "document-requests",
@@ -226,6 +227,8 @@ export const guide: Guide = {
         { text: "folder templates", href: "/guides/folder-templates" },
         " for a standard structure. When you need something from the client instead, “Create” → “Request documents” sends them a checklist — that's ",
         { text: "the document requests guide", href: "/guides/document-requests" },
+        ". And when a document belongs to one piece of work rather than the client as a whole, XTK puts the same Documents tab on the job itself — see ",
+        { text: "job documents in Xero Practice Manager", href: "/guides/job-documents" },
         ".",
       ],
     },

@@ -17,6 +17,7 @@ export const guide: Guide = {
   },
   relatedSlugs: [
     "manage-client-documents",
+    "job-documents",
     "set-up-client-portal",
     "connect-document-storage",
   ],

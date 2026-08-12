@@ -18,6 +18,7 @@ export const guide: Guide = {
   relatedSlugs: [
     "placeholder-reference",
     "manage-client-documents",
+    "job-documents",
     "document-templates",
     "bulk-file-actions",
   ],
