@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Account & trust",
   order: 18,
   date: "2026-07-28",
-  updated: "2026-07-28",
+  updated: "2026-08-14",
   readingTime: "12 min read",
   ogImage: "/images/guides/how-xtk-handles-your-data/og.png",
   thumbnail: {
@@ -39,7 +39,7 @@ export const guide: Guide = {
     },
     {
       q: "Does XTK connect to Xero, or see our whole Xero account?",
-      a: "No. XTK is not a Xero OAuth app and holds no Xero credentials — there is no Xero client id, secret or token anywhere in its backend. The extension reads the client data Xero's own pages have already loaded, inside your tab, from a fixed list of seven Practice Manager endpoints covering client details, contacts, custom fields, client and contact search, and the signed-in-user summary. Xero's access token stays in the page and never reaches XTK. Nothing else in Xero — jobs, timesheets, invoices, the ledger — is read at all.",
+      a: "No. XTK is not a Xero OAuth app and holds no Xero credentials — there is no Xero client id, secret or token anywhere in its backend. The extension reads the client data Xero's own pages have already loaded, inside your tab, from a fixed list of seven Practice Manager endpoints covering client details, contacts, custom fields, client and contact search, and the signed-in-user summary. Job and quote pages need one thing more — which client owns this job or quote — read off the page itself where possible, and otherwise from two job-lookup endpoints. Xero's credentials never leave your tab and never reach XTK's servers. Timesheets, invoices and the ledger are never read at all.",
     },
     {
       q: "Do our files ever pass through XTK's servers?",
@@ -84,9 +84,9 @@ export const guide: Guide = {
     {
       type: "list",
       items: [
-        "The extension only runs on Practice Manager. Its content scripts are limited to practicemanager.xero.com plus XTK's own portal at xtk.octabyte.app. It cannot see Xero Blue, your bank's website, or any other tab.",
-        "Only client data is read, from a fixed list. Seven Practice Manager endpoints are allowed: a client's details, contacts and custom field values; the practice-wide custom field definitions; client and contact search; and the signed-in user and practice summary. Every other request the page makes passes through untouched. Jobs, timesheets, invoices and ledgers are never read.",
-        "Xero's access token never leaves the page. The short-lived token authorising those reads stays inside Xero's own JavaScript context — never stored by the browser, never passed to the rest of the extension, never sent to XTK.",
+        "The extension only runs on Practice Manager. Its content scripts are limited to Practice Manager's own two hosts — practicemanager.xero.com, which is also where Xero serves Partner Hub, and the older app.practicemanager.xero.com that job and quote pages still come from — plus XTK's own portal on octabyte.app. It cannot see Xero Blue, your bank's website, or any other tab.",
+        "Only client, job and quote data is read, from a fixed list. Seven Practice Manager endpoints are allowed for client data: a client's details, contacts and custom field values; the practice-wide custom field definitions; client and contact search; and the signed-in user and practice summary. Two more answer a narrower question — which client owns this job — and are used only when the page cannot answer it for free. Every other request the page makes passes through untouched, and timesheets, invoices and ledgers are never read.",
+        "Xero's credentials never leave your tab. Client data is read from responses inside Xero's own JavaScript context, so the token authorising it is never touched at all. The two job lookups are the exception worth stating plainly: they need Xero's short-lived shell token, so XTK reads it fresh from the page at the moment of use and discards it. It is never written to extension storage, and never sent to XTK's servers.",
         "The snapshot is memory-only. It lives in the tab while you work and disappears on refresh or when you close it. Close your Xero tab and XTK simply has no client data to show.",
       ],
     },
@@ -102,6 +102,16 @@ export const guide: Guide = {
         "Being precise matters more than sounding absolute. The snapshot itself is never uploaded, but some values in it travel when you act on them. Generating a document from a template sends the finished list of filled-in values — the ones you reviewed in the fill dialog — to the backend, because that's where the Word engine runs; they render your file and are not saved. Sending a signature or ",
         { text: "document request", href: "/guides/document-requests" },
         " saves that request: the client's name, the recipient's name and email, your subject and message. Inviting a portal contact saves their name and email. Each notification keeps a snapshot line naming the client and files involved. All of it is data you typed or confirmed on the way to sending something — but it is on XTK's servers, and this page would be dishonest not to say so.",
+      ],
+    },
+    {
+      type: "p",
+      text: [
+        "One more record exists that you never type. Opening the Documents tab on ",
+        { text: "a job", href: "/guides/job-documents" },
+        " or ",
+        { text: "a quote", href: "/guides/quote-documents" },
+        " stores the fact that this job number belongs to that client, alongside the job's or quote's name and Xero's own identifiers for it. It is the practice-wide index that lets the same job open the same folder from either of the two web addresses Practice Manager serves it at, and it is why the second visit needs no lookup. It holds numbers, names and the link between them — never the job's financial detail, and never a document.",
       ],
     },
     { type: "h2", text: "Where do our client files live?" },

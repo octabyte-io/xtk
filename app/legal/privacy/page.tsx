@@ -159,8 +159,20 @@ export default function PrivacyPolicy() {
         document engine (downloads, zips, PDF merges, template generation and
         flattening a signed PDF) stream bytes through our backend in flight, but
         nothing is written to disk or kept in our database. Nothing in Xero beyond
-        client details, contacts and custom fields is read at all — not jobs,
-        timesheets, invoices or the ledger.
+        client details, contacts and custom fields, and the job and quote identity
+        described below, is read at all — not timesheets, not invoices, not the
+        ledger.
+      </P>
+      <H3>Job and quote identity</H3>
+      <P>
+        Opening the Documents tab on a job or a quote stores which client owns
+        that job or quote, together with its number, its name and Xero&rsquo;s own
+        identifiers for it. This is what lets the same job resolve to the same
+        folder from either of the two web addresses Practice Manager serves it at.
+        Reading it uses Xero&rsquo;s short-lived page credentials in your own tab,
+        at the moment of use, and never stores or transmits them. We hold the
+        numbers, the names and the link between them — never a job&rsquo;s
+        financial detail, and never a document.
       </P>
 
       <H3>Diagnostics</H3>

@@ -32,7 +32,7 @@ export type LegalPage =
  * them with `formatLegalDate()`.
  */
 export const LEGAL_UPDATED = {
-  privacy: "2026-07-29",
+  privacy: "2026-08-14",
   terms: "2026-07-28",
   dpa: "2026-07-28",
   subprocessors: "2026-07-28",
