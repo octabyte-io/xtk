@@ -555,7 +555,14 @@ export const posts: Post[] = [
         type: "list",
         ordered: true,
         items: [
-          "No structure that survives people. Folders inside Practice Manager have no template and no enforcement, so “2026 / Tax / Workpapers” is a convention rather than a rule, and three people will express it three ways.",
+          [
+            "No structure that survives people. Folders inside Practice Manager have no template and no enforcement, so “2026 / Tax / Workpapers” is a convention rather than a rule, and three people will express it three ways. The layer most practices reach for first is ",
+            {
+              text: "a folder per job and per quote",
+              href: "/blog/xero-practice-manager-job-documents",
+            },
+            ", which XPM cannot give you in storage you own.",
+          ],
           "The 16MB ceiling. A scanned bundle of source records, a financial statement pack, a set of photographed receipts — these routinely exceed it, and the workaround is always email.",
           "No version history. When you cannot see what changed, filenames start doing that job, which is how a folder ends up holding Accounts_FINAL, Accounts_FINAL_v2 and Accounts_FINAL_JS.",
           [
@@ -2463,6 +2470,545 @@ export const posts: Post[] = [
       {
         q: "Do we have to delete records once the retention period ends?",
         a: "You have to consider it, and in some places act on it. Article 5(1)(e) of the UK GDPR permits personal data to be kept no longer than is necessary for the purpose, and Australian Privacy Principle 11.2 requires reasonable steps to destroy or de-identify personal information no longer needed, unless a law or court order requires retention. In practice this means a retention policy needs a deletion step with a named owner and a log, not merely a maximum period.",
+      },
+    ],
+  },
+  {
+    slug: "xero-practice-manager-job-documents",
+    title: "Filing by client isn't enough: job and quote documents in XPM",
+    excerpt:
+      "One folder per client stops working around year three. Filing by job and quote is the fix — but only if you settle four things first: what the folder is called, when it comes into existence, what happens to the folders you already made by hand, and whose storage it sits in.",
+    date: "2026-08-14",
+    readingTime: "13 min read",
+    category: "Guides",
+    author: { name: "The XTK team", role: "Product" },
+    ogImage: "/images/blog/xero-practice-manager-job-documents/og.png",
+    thumbnail: {
+      src: "/images/blog/xero-practice-manager-job-documents/thumb.png",
+      alt: "Two Practice Manager web addresses for the same job — one reached from Job Manager carrying a uuid, one reached from the client's Jobs tab carrying a numeric id — converging on a single folder, Acme Trading Ltd / Jobs / J000042 - FY25 Tax Return, composed from the job's own number and name, above a note that keying the folder on the address instead splits one job across two folders",
+    },
+    relatedSlugs: [
+      "xero-practice-manager-document-management",
+      "organise-client-documents-google-drive",
+      "how-long-accountants-keep-client-records",
+    ],
+    relatedLinks: [
+      { label: "Job documents in Xero Practice Manager", href: "/guides/job-documents" },
+      { label: "Quote documents in Xero Practice Manager", href: "/guides/quote-documents" },
+      { label: "Folder templates", href: "/guides/folder-templates" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Under the client, in a Jobs layer, in a folder named from the job's own number and name — Acme Trading Ltd / Jobs / J000042 - FY25 Tax Return — with a sibling Quotes layer beside it. That is the short answer, and Xero Practice Manager will not quite give it to you. XPM has attached documents to jobs and quotes for years. What it has never had is a folder for the job in storage you own.",
+      },
+      {
+        type: "p",
+        text: [
+          "This article is about the layer between those two facts: the case for filing at job and quote level at all, and the four decisions that make it work or make it worse. It is deliberately not a tool review — ",
+          { text: "which system to keep documents in", href: "/blog/xero-practice-manager-document-management" },
+          " is a different question, already answered on this blog, and every convention below can be run by hand in a bare Google Drive by a practice that installs nothing.",
+        ],
+      },
+      { type: "h2", text: "What can Practice Manager attach a document to?" },
+      {
+        type: "p",
+        text: [
+          "A client, a job or a quote — estimates included, since XPM treats those as quotes. Files go into Practice Manager itself, where any other user in your practice can see and download them, and you can group them into folders inside XPM. Uploads are capped at ",
+          {
+            text: "16MB per file",
+            href: "https://central.xero.com/s/article/Upload-manage-documents-in-Practice-Manager-US-CA-SG-SA-HK-MY-ROW",
+          },
+          ", as of August 2026.",
+        ],
+      },
+      {
+        type: "p",
+        text: "That set of features has a real sweet spot, and it is worth naming before arguing past it: a signed form belonging to one particular job, a photograph attached to a note, a piece of correspondence that will only ever be looked for from the job it relates to. If that describes your document flow, the rest of this article is solving a problem you do not have.",
+      },
+      { type: "h2", text: "Why isn't one folder per client enough?" },
+      {
+        type: "p",
+        text: "Because a folder per client is sized for the client and the work is sized by the job. Do the arithmetic on a single compliance client: four to six jobs a year, eight to fifteen documents each. By year three that folder holds two hundred files. By year six it holds four hundred, and its only organising principle is whatever each person typed into the filename box in the moment.",
+      },
+      {
+        type: "p",
+        text: "Three specific things break, and none of them is tidiness.",
+      },
+      {
+        type: "list",
+        items: [
+          "Search stops disambiguating. Nine files called Working papers.xlsx, six called Signed accounts.pdf, and the only way to tell them apart is the modified date — which is the date someone last opened the file, not the year the work belongs to.",
+          "Nobody can tell one year from the next without opening files. FY24's bank statement and FY25's are two rows apart and identically named, and the person deciding which is which is usually the newest member of staff.",
+          [
+            "The retention purge becomes an excavation. If nothing in the structure says which year a document belongs to, then ",
+            { text: "destroying records at the end of their period", href: "/blog/how-long-accountants-keep-client-records" },
+            " means opening them one at a time, six years later, to find out. Most practices quietly decide not to, and keep everything forever instead.",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "The fix is not a tidy-up. A tidy-up loses to the next busy season. The fix is a layer, so that filing correctly is the path of least resistance rather than an act of discipline.",
+      },
+      { type: "h2", text: "Should a job's documents live under the job or the client?" },
+      {
+        type: "p",
+        text: "File against the record the work belongs to. A job owns the paperwork produced in doing it. A quote owns the paperwork produced in winning it. The client keeps only what outlives every job — and that last part is what stops a client folder turning into a folder of nothing but folders.",
+      },
+      {
+        type: "list",
+        items: [
+          "The job owns working papers, checklists, the year's source records, the queries and their answers, the final signed accounts for that year.",
+          "The quote owns the proposal, the fee schedule, the scope of work, and the version the client actually said yes to.",
+          [
+            "The client keeps what is true across all of them: identity and due diligence evidence, the engagement letter, standing correspondence, permanent records such as the trust deed or the incorporation documents. This is the layer ",
+            { text: "a sane client folder structure", href: "/blog/organise-client-documents-google-drive" },
+            " already describes, and it does not go away — the Jobs and Quotes layers sit beside it.",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "The reason to state the rule as a rule is that every alternative key looks reasonable and fails. Filing by the person who did the work loses the file when they leave. Filing by date loses it when the work spans a year end. Filing by the route you happened to browse is the worst of the three, and it is also the most common — which is the subject of the next two sections.",
+      },
+      { type: "h2", text: "How should a job folder be named?" },
+      {
+        type: "p",
+        text: "Number first, then the name. XPM gives every job a number, and that number is the only part of a job's identity that is unique across the practice and stable over time.",
+      },
+      {
+        type: "quote",
+        text: "Acme Trading Ltd / Jobs / J000042 - FY25 Tax Return",
+      },
+      {
+        type: "p",
+        text: "A name-only convention hits three collisions, and they arrive in this order:",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "The same job name across many clients. Two hundred clients have a job called FY25 Tax Return. Inside one client's folder that is survivable; the moment anything lists folders across clients, or anyone moves a folder by accident, it is not.",
+          "The same name across years for one client. FY24 Tax Return and FY25 Tax Return are fine until someone renames one of them to Tax Return, which happens because the person renaming it is looking at one folder and not at the pair.",
+          "A job renamed mid-engagement. The scope changes in March, somebody updates the job in XPM, and now the folder name and the job name disagree for the rest of the file's life. With the number in front, they still match on the part that matters.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The number also sorts. XPM numbers ascend, so a folder listing sorted by name is a folder listing in the order the work was taken on, which is very close to chronological and free.",
+      },
+      { type: "h2", text: "Why does one job end up with two folders?" },
+      {
+        type: "p",
+        text: "Because Practice Manager serves the same job at more than one web address. Arrive at a job from Job Manager and the address carries one identifier; arrive at the same job from the client's own Jobs tab and it carries another. Two addresses, one job — and both are pages a member of staff will genuinely be standing on when they file something.",
+      },
+      {
+        type: "p",
+        text: "This is the trap under any filing scheme that keys on the page rather than on the job, including a browser extension and including a person following a convention by hand. If the address is what decides the folder, the same job collects two folders, each holding half the engagement, and neither one obviously wrong. The fix is to key on the job's identity — number and name — and treat the address as nothing more than how you got here.",
+      },
+      {
+        type: "callout",
+        title: "Worth checking in your own practice today",
+        text: "Open a job from Job Manager, note the address bar, then open the same job from that client's Jobs tab and compare. If your filing convention would have produced two different folders from those two pages, you have this problem already, and the cheapest time to find out is before six years of documents are filed against it.",
+      },
+      { type: "h2", text: "Where does a quote's paperwork go — under the quote, or under the job?" },
+      {
+        type: "p",
+        text: "Under the client, in a Quotes layer that sits beside Jobs. Never inside the job, even though XPM will happily walk you between the two: a quote's page links back to a job, and a job's Financial tab lists the quotes raised against it. That link is navigation, not ownership.",
+      },
+      {
+        type: "p",
+        text: "The failure it prevents is specific. File a quote by the route the person took and the same quote's proposal lands in two different places depending on whether they reached it from Quote Manager or from the job — so the answer to “where is the signed proposal?” becomes “it depends who filed it”. One quote, one folder, under the client whose work it is.",
+      },
+      {
+        type: "p",
+        text: "One XPM quirk is worth knowing while you are here: quotes and estimates are the same record on the same screen, which XPM heads “Quotes and estimates”, and both get a Q number. If your practice says estimate where this article says quote, it is the same page and the same filing rule.",
+      },
+      { type: "h2", text: "Should the folder exist before anyone puts a file in it?" },
+      {
+        type: "p",
+        text: "This is the one genuine judgement call of the four, and both answers are defensible.",
+      },
+      {
+        type: "p",
+        text: [
+          "Create the folder when the job is saved and it is waiting for whoever files first, which matters if your team's instinct is to drag a file into Drive rather than to open a documents tab. This is the older convention and it is what a practice document management system typically does — SuiteFiles, for one, ",
+          {
+            text: "prompts you to create the folder as you save a new job",
+            href: "https://help.suitefiles.com/using-the-xero-practice-manager-and-suitefiles-integration",
+          },
+          " (checked 13 August 2026).",
+        ],
+      },
+      {
+        type: "p",
+        text: "The cost is empty folders, and the arithmetic is not small. Every quote you did not win gets one. Every job cancelled before it started gets one. Every job a recurring template generated gets one, whether or not anyone ever touched it — so a 300-client practice running quarterly jobs manufactures something over a thousand folders a year, most of them empty, all of them indistinguishable from the folders that matter. Six years of that is what makes a Drive unsearchable.",
+      },
+      {
+        type: "p",
+        text: "Create the folder the first time somebody opens the job's documents and the sprawl disappears, because a job nobody ever opened gets nothing. The cost is that the folder is not there in advance for anyone working outside the tab. Pick according to where your team actually files: if they live in XPM, create late; if they live in Drive, create early and accept the sprawl.",
+      },
+      { type: "h2", text: "Four ways to file at job level" },
+      {
+        type: "p",
+        text: "The convention above is independent of what you use to run it. Four approaches, honestly:",
+      },
+      {
+        type: "table",
+        head: ["Approach", "Where files live", "Folder per job", "Cost shape"],
+        rows: [
+          ["XPM Documents tab", "In Practice Manager", "Folders inside XPM", "Included"],
+          ["Your Drive, by hand", "Your own storage", "If someone makes it", "Storage only"],
+          ["Practice DMS", "The vendor's system", "Usually on save", "Per user, banded"],
+          ["XTK", "Your own storage", "On first open", "Flat, per practice"],
+        ],
+        caption:
+          "A practice DMS wins things this table cannot show: version history, records management, email filing into the client, and workflow around the documents. A firm that needs those should buy one, and job folders will come as part of it.",
+      },
+      {
+        type: "p",
+        text: [
+          "By hand is a real option and it is underrated — a folder template, a naming rule written down, and a partner who enforces it will beat most software. It fails on the two-address problem and on nothing else, because a human being reads the job header rather than the URL. What it costs is attention, permanently. The full ",
+          { text: "comparison of the systems themselves", href: "/blog/document-management-for-xero-practices-compared" },
+          " covers the vendor question in more detail than a four-column table can.",
+        ],
+      },
+      { type: "h2", text: "How XTK files a job and a quote" },
+      {
+        type: "p",
+        text: [
+          "XTK puts its own Documents tab on every job and quote page in Practice Manager, in the position Xero's own Documents tab occupied, and files into your practice's own Google Drive, OneDrive or SharePoint. The two guides — ",
+          { text: "job documents", href: "/guides/job-documents" },
+          " and ",
+          { text: "quote documents", href: "/guides/quote-documents" },
+          " — are the step-by-step versions. What is worth stating here is how it answers the four decisions above, because they were real decisions and it could have answered them differently.",
+        ],
+      },
+      {
+        type: "list",
+        items: [
+          "The folder is <client>/Jobs/<number> - <name>, with Quotes as a sibling of Jobs, so the name is composed from the job's number and name rather than scraped from whichever page you are on.",
+          "Both of XPM's addresses for a job resolve to the same folder. That is the two-address problem handled once, centrally, rather than by asking staff to notice.",
+          "A correctly named folder you already made by hand is adopted, contents and all, rather than migrated or duplicated. If two folders match the name, XTK stops and asks you to choose, and creates nothing while it waits.",
+          "Nothing is created until somebody opens the tab. Jobs nobody opens get no folders — the late-creation side of the decision above.",
+          "Rename the folder in Drive afterwards and XTK keeps pointing at it. It follows the folder, not the name.",
+          "Moving, copying, merging and searching are all fenced inside the folder, so there is no path through a job's tab that files a document into a different client. Re-pointing is the single exception and it cannot leave the client's own folder.",
+          "Uploads are 100MB per file, and go from your browser straight to Google or Microsoft.",
+        ],
+      },
+      {
+        type: "callout",
+        title: "A job's tab is files-only, and that is a real limitation",
+        text: [
+          "Four things on a client's Documents tab are absent on a job or a quote: generating a file from a template, requesting documents, sending for signature, and sharing to the client portal. All four need the client's own details — someone to email, an address to merge — and XPM's older job and quote pages do not carry them. Do those from the client's tab; the files land in the same storage either way. If sending an engagement letter for signature from the job page is the thing you wanted, ",
+          { text: "it works from the client", href: "/blog/accounting-client-onboarding-checklist" },
+          " and not from here.",
+        ],
+      },
+      { type: "h2", text: "A convention you can adopt this week" },
+      {
+        type: "p",
+        text: "No software required. Inside each client's folder, three evergreen folders and two layers:",
+      },
+      {
+        type: "quote",
+        text: "Acme Trading Ltd / — Engagement, Identity, Correspondence — Jobs/, Quotes/",
+      },
+      {
+        type: "list",
+        items: [
+          "Name every job folder <job number> - <job name>, copied from the job header in XPM rather than typed from memory.",
+          "Name every quote folder <quote number> - <quote name>, in Quotes, under the client — never inside the job it relates to.",
+          "Put the year in the job name if your job names do not already carry it, because the year is what a retention purge reads.",
+          [
+            "Write the rule down in one paragraph, and turn the inside of a job folder into ",
+            { text: "a folder template", href: "/guides/folder-templates" },
+            " so the structure arrives without anyone deciding it.",
+          ],
+          "Do not backfill six years of history. Start from the current year's jobs and let the old pile be the old pile — a convention that only applies going forward still fixes the problem within one busy season.",
+        ],
+      },
+      {
+        type: "p",
+        text: "That is the whole thing, and the reason to write it down rather than buy it is that the convention is what makes any tool work. A practice that has never agreed where a job's paperwork goes will not have that decided for it by software; it will simply make the same disagreement faster.",
+      },
+      {
+        type: "callout",
+        title: "XTK and Xero",
+        text: "XTK is an independent product and is not affiliated with or endorsed by Xero Limited. XPM's 16MB upload limit and native document behaviour were checked against Xero Central on 14 August 2026, and SuiteFiles' folder-creation prompt against its own help documentation on 13 August 2026. Product limits change — verify anything you intend to rely on.",
+      },
+    ],
+    faq: [
+      {
+        q: "Can Xero Practice Manager store documents against a job?",
+        a: "Yes. XPM's Documents tab attaches files to a client, a job or a quote, stores them in Practice Manager itself, lets you group them into folders inside XPM, and makes them visible to other users in your practice. As of August 2026 the upload limit is 16MB per file. What it does not do is create a folder for the job in storage your practice owns, which is what a document management system or a layer over your own Drive adds.",
+      },
+      {
+        q: "How should we name job folders for a Xero practice?",
+        a: "Put the job number first, then the job name: J000042 - FY25 Tax Return. The number is the only part of a job's identity that is unique across the practice and stable when the job is renamed, and because XPM's job numbers ascend, sorting folders by name also sorts them roughly chronologically. A name-only convention collides three ways: the same job name across many clients, the same name across years for one client, and a job renamed mid-engagement.",
+      },
+      {
+        q: "Should a quote's documents be filed under the quote or under the job?",
+        a: "Under the client, in a Quotes layer beside Jobs — not inside the job. XPM links quotes and jobs together in both directions, but that link is navigation rather than ownership. If you file by the route the person took, the same quote's proposal ends up in two places depending on whether they arrived from Quote Manager or from the job's Financial tab, so the answer to where the signed proposal lives becomes a question about who filed it.",
+      },
+      {
+        q: "Do estimates get their own folder?",
+        a: "Yes, and in the same place as quotes. Practice Manager keeps quotes and estimates as one record on one screen, headed “Quotes and estimates”, and gives both a Q number, so an estimate files into the Quotes layer exactly as a quote does. If your practice uses the word estimate where this article says quote, it is the same page and the same rule.",
+      },
+      {
+        q: "Why does the same job sometimes get two document folders?",
+        a: "Because Practice Manager serves the same job at more than one web address, depending on whether you reached it from Job Manager or from the client's Jobs tab. Any filing scheme that keys on the page rather than on the job — software or human convention — can produce one folder per address, each holding half the engagement. Keying on the job's number and name instead makes both routes resolve to the same folder.",
+      },
+      {
+        q: "What happens to job folders if we stop paying for the tool that made them?",
+        a: "That depends entirely on whose storage they were in, which is why it belongs in the decision rather than after it. Folders created in your own Google Drive, OneDrive or SharePoint stay exactly where they are as ordinary folders, readable without the tool that created them. Folders created inside a vendor's own system leave with the subscription, and exporting them is a migration project rather than a setting — a distinction that matters most for the documents still inside a statutory retention period.",
+      },
+    ],
+  },
+  {
+    slug: "xero-partner-hub-what-happens-to-your-documents",
+    title: "Partner Hub is absorbing Practice Manager. What about your documents?",
+    excerpt:
+      "Xero is folding Practice Manager, Xero HQ, Workpapers and Xero Tax into one product, and most regions have already moved. Across every page Xero has published about it, the word “document” does not appear once — which is the most useful thing to notice.",
+    date: "2026-08-14",
+    readingTime: "12 min read",
+    category: "Practice tips",
+    author: { name: "The XTK team", role: "Product" },
+    ogImage: "/images/blog/xero-partner-hub-what-happens-to-your-documents/og.png",
+    thumbnail: {
+      src: "/images/blog/xero-partner-hub-what-happens-to-your-documents/thumb.png",
+      alt: "Four Xero products — Xero HQ, Practice Manager, Workpapers and Xero Tax — merging into a single Partner Hub navigation listing Clients, Insights, Tax, Payroll, Report templates, Ask, Jobs, Time and Billing, beside a separate column for client documents that is not named anywhere in the announcement",
+    },
+    relatedSlugs: [
+      "xero-practice-manager-job-documents",
+      "xero-practice-manager-document-management",
+      "how-long-accountants-keep-client-records",
+    ],
+    relatedLinks: [
+      { label: "How XTK handles your data", href: "/guides/how-xtk-handles-your-data" },
+      { label: "Job documents in Xero Practice Manager", href: "/guides/job-documents" },
+      { label: "Get started", href: "/get-started" },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Nothing, as far as Xero has said — and that is the thing worth noticing rather than a reassurance. Xero Partner Hub brings Xero HQ, Xero Practice Manager, Xero Workpapers and Xero Tax together into one product, with one navigation and one client and staff list. Xero says every feature you use today comes with you, your data is switched over for you, and pricing does not change. Across the six pages Xero has published about Partner Hub, the word “document” does not appear once.",
+      },
+      {
+        type: "p",
+        text: "That is not a criticism of the release, which looks like a carefully run consolidation. It is an observation about scope. Practice management is being unified; document management was never part of what was being unified, because Practice Manager's document handling was never the part of it Xero was building on. So the migration is a good moment to ask a question that outlives it: when your practice software is reorganised by its vendor, what happens to the client files?",
+      },
+      { type: "h2", text: "What is Xero Partner Hub, and what does it absorb?" },
+      {
+        type: "p",
+        text: [
+          "One workspace replacing four products. Xero describes it as bringing ",
+          {
+            text: "everything you use today across Xero HQ, Xero Practice Manager, Xero Workpapers and Xero Tax",
+            href: "https://www.xero.com/nz/campaign/partner-hub/",
+          },
+          " into a single centralised experience, connecting your existing data as one source of truth. It was announced at Xerocon Brisbane and shaped, Xero says, by feedback from more than 9,000 practices.",
+        ],
+      },
+      {
+        type: "p",
+        text: [
+          "The navigation is the clearest statement of scope. In the UK it reads Clients, Insights, Tax, Payroll, Report templates and Ask — and, ",
+          {
+            text: "if you use Xero Practice Management tools",
+            href: "https://blog.xero.com/product-updates/xero-partner-hub-now-live/",
+          },
+          ", Jobs, Time and Billing alongside them. The homepage is the other half of the pitch: widgets for bank feed status, unreconciled items, an organisation watchlist, a job pipeline showing overdue and due-soon work, and productivity against target. There is also a new workpapers solution built with BGL, and JAX, Xero's AI assistant, sitting across it.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Read that list again as a document manager would. Client records, compliance, workflow, time, billing, tax, insights. It is a thorough list, and there is nowhere in it that a signed engagement letter lives.",
+      },
+      { type: "h2", text: "When does my practice move?" },
+      {
+        type: "p",
+        text: "Most regions have already moved. The transition is automatic and staged by region, and two of the biggest Practice Manager markets are the last two on the list.",
+      },
+      {
+        type: "table",
+        head: ["Region", "Status", "How you move"],
+        rows: [
+          ["United Kingdom", "Live for all partners", "Already done"],
+          ["US, Canada, Ireland", "Live for all partners", "Already done"],
+          [
+            "Singapore, Hong Kong",
+            "Live for all partners",
+            "Already done",
+          ],
+          [
+            "Indonesia, Malaysia, Philippines, South Africa",
+            "Live for all partners",
+            "Already done",
+          ],
+          ["New Zealand", "Automatic from mid-June", "Opt in, or wait"],
+          ["Australia", "Automatic from September", "Opt in, or wait"],
+        ],
+        caption:
+          "Read from Xero's own announcement posts and its regional Partner Hub pages on 14 August 2026. The regional pages state the month without a year; the Australian page was still advising partners to opt in before the automatic move at the time of reading. Check your own region's page for the current position.",
+      },
+      {
+        type: "p",
+        text: [
+          "Australia is the one with a date still ahead of it, and it is a large one — Xero says ",
+          {
+            text: "over 4,000 Australian practices",
+            href: "https://www.xero.com/au/campaign/partner-hub/",
+          },
+          " are already using Partner Hub voluntarily. If your practice is in Australia and has not opted in, the move is coming automatically and the useful thing to do with the remaining weeks is in the checklist further down.",
+        ],
+      },
+      { type: "h2", text: "What has Xero actually promised?" },
+      {
+        type: "p",
+        text: "More than most vendors do during a consolidation, and it is worth quoting rather than paraphrasing. Three commitments run through every page.",
+      },
+      {
+        type: "list",
+        items: [
+          [
+            "Features survive. ",
+            {
+              text: "All the features you use today will still be there",
+              href: "https://blog.xero.com/product-updates/xero-partner-hub/",
+            },
+            ", and the regional pages repeat it in the specific form that matters here — all of the core features and functionality you use today in Practice Manager, Xero Tax and Xero HQ will be available in Partner Hub.",
+          ],
+          "Data moves for you. Xero switches you over with your existing data, with no heavy lifting required from the practice, and says there is no change to access.",
+          "Pricing does not change. Moving to Partner Hub does not affect how you use or pay for your practice tools. Australia's page states it flatly: no associated pricing or partner program changes. Practice Management itself remains free for Silver partners and above, or a paid upgrade otherwise.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Take those at face value. There is no reason on the public record to expect a practice to lose anything in this move, and an article that implied otherwise would be scaremongering about a migration that thousands of firms have already been through without incident.",
+      },
+      { type: "h2", text: "So why does this matter for documents?" },
+      {
+        type: "p",
+        text: "Because “all your existing features are preserved” is a promise about continuity, not about investment. It tells you nothing will be taken away in the move. It does not tell you which parts of the product are being built on afterwards — and the navigation, the homepage widgets, the workpapers partnership and the AI assistant together make a fairly clear statement about where the next few years of effort are going.",
+      },
+      {
+        type: "p",
+        text: [
+          "Practice Manager's own document handling was already the thin part of the product before any of this: files attached to a client, job or quote, stored inside Practice Manager, capped at 16MB each, with folders but no template, no version history and nothing client-facing. That was ",
+          { text: "the honest state of it", href: "/blog/xero-practice-manager-document-management" },
+          " a year ago and the consolidation does not change it either way. What the consolidation does is make the question urgent for a few thousand practices at once: if the platform your documents sit inside is being reorganised by someone else, whose decision is it where your documents live?",
+        ],
+      },
+      {
+        type: "callout",
+        title: "The question a migration always asks and rarely states",
+        text: [
+          "Not “will I lose my files”, which is almost never what happens. The real one is whether your documents are inside a product whose roadmap belongs to a vendor, or in storage that belongs to your practice. That question is the same one a ",
+          { text: "seven-year retention period", href: "/blog/how-long-accountants-keep-client-records" },
+          " asks, and a platform consolidation is simply the version of it that arrives with a date attached.",
+        ],
+      },
+      { type: "h2", text: "The part you can check yourself in twenty seconds" },
+      {
+        type: "p",
+        text: "Partner Hub is a new shell over pages of very different ages, and your address bar will tell you which is which. Open a client and you are on the new application, at practicemanager.xero.com. Now open one of that client's jobs, or a quote, and look again: you land on app.practicemanager.xero.com, on a page whose filename ends in .aspx — the older Practice Manager, still doing the work, wearing the new navigation.",
+      },
+      {
+        type: "p",
+        text: [
+          "This is genuinely useful information rather than a gotcha. It shows you where the modernisation has reached and where it has not, and it tells you that the job and quote pages — the ones where ",
+          { text: "documents attach to a specific piece of work", href: "/blog/xero-practice-manager-job-documents" },
+          " — are the older surface rather than the new one. If you are deciding how much to invest in filing inside those pages, that is a relevant fact, and it is one you can verify without taking anybody's word for it.",
+        ],
+      },
+      { type: "h2", text: "What to do before your region's date" },
+      {
+        type: "p",
+        text: "Five things, none of which need any product you do not already have. The first two are the ones that actually matter.",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Find out where your client documents live today, honestly. Not the policy — the reality. If the answer is “some in the XPM Documents tab, some in a shared Drive, some in the partner's email”, write that down, because it is the thing a platform change tests.",
+          "Get anything that lives only inside Practice Manager out of it, or accept that it is a copy of record you do not control. Files in XPM's Documents tab are the ones with no existence outside the product, and they are also the ones nobody has a list of.",
+          "Check the staff merge. Xero combines the staff records from Xero HQ and Practice Manager or Xero Tax into a single list, with one record per person. Merged records mean merged permissions, so review who can see what afterwards rather than assuming it carried across as it was.",
+          "Ask your add-ons where they stand. Anything integrating with Practice Manager has had to follow this migration too, and a vendor who cannot tell you their status is telling you something.",
+          "Diarise the date and read the email. The transition is automatic; the only thing worse than being moved is being moved on a Monday in the middle of a filing deadline without having read the notice.",
+        ],
+      },
+      { type: "h2", text: "The other Xero change your add-ons are dealing with" },
+      {
+        type: "p",
+        text: [
+          "Worth knowing while you are asking vendors where they stand, because it lands on the same practices from the other direction. On 2 March 2026 Xero retired its App Store revenue-share model and began ",
+          { text: "pricing API access", href: "https://developer.xero.com/pricing" },
+          " on two things instead: how many Xero customers connect to an app, and how much data that app pulls out. Five tiers, from a free Starter capped at five connections to Advanced at A$1,445 a month for 10,000 connections and 250GB of egress, with overage at A$2.40 per GB and Enterprise priced on application.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The detail that matters for a Practice Manager firm is buried in the benefits table. The Practice Manager API is a premium feature: not included at Starter, Core or Plus, available only from the Advanced tier upwards, and gated behind a security assessment and use-case approval. So an add-on that integrates with XPM the official, supported way now starts at a four-figure monthly platform bill and an approval process before it has served a single practice.",
+      },
+      {
+        type: "p",
+        text: "It is Xero's platform and metering heavy data use is a defensible thing to do. The ecosystem's objection has been about who ends up paying: Dext's chief product and technology officer described the costs as something end customers will ultimately pay as another tax, and a former Xero ecosystem strategist called charging a developer for access to a customer's data double-dipping, since the customer already pays for Xero. Whatever you make of that argument, the arithmetic reaches your practice through the price of your app stack rather than through your Xero bill, which is why it is worth asking about now rather than discovering at renewal.",
+      },
+      { type: "h2", text: "The durable version of the question" },
+      {
+        type: "p",
+        text: "Partner Hub will not be the last reorganisation of the software your practice runs on. There was a Practice Manager before this one, there is a workpapers product changing hands to BGL inside this very release, and there will be another consolidation in five years that nobody has announced yet. Each one arrives with the same reassurances, and most of them are kept.",
+      },
+      {
+        type: "p",
+        text: "What decides whether any of it touches your client documents is not the quality of the vendor's migration. It is whether the documents were in the vendor's product to begin with. Files in your practice's own Google Drive, OneDrive or SharePoint are unaffected by a navigation change, a product merger, a rebrand or a cancellation, because nothing about them was ever the vendor's to move. That is a boring property, and boring is the entire point.",
+      },
+      { type: "h2", text: "Where XTK sits in this" },
+      {
+        type: "p",
+        text: [
+          "XTK runs inside Partner Hub today, because Partner Hub is served from practicemanager.xero.com and that is where XTK has always worked. It adds its document panel to the client pages there and to the older job and quote pages on app.practicemanager.xero.com, and it files everything into your practice's own Drive, OneDrive or SharePoint. Nothing about the transition required a change, and nothing about it moved a file: the files were never in Practice Manager. It is also outside the API pricing change above, because it is not a Xero OAuth app, holds no Xero credentials, has no App Store listing and makes no Practice Manager API calls — it reads what your own signed-in tab has already loaded, so there are no connections to meter and no egress to bill. One flat price for the practice, unchanged by any of this. That is the whole of the claim — ",
+          { text: "how it reads your Xero data", href: "/guides/how-xtk-handles-your-data" },
+          " is written out in full, hedges included.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The fair caveat: XTK is a browser extension that renders inside Xero's pages, so it depends on those pages continuing to look roughly as they do. A large enough change on Xero's side is a problem for XTK in a way it is not for the documents themselves — which is exactly the distinction this article is about, and it cuts towards XTK's own architecture rather than away from it. Your files stay ordinary files in your own storage whatever happens to the panel.",
+      },
+      {
+        type: "callout",
+        title: "Sources and date · last checked 14 August 2026",
+        text: "Every quotation and date here was read on 14 August 2026 from Xero's own announcement posts and its regional Partner Hub pages, linked throughout. Rollout dates are stated by Xero as months rather than exact days and differ by region, so check your own region's page rather than relying on the table above. XTK is an independent product and is not affiliated with or endorsed by Xero Limited.",
+      },
+    ],
+    faq: [
+      {
+        q: "What is Xero Partner Hub?",
+        a: "A single workspace that replaces four separate Xero products: Xero HQ, Xero Practice Manager, Xero Workpapers and Xero Tax. It puts client management, compliance work, jobs, time and billing under one navigation, adds a homepage of widgets covering bank feed status, unreconciled items, job pipeline and productivity against target, and includes a new workpapers solution built with BGL and Xero's AI assistant, JAX. Xero announced it at Xerocon Brisbane and says it was shaped by feedback from more than 9,000 practices.",
+      },
+      {
+        q: "When will my practice be moved to Partner Hub?",
+        a: "Most regions have already moved. As of 14 August 2026, Partner Hub is live for all partners in the United Kingdom, the United States, Canada, Ireland, Singapore, Hong Kong, Indonesia, Malaysia, the Philippines and South Africa. New Zealand practices have been transitioned automatically from mid-June, and Australian practices are transitioned automatically from September unless they opt in earlier. The move is automatic and Xero notifies practices by email, so check your own region's Partner Hub page for the current position.",
+      },
+      {
+        q: "Will we lose any Practice Manager features in the move?",
+        a: "Xero says no. Its announcement states that all the features you use today will still be there, and the regional pages repeat that all of the core features and functionality currently used in Xero Practice Manager, Xero Tax and Xero HQ will be available in Partner Hub, with no change to access. Xero switches practices over with their existing data and says no heavy lifting is required. Thousands of practices across ten markets have already been through the transition.",
+      },
+      {
+        q: "Does Xero Partner Hub cost more?",
+        a: "No. Xero states that moving to Partner Hub does not affect how you use or pay for your practice tools, and the Australian page says there are no associated pricing or partner program changes. Practice Management itself remains free for Silver partners and above, or available as a paid upgrade for practices below that tier, exactly as before the move.",
+      },
+      {
+        q: "What happens to documents stored in Practice Manager's Documents tab?",
+        a: "Xero has not addressed documents specifically — the word does not appear in any of its Partner Hub announcements or regional pages — but its general commitment is that existing data moves with the practice. The practical point for a firm is different: files held in the Documents tab exist only inside Practice Manager, capped at 16MB each, so they are the files whose fate is decided by someone else's product roadmap. Documents kept in the practice's own Google Drive, OneDrive or SharePoint are unaffected by any of it.",
+      },
+      {
+        q: "Do Practice Manager add-ons still work in Partner Hub?",
+        a: "That depends on the add-on and how it integrates, so ask the vendor directly. Partner Hub is served from the same web address as before, practicemanager.xero.com, and the older job and quote pages are still served from app.practicemanager.xero.com, so tools working inside those pages generally continue to. Tools integrating through Xero's Practice Manager API have a separate change to absorb: since 2 March 2026 Xero prices API access by connections and data egress across five tiers, and the Practice Manager API is a premium feature available only from the Advanced tier — A$1,445 a month — and subject to a security assessment and use-case approval.",
       },
     ],
   },
