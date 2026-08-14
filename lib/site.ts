@@ -41,6 +41,9 @@ export const CHROME_STORE_URL: string | null =
 export const FIREFOX_STORE_URL: string | null =
   "https://addons.mozilla.org/firefox/addon/octabyte-xtk/";
 
+/** The product's own LinkedIn Page — footer link and Organization `sameAs`. */
+export const LINKEDIN_URL = "https://www.linkedin.com/company/octabyte-xtk/";
+
 /** The install-and-onboard page. Also where a CTA points if its store is null. */
 export const GET_STARTED_PATH = "/get-started";
 

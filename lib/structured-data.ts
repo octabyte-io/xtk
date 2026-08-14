@@ -9,6 +9,7 @@ import {
   CHROME_STORE_URL,
   DEFAULT_OG_IMAGE,
   FIREFOX_STORE_URL,
+  LINKEDIN_URL,
   SITE_DESCRIPTION,
   SITE_URL,
 } from "./site";
@@ -38,6 +39,8 @@ export function organizationJsonLd() {
     url: SITE_URL,
     logo: absoluteUrl("/apple-icon.png"),
     description: SITE_DESCRIPTION,
+    /** Profiles that are unambiguously this organisation. */
+    sameAs: [LINKEDIN_URL],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",

@@ -1,7 +1,14 @@
 import Link from "next/link";
 import Logo from "./logo";
+import { LINKEDIN_URL } from "@/lib/site";
 
-const columns: { heading: string; links: { href: string; label: string }[] }[] = [
+const linkClass =
+  "text-sm font-medium text-ink-soft transition-colors hover:text-ink";
+
+const columns: {
+  heading: string;
+  links: { href: string; label: string; external?: boolean }[];
+}[] = [
   {
     heading: "Product",
     links: [
@@ -21,6 +28,7 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
       { href: "/blog", label: "Blog" },
       { href: "/support", label: "Support" },
       { href: "/sitemap", label: "Sitemap" },
+      { href: LINKEDIN_URL, label: "LinkedIn", external: true },
     ],
   },
   {
@@ -56,12 +64,20 @@ export default function Footer() {
               <ul className="flex flex-col gap-2.5">
                 {col.links.map((l) => (
                   <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-                    >
-                      {l.label}
-                    </Link>
+                    {l.external ? (
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClass}
+                      >
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link href={l.href} className={linkClass}>
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
