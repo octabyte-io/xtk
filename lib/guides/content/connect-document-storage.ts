@@ -4,12 +4,12 @@ export const guide: Guide = {
   slug: "connect-document-storage",
   title: "Connect Google Drive, OneDrive or SharePoint to XTK",
   description:
-    "Connect Google Drive, OneDrive or SharePoint to XTK so each client document in Xero Practice Manager stays in storage your practice owns. A 10-minute Admin job.",
+    "Already keep client documents in Google Drive, OneDrive or SharePoint? Connect it to XTK and your existing folders carry over into Xero Practice Manager.",
   series: "Getting started",
   order: 2,
   date: "2026-07-27",
-  updated: "2026-07-27",
-  readingTime: "6 min read",
+  updated: "2026-08-14",
+  readingTime: "10 min read",
   ogImage: "/images/guides/connect-document-storage/og.png",
   thumbnail: {
     src: "/images/guides/connect-document-storage/thumb.png",
@@ -32,6 +32,10 @@ export const guide: Guide = {
     { label: "Sub-processors", href: "/legal/subprocessors" },
   ],
   faq: [
+    {
+      q: "Do we have to move our files into XTK?",
+      a: "No. XTK has nowhere to move them to — it works inside the Google Drive, OneDrive or SharePoint your practice already uses. During setup you point it at the folder that encloses your existing per-client folders, and from then on each client's Documents tab in Practice Manager shows the folder you already had, with the files already in it. There is no import, no migration and no copy.",
+    },
     {
       q: "Can we connect more than one storage provider?",
       a: "No — a practice uses exactly one of Google Drive, OneDrive or SharePoint at a time. To switch providers, the Admin disconnects the current one and connects the new one. Your files stay where they are; XTK only ever points at storage, it doesn't hold it.",
@@ -86,6 +90,60 @@ export const guide: Guide = {
         { text: "the client portal", href: "/guides/set-up-client-portal" },
         ". Until storage is connected, none of that has anywhere to live — your colleagues will simply see “Your Practice Admin hasn't connected document storage yet.” Connect it once and every other feature lights up.",
       ],
+    },
+    { type: "h2", text: "Already keep client documents in a drive? Keep using it" },
+    {
+      type: "p",
+      text: "Nothing moves. If your practice already keeps client documents in Google Drive, OneDrive or SharePoint, you carry on using exactly that — XTK points at the folders you already have instead of importing them. There is no migration step, no copy, and no second place your files live afterwards. You pick the one folder that encloses your per-client folders (your Main Storage Folder, set in the last step below), and each client's existing documents appear in Practice Manager the first time someone opens that client.",
+    },
+    {
+      type: "p",
+      text: "The matching happens one client at a time, on first open: XTK looks inside your Main Storage Folder for a folder named after that client in XPM. There are only three possible outcomes:",
+    },
+    {
+      type: "list",
+      items: [
+        "Exactly one folder matches the client's name — XTK adopts it, and everything already inside appears immediately, subfolders and all.",
+        "No folder matches — XTK creates one named after the client, so clients you haven't filed anything for yet need no setup.",
+        "Two or more folders match — XTK asks you to pick the right one rather than guess.",
+      ],
+    },
+    {
+      type: "table",
+      head: ["What you already have", "What XTK does with it"],
+      rows: [
+        ["A folder per client, named as in XPM", "Adopts it as that client's folder, untouched"],
+        ["Subfolders and files inside them", "Shows them as they are — same names, same nesting"],
+        ["A folder whose name differs from XPM", "No match, so you pick it once and it stays picked"],
+        ["Files outside your Main Storage Folder", "Leaves them alone — XTK reads only inside your root"],
+        ["Folders your team made by hand before XTK", "Treated exactly like ones XTK created itself"],
+      ],
+      caption:
+        "Adoption is a pointer, not an import — nothing in this table involves copying or moving a file.",
+    },
+    {
+      type: "p",
+      text: [
+        "Adoption matches on the folder name, so this goes smoothest for practices whose drive already agrees with Practice Manager. If yours doesn't — three spellings of the same client, an old “ACME (new)” sitting beside “ACME Trading Ltd” — you'll pick the right folder once per affected client. Once, not every visit: the choice is remembered, and you can change it later from that client's Documents tab. If you'd rather fix the names than keep picking, ",
+        {
+          text: "a folder structure that survives busy season",
+          href: "/blog/organise-client-documents-google-drive",
+        },
+        " is the shape worth tidying towards.",
+      ],
+    },
+    {
+      type: "callout",
+      title: "What “automatic” means here, precisely",
+      text: [
+        "XTK matches folder names against the client records already in Practice Manager. It doesn't read inside your documents to work out who they belong to, and it doesn't rename, move or reorganise anything it finds. The full account of what does and doesn't pass through XTK's servers is in ",
+        { text: "how XTK handles your data", href: "/guides/how-xtk-handles-your-data" },
+        ".",
+      ],
+    },
+    {
+      type: "p",
+      text: "Because adoption is only a pointer, your folders stay ordinary folders in your own drive: still usable directly in Google Drive, OneDrive or SharePoint, still shared with whoever you had shared them with, and still there in full if you disconnect XTK later. That is also why XTK won't tidy your drive for you — it works with the structure it finds.",
     },
     { type: "h2", text: "Choose your provider and approve access" },
     {
@@ -147,7 +205,7 @@ export const guide: Guide = {
     {
       type: "callout",
       title: "Already keep client folders in your drive?",
-      text: "Browse to their parent folder and adopt it, rather than creating a fresh one. When someone first opens a client in Practice Manager, XTK looks for a folder with that client's name inside your Main Storage Folder and adopts it — so your existing structure carries straight over, nothing gets duplicated, and nothing is moved.",
+      text: "This is the step that matters: choose “Browse…” and pick the folder that encloses them, rather than creating a fresh one. That single choice is what makes XTK adopt your existing per-client folders instead of starting an empty structure beside them.",
     },
     {
       type: "p",
