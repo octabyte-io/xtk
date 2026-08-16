@@ -44,6 +44,15 @@ export const FIREFOX_STORE_URL: string | null =
 /** The product's own LinkedIn Page — footer link and Organization `sameAs`. */
 export const LINKEDIN_URL = "https://www.linkedin.com/company/octabyte-xtk/";
 
+/**
+ * Twenty minutes with a human, for the practice owner who wants to talk before
+ * installing anything. Availability behind it is Tue–Fri, 10am–5:30pm Sydney
+ * (Fri to 3pm) — the booking page converts to the visitor's own time zone.
+ * Also the closing call-to-action in outbound email, so it is deliberately one
+ * constant rather than a URL pasted per page.
+ */
+export const BOOK_A_CALL_URL = "https://calendly.com/axeemhaider/xtk-intro-call";
+
 /** The install-and-onboard page. Also where a CTA points if its store is null. */
 export const GET_STARTED_PATH = "/get-started";
 

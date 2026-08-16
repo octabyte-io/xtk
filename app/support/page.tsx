@@ -3,6 +3,7 @@ import LegalLayout from "@/components/site/legal/legal-layout";
 import { A, H2, LI, P, Strong, UL } from "@/components/site/legal/prose";
 import { company } from "@/lib/legal";
 import { pageMetadata } from "@/lib/metadata";
+import { BOOK_A_CALL_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Support",
@@ -25,6 +26,15 @@ export default function Support() {
         Email <A href={`mailto:${company.supportEmail}`}>{company.supportEmail}</A>{" "}
         and we’ll get back to you. Please include your Practice name and, if it’s
         about a specific action, what you were doing when the problem happened.
+      </P>
+
+      <H2 id="book-a-call">Book a call</H2>
+      <P>
+        If it’s easier to talk it through,{" "}
+        <A href={BOOK_A_CALL_URL}>book twenty minutes</A>. It suits the questions
+        that are awkward to write down — whether XTK fits how your practice
+        already works, or whether it’s the wrong tool for you. We’ll tell you if
+        it is.
       </P>
 
       <H2 id="in-app">From inside XTK</H2>

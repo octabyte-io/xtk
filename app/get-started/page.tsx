@@ -11,7 +11,7 @@ import JsonLd from "@/components/json-ld";
 import type { GuideBlock } from "@/lib/guides";
 import { company, pricing } from "@/lib/legal";
 import { pageMetadata } from "@/lib/metadata";
-import { CHROME_STORE_URL, FIREFOX_STORE_URL } from "@/lib/site";
+import { BOOK_A_CALL_URL, CHROME_STORE_URL, FIREFOX_STORE_URL } from "@/lib/site";
 import { faqPageJsonLd, howToJsonLd } from "@/lib/structured-data";
 
 const TITLE = "Get started with XTK";
@@ -451,6 +451,18 @@ export default function GetStarted() {
               <p className="mt-5 text-sm text-ink-soft">
                 {pricing.trialDays}-day free trial for your whole practice — no
                 credit card required.
+              </p>
+              <p className="mt-3 text-sm text-ink-soft">
+                Rather talk to someone first?{" "}
+                <a
+                  href={BOOK_A_CALL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-accent-deep underline decoration-accent/40 underline-offset-2 transition-colors hover:decoration-accent"
+                >
+                  Book twenty minutes
+                </a>{" "}
+                and tell us where your documents live now.
               </p>
             </div>
           </Reveal>
