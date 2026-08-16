@@ -160,6 +160,28 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
+/**
+ * The demo film embedded on the home page (components/site/demo-video.tsx).
+ * Google wants a thumbnail, an upload date and a duration before it will treat
+ * a page as carrying video; `contentUrl` points at the file we host ourselves,
+ * and there is no `embedUrl` because there is no player page to embed.
+ */
+export function videoObjectJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "XTK — the panel, opening inside Xero Practice Manager",
+    description:
+      "A silent, captioned walkthrough: a client's documents inside Practice Manager, an engagement letter sent for signature from the folder it lives in, signed by the client with no account, and filed back beside the original with a Certificate of Completion as its final page.",
+    thumbnailUrl: absoluteUrl("/video/xtk-demo-poster.jpg"),
+    contentUrl: absoluteUrl("/video/xtk-demo.mp4"),
+    uploadDate: "2026-08-16",
+    /** 103.1s as cut. */
+    duration: "PT1M43S",
+    publisher,
+  };
+}
+
 /** For the home page. */
 export function softwareApplicationJsonLd() {
   /** Only listings that are actually published — see lib/site.ts. */

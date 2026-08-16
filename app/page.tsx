@@ -1,5 +1,6 @@
 import Nav from "@/components/site/nav";
 import Hero from "@/components/site/hero";
+import DemoVideo from "@/components/site/demo-video";
 import HowItWorks from "@/components/site/how-it-works";
 import Features from "@/components/site/features";
 import EsignSpotlight from "@/components/site/esign-spotlight";
@@ -11,7 +12,10 @@ import CtaBand from "@/components/site/cta-band";
 import Footer from "@/components/site/footer";
 import type { Metadata } from "next";
 import JsonLd from "@/components/json-ld";
-import { softwareApplicationJsonLd } from "@/lib/structured-data";
+import {
+  softwareApplicationJsonLd,
+  videoObjectJsonLd,
+} from "@/lib/structured-data";
 import { pageMetadata } from "@/lib/metadata";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
 
@@ -26,9 +30,11 @@ export default function Home() {
   return (
     <>
       <JsonLd data={softwareApplicationJsonLd()} />
+      <JsonLd data={videoObjectJsonLd()} />
       <Nav />
       <main className="flex-1">
         <Hero />
+        <DemoVideo />
         <HowItWorks />
         <Features />
         <EsignSpotlight />
