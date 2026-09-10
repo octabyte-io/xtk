@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Getting started",
   order: 2,
   date: "2026-07-27",
-  updated: "2026-08-14",
+  updated: "2026-09-10",
   readingTime: "10 min read",
   ogImage: "/images/guides/connect-document-storage/og.png",
   thumbnail: {
@@ -170,7 +170,7 @@ export const guide: Guide = {
     {
       type: "callout",
       title: "Microsoft 365 said no?",
-      text: "Some Microsoft 365 organisations block new apps until IT approves them. If the consent screen refuses with a message about needing admin approval, ask your IT admin to approve XTK, then try connecting again. And if XTK can't reach SharePoint at all, check you signed in with a work or school account — personal Microsoft accounts don't have SharePoint.",
+      text: "Microsoft 365's default setting no longer lets ordinary users approve apps that ask for access to files and sites, so unless you connect as a Global Administrator you will probably see a message about needing admin approval. Ask your IT admin to approve XTK for your organisation, then try connecting again. And if XTK can't reach SharePoint at all, check you signed in with a work or school account — personal Microsoft accounts don't have SharePoint.",
     },
     { type: "h2", text: "Tell XTK where your documents live" },
     {
