@@ -2139,7 +2139,7 @@ export const posts: Post[] = [
     excerpt:
       "Five to seven years in most Xero markets — but that number hides three obligations, three clocks and a ceiling most policies forget. Then the harder half: can you still open the file when the period ends?",
     date: "2026-08-10",
-    readingTime: "15 min read",
+    readingTime: "16 min read",
     category: "Practice tips",
     author: { name: "The XTK team", role: "Product" },
     ogImage: "/images/blog/how-long-accountants-keep-client-records/og.png",
@@ -2318,9 +2318,11 @@ export const posts: Post[] = [
         text: [
           "Australian practices have a newer version of the same question. From 1 July 2026, accountants providing designated services came inside the Anti-Money Laundering and Counter-Terrorism Financing regime as reporting entities — the reform generally called tranche 2 — and ",
           { text: "AUSTRAC's record-keeping obligations", href: "https://www.austrac.gov.au/industry-and-business/obligations-and-guidance/your-amlctf-program/develop-your-amlctf-programs/record-keeping/record-keeping-overview" },
-          " run to seven years, with customer identification records kept seven years after you stop providing designated services. Whether your practice is caught depends on which services you provide, which is a question for your own advice — but if the answer is yes, your identity documents now outlast your tax workpapers, and if you are still ",
-          { text: "collecting them by email", href: "/blog/stop-chasing-clients-for-documents" },
-          " they are sitting in an inbox rather than in a folder with a period attached to it.",
+          " run to seven years, with customer identification records kept seven years after you stop providing designated services. Whether your practice is caught depends on which services you provide, which is a question for your own advice — but if the answer is yes, your identification records now outlast your tax workpapers. Be precise about what that record is. The OAIC's ",
+          { text: "privacy guidance for AML/CTF reporting entities", href: "https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/organisations/privacy-guidance-for-reporting-entities-under-the-anti-money-laundering-and-counter-terrorism-financing-act" },
+          " says that from 1 July 2026 for tranche 2 entities the Act does not require you to keep scanned copies or photocopies of identity documents themselves: what you keep is the details you relied on, the type of document, what you did to verify the customer and the outcome. The same guidance brings practices under the $3 million small-business threshold inside the Privacy Act for this work. So if you are still ",
+          { text: "collecting ID by email", href: "/blog/stop-chasing-clients-for-documents" },
+          ", the copy you did not need to keep is sitting in an inbox, while the record you do need has no folder with a period attached to it.",
         ],
       },
       {
