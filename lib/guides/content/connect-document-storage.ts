@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Getting started",
   order: 2,
   date: "2026-07-27",
-  updated: "2026-09-10",
+  updated: "2026-09-11",
   readingTime: "10 min read",
   ogImage: "/images/guides/connect-document-storage/og.png",
   thumbnail: {
@@ -114,7 +114,8 @@ export const guide: Guide = {
       rows: [
         ["A folder per client, named as in XPM", "Adopts it as that client's folder, untouched"],
         ["Subfolders and files inside them", "Shows them as they are — same names, same nesting"],
-        ["A folder whose name differs from XPM", "No match, so you pick it once and it stays picked"],
+        ["A folder whose name differs from XPM", "No match, so XTK makes a new, empty one"],
+        ["Two folders with the client's name", "Asks you to pick one, and remembers it"],
         ["Files outside your Main Storage Folder", "Leaves them alone — XTK reads only inside your root"],
         ["Folders your team made by hand before XTK", "Treated exactly like ones XTK created itself"],
       ],
@@ -124,7 +125,7 @@ export const guide: Guide = {
     {
       type: "p",
       text: [
-        "Adoption matches on the folder name, so this goes smoothest for practices whose drive already agrees with Practice Manager. If yours doesn't — three spellings of the same client, an old “ACME (new)” sitting beside “ACME Trading Ltd” — you'll pick the right folder once per affected client. Once, not every visit: the choice is remembered, and you can change it later from that client's Documents tab. If you'd rather fix the names than keep picking, ",
+        "Adoption matches on the folder name, so this goes smoothest for practices whose drive already agrees with Practice Manager. If yours doesn't — an old “ACME (new)” where Practice Manager says “ACME Trading Ltd” — XTK finds no match and creates a new, empty folder under the Practice Manager name the first time that client is opened. Nothing is lost: click “Change storage folder” on that client's Documents tab and point it at the old folder, once, and the choice is remembered. Matching ignores capital letters and stray spaces at either end, but nothing else. It is quicker to rename folders to match before you connect, and ",
         {
           text: "a folder structure that survives busy season",
           href: "/blog/organise-client-documents-google-drive",

@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Documents",
   order: 9,
   date: "2026-07-28",
-  updated: "2026-07-28",
+  updated: "2026-09-11",
   readingTime: "7 min read",
   ogImage: "/images/guides/folder-templates/og.png",
   thumbnail: {
@@ -165,7 +165,7 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "The pattern letters are the same set as everywhere else in XTK: yyyy and yy for the year, MMMM, MMM, MM and M for the month, dd and d for the day. Any other character in the pattern — slashes, dashes, spaces, words — is kept as typed. Every folder name in the tree editor shows you its resolved name as you build it, so what you see in the editor is what the folder will be called.",
+      text: "The pattern letters are the same set as everywhere else in XTK: yyyy and yy for the year, MMMM, MMM, MM and M for the month, dd and d for the day. Dashes, spaces and full stops in the pattern are kept as typed. Words are not safe inside the brackets — a d, an M or a yy in a word is read as a date letter, so [DATE:Updated yyyy] comes out mangled; put words outside, as in FY[DATE:yyyy] — Tax. Leave slashes out too, since OneDrive and SharePoint don't allow a slash in a folder name. Every folder name in the tree editor shows you its resolved name as you build it, so what you see in the editor is what the folder will be called.",
     },
     {
       type: "callout",

@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Client-facing",
   order: 11,
   date: "2026-07-28",
-  updated: "2026-07-28",
+  updated: "2026-09-11",
   readingTime: "10 min read",
   ogImage: "/images/guides/document-requests/og.png",
   thumbnail: {
@@ -232,7 +232,7 @@ export const guide: Guide = {
     { type: "h2", text: "Where do the uploaded files go?" },
     {
       type: "p",
-      text: "Into the destination folder you chose, inside that client's own folder — and renamed. A file uploaded against an item takes the item's name, keeping its extension: “IMG_4471.HEIC” on “Motor vehicle logbook” becomes “Motor vehicle logbook.HEIC”, a second becomes “Motor vehicle logbook (2).HEIC”. Your naming wins. Extras keep the name your client gave them, since there's no item name to use.",
+      text: "Into the destination folder you chose, inside that client's own folder — and renamed. A file uploaded against an item takes the item's name, keeping its extension: “IMG_4471.HEIC” on “Motor vehicle logbook” becomes “Motor vehicle logbook.HEIC”, a second becomes “Motor vehicle logbook (2).HEIC”. Your naming wins, almost always: the rename happens just after the upload lands, and if it fails — for example on OneDrive or SharePoint, which won't hold two files of the same name in one folder, when an earlier request already left one there — the upload is kept under the client's own name rather than lost. Extras keep the name your client gave them, since there's no item name to use.",
     },
     { type: "h2", text: "How do I track what's outstanding?" },
     {

@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Documents",
   order: 6,
   date: "2026-07-27",
-  updated: "2026-07-27",
+  updated: "2026-09-11",
   readingTime: "6 min read",
   ogImage: "/images/guides/bulk-file-actions/og.png",
   thumbnail: {
@@ -122,7 +122,7 @@ export const guide: Guide = {
     { type: "h2", text: "Download several files as a zip" },
     {
       type: "p",
-      text: "With two or more files selected, “Download as zip” bundles them into a single download named after the client and today's date — “Acme Trading Ltd - 2026-07-27.zip”, ready to forward or archive. Folders can't be included: if one is ticked the button is greyed out with a hint to select individual files, so open the folder and select its contents instead (the select-all checkbox makes that quick).",
+      text: "With two or more files selected, “Download as zip” bundles them into a single download named after the client's storage folder and the date — “Acme Trading Ltd - 2026-07-27.zip”, ready to forward or archive. The date is the UTC date, so a zip made on an Australian or New Zealand morning can carry yesterday's. Inside, the zip is flat: each file keeps its own name and nothing else, so two selected files with the same name arrive as two entries with that name. Folders can't be included: if one is ticked the button is greyed out with a hint to select individual files, so open the folder and select its contents instead (the select-all checkbox makes that quick).",
     },
     { type: "h2", text: "How do I merge PDFs?" },
     {
