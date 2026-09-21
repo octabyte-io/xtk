@@ -8,7 +8,7 @@ export const guide: Guide = {
   series: "Getting started",
   order: 2,
   date: "2026-07-27",
-  updated: "2026-09-11",
+  updated: "2026-09-21",
   readingTime: "10 min read",
   ogImage: "/images/guides/connect-document-storage/og.png",
   thumbnail: {
@@ -181,7 +181,7 @@ export const guide: Guide = {
     {
       type: "list",
       items: [
-        "Google Drive: if your account has Shared Drives, XTK asks “Where do your client documents live?” — click “Use My Drive” for your personal drive, or “Use this drive” next to a Shared Drive your team shares. If you have no Shared Drives, this step is skipped.",
+        "Google Drive: if your account has Shared Drives, XTK asks “Where do your client documents live?” — click “Use My Drive” for your personal drive, or “Use this drive” next to a Shared Drive your team shares. If you have no Shared Drives, this step is skipped. Only Shared Drives your Google account is a member of are listed, so add yourself first, as a Manager or Content manager: a Contributor can't move files or put them in the trash, in Google Drive or through XTK.",
         "OneDrive: there's only one drive, so XTK goes straight to the folder step.",
         "SharePoint: pick your site first — sites you follow are listed, and you can search for any other site in your organisation. If the site has more than one document library, pick the one that holds your client documents.",
       ],
