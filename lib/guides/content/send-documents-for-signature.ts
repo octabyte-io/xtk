@@ -235,8 +235,8 @@ export const guide: Guide = {
     },
     {
       type: "callout",
-      title: "Nothing forces you to place a field",
-      text: "XTK will happily send a document with no fields on it, and a signer with nothing required of them can submit immediately. Before sending, switch “Placing for” to each signer and check they have at least a signature field — that check is yours, not the product's. Fields lock on send, so a missing signature box means voiding and starting again.",
+      title: "Check every signer has a field",
+      text: "XTK won't send a request with no fields on it, or one whose only fields are Date Signed and Name, which fill themselves in. It checks the request as a whole, though, not each signer, so a second signer with nothing placed for them can still go out and submit immediately. Before sending, switch “Placing for” to each signer and check they have at least a signature field. Fields lock on send, so a missing signature box means voiding and starting again.",
     },
     { type: "h2", text: "How do I send it?" },
     {

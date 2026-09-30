@@ -205,8 +205,8 @@ export const guide: Guide = {
     },
     {
       type: "callout",
-      title: "The reason arrives by email, not in the app",
-      text: "If your client types a reason, XTK emails it to you with the subject “Declined: ” plus your subject line, copying anyone who had already signed — but the Status dialog shows only that they declined, never why. Read that email before you chase the client: the explanation is not stored anywhere you can go back to in Practice Manager.",
+      title: "Where the reason shows up",
+      text: "If your client types a reason, XTK emails it to you with the subject “Declined: ” plus your subject line, copying anyone who had already signed. The Status dialog shows it too, as “Reason:” under that signer, so you can find it again later without the email.",
     },
     { type: "h2", text: "Who gets a link, and when" },
     {
