@@ -215,7 +215,7 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "Anything else — images, tables, code blocks, raw HTML — appears as plain text. And a bare link pasted on its own line stays plain text rather than becoming clickable, so wrap links in the square-bracket form above.",
+      text: "Anything else — images, tables, code blocks, raw HTML — appears as plain text. A bare web address pasted into the body becomes a clickable link on its own, so the square-bracket form is only needed when you want the link to read as words.",
     },
     { type: "h2", text: "How do I preview the email?" },
     {

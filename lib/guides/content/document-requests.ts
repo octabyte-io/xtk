@@ -149,7 +149,7 @@ export const guide: Guide = {
     {
       type: "callout",
       title: "The link always reaches your client",
-      text: "If your wording never mentions {{document_request_url}}, XTK appends the link rather than sending a request nobody can act on. One catch: a link on its own line goes out as plain text, so most mail apps make it clickable but none is guaranteed to. Writing “[Upload your documents]({{document_request_url}})” in a template guarantees a proper link.",
+      text: "If your wording never mentions {{document_request_url}}, XTK appends the link rather than sending a request nobody can act on. The appended link is clickable as it stands. Writing “[Upload your documents]({{document_request_url}})” in a template makes the link read as words instead of a long address.",
     },
     { type: "h2", text: "What does my client actually see?" },
     {
