@@ -22,6 +22,7 @@ export const guide: Guide = {
     "billing-trial-and-subscription",
   ],
   relatedLinks: [
+    { label: "Document management in Xero Practice Manager", href: "/blog/xero-practice-manager-document-management" },
     { label: "Pricing", href: "/pricing" },
     { label: "Support", href: "/support" },
   ],

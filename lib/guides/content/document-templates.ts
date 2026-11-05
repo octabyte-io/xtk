@@ -23,6 +23,7 @@ export const guide: Guide = {
   ],
   relatedLinks: [
     { label: "Stop retyping client data", href: "/blog/stop-retyping-client-data" },
+    { label: "Document management in Xero Practice Manager", href: "/blog/xero-practice-manager-document-management" },
     { label: "Support", href: "/support" },
   ],
   faq: [

@@ -23,6 +23,8 @@ export const guide: Guide = {
     "connect-document-storage",
   ],
   relatedLinks: [
+    { label: "How to build a year-end pack in Xero Practice Manager", href: "/blog/year-end-pack-xero-practice-manager" },
+    { label: "Document management in Xero Practice Manager", href: "/blog/xero-practice-manager-document-management" },
     { label: "Sub-processors", href: "/legal/subprocessors" },
     { label: "Support", href: "/support" },
   ],
@@ -66,7 +68,7 @@ export const guide: Guide = {
     {
       type: "callout",
       title: "Before you start",
-      text: "You'll want the basics of the Documents tab first — see “Manage client documents inside Xero Practice Manager” in the related guides. Bulk actions work for every team member; nothing here is Admin-only.",
+      text: "You'll want the basics of the Documents tab first — see “Manage client documents in Xero Practice Manager with XTK” in the related guides. Bulk actions work for every team member; nothing here is Admin-only.",
     },
     { type: "h2", text: "Select files and meet the selection bar" },
     {

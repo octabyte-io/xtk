@@ -2,9 +2,9 @@ import type { Guide } from "../types";
 
 export const guide: Guide = {
   slug: "set-up-client-portal",
-  title: "Client portal for accountants: set up and share files",
+  title: "Set up the XTK client portal and share files with clients",
   description:
-    "Set up a client portal for accountants in Xero Practice Manager: enable it per client, invite contacts by email, and share files that never leave your Drive.",
+    "Set up XTK's client portal from Xero Practice Manager: enable it per client, invite contacts by email, and share files that never leave your own Drive.",
   series: "Client-facing",
   order: 14,
   date: "2026-07-28",
@@ -25,6 +25,7 @@ export const guide: Guide = {
   ],
   relatedLinks: [
     { label: "Client portals your clients will actually use", href: "/blog/client-portals-clients-actually-use" },
+    { label: "How to stop chasing clients for documents", href: "/blog/stop-chasing-clients-for-documents" },
     { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [

@@ -16,7 +16,7 @@ import { LEGAL_UPDATED, company } from "@/lib/legal";
 export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "How OctaByte XTK collects, uses, shares and protects data across the browser extension, web portal and backend.",
+    "How OctaByte XTK collects, uses, shares and protects data across the browser extension, web portal and backend, and the choices and rights you have.",
   path: "/legal/privacy",
 });
 

@@ -3,8 +3,12 @@ import { company } from "./legal";
 /** Canonical site origin — used for metadataBase, sitemap, robots, JSON-LD. */
 export const SITE_URL = company.website;
 
-/** Home-page <title> and the fallback title for any page that sets none. */
-export const SITE_TITLE = "XTK — The toolkit for Xero Practice Manager";
+/**
+ * Home-page <title> and the fallback title for any page that sets none. Leads
+ * with what the product does and spells out "Xero Practice Manager" — the
+ * phrase people search — inside 60 characters.
+ */
+export const SITE_TITLE = "XTK — Documents and e-signatures for Xero Practice Manager";
 
 /** Brand tail appended to page titles. `%s` is the page's own title. */
 export const TITLE_TEMPLATE = "%s — XTK";

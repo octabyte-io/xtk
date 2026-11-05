@@ -23,6 +23,8 @@ export const guide: Guide = {
     "invite-your-team",
   ],
   relatedLinks: [
+    { label: "The email bounced: how to know a document never arrived", href: "/blog/email-bounced-document-never-arrived" },
+    { label: "How to stop chasing clients for documents", href: "/blog/stop-chasing-clients-for-documents" },
     { label: "Privacy Policy", href: "/legal/privacy" },
     { label: "Sub-processors", href: "/legal/subprocessors" },
   ],

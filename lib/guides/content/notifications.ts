@@ -23,6 +23,8 @@ export const guide: Guide = {
     "esignatures-what-your-client-sees",
   ],
   relatedLinks: [
+    { label: "Signed and back: who hears about it, and who deals with it", href: "/blog/signed-documents-back-who-deals-with-them" },
+    { label: "E-signatures for accountants in Xero Practice Manager", href: "/blog/e-signatures-inside-xpm" },
     { label: "Support", href: "/support" },
   ],
   faq: [

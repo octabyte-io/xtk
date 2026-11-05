@@ -8,15 +8,71 @@ import Reveal from "@/components/site/reveal";
 import Breadcrumbs from "@/components/site/breadcrumbs";
 import PostCard, { CategoryChip, PostMeta } from "@/components/site/post-card";
 import { A } from "@/components/site/prose-link";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, getPost, topics, type PostTopic } from "@/lib/posts";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog",
+  title: "XTK blog — document workflows for Xero Practice Manager",
+  absoluteTitle: true,
   description:
-    "Product news, guides and practice tips from XTK — the toolkit that adds documents, e-signatures, client portals and templates to Xero Practice Manager.",
+    "Practical articles for accounting practices on Xero Practice Manager: organising client documents, sending for e-signature and collecting files from clients.",
   path: "/blog",
 });
+
+/**
+ * One card per topic cluster, pointing at its pillar post. The pillar is the
+ * page that owns the topic's head term, so this is the index's strongest
+ * internal link to each — and the shortest route in for a new reader.
+ */
+function StartHere() {
+  const all = getAllPosts();
+  const entries = (Object.keys(topics) as PostTopic[]).flatMap((key) => {
+    const topic = topics[key];
+    const pillar = getPost(topic.pillarSlug);
+    if (!pillar) return [];
+    const count = all.filter((p) => p.topic === key).length;
+    return [{ key, topic, pillar, count }];
+  });
+  if (entries.length === 0) return null;
+
+  return (
+    <section aria-labelledby="start-here" className="mb-14">
+      <h2
+        id="start-here"
+        className="font-display text-2xl font-bold tracking-tight text-ink"
+      >
+        Start here
+      </h2>
+      <p className="mt-2 max-w-2xl leading-relaxed text-ink-soft">
+        Most of what we write falls under three topics. Each has one overview
+        article that links to everything else on the subject.
+      </p>
+      <div className="mt-6 grid gap-5 sm:grid-cols-3">
+        {entries.map(({ key, topic, pillar, count }, i) => (
+          <Reveal key={key} delay={i * 90} className="h-full">
+            <Link
+              href={`/blog/${pillar.slug}`}
+              className="flex h-full flex-col gap-2 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent"
+            >
+              <span className="text-xs font-medium text-ink-soft">
+                {count} {count === 1 ? "article" : "articles"}
+              </span>
+              <h3 className="font-display text-lg font-bold tracking-tight text-ink">
+                {topic.name}
+              </h3>
+              <p className="flex-1 text-[15px] leading-relaxed text-ink-soft">
+                {topic.blurb}
+              </p>
+              <span className="pt-2 text-sm font-medium text-accent-deep">
+                Read the overview →
+              </span>
+            </Link>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function BlogIndex() {
   const all = getAllPosts();
@@ -52,6 +108,11 @@ export default function BlogIndex() {
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-5 pb-20 sm:px-8 sm:pb-24">
+          <StartHere />
+
+          <h2 className="mb-6 font-display text-2xl font-bold tracking-tight text-ink">
+            All posts
+          </h2>
           <Reveal>
             <article className="overflow-hidden rounded-3xl border border-line bg-surface transition-shadow hover:shadow-[0_32px_64px_-40px_rgba(13,34,66,0.4)]">
               <Link
@@ -79,9 +140,9 @@ export default function BlogIndex() {
                     <CategoryChip category={featured.category} />
                     <PostMeta post={featured} />
                   </div>
-                  <h2 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+                  <h3 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
                     {featured.title}
-                  </h2>
+                  </h3>
                   <p className="text-lg leading-relaxed text-ink-soft">
                     {featured.excerpt}
                   </p>

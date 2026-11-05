@@ -7,7 +7,7 @@ import { LEGAL_UPDATED, company, pricing } from "@/lib/legal";
 export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
   description:
-    "The terms governing use of the OctaByte XTK browser extension and web portal.",
+    "The terms governing use of the OctaByte XTK browser extension and web portal by accounting practices: accounts, subscriptions, acceptable use and liability.",
   path: "/legal/terms",
 });
 

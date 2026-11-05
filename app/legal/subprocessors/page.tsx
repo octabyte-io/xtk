@@ -7,7 +7,7 @@ import { LEGAL_UPDATED, company, subProcessors } from "@/lib/legal";
 export const metadata: Metadata = pageMetadata({
   title: "Sub-processors",
   description:
-    "The third-party services XTK relies on to process data, their purpose and region.",
+    "The third-party services XTK relies on to process data on behalf of accounting practices, what each one is used for, and the region it runs in.",
   path: "/legal/subprocessors",
 });
 

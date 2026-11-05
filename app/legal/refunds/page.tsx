@@ -7,7 +7,7 @@ import { LEGAL_UPDATED, company, pricing } from "@/lib/legal";
 export const metadata: Metadata = pageMetadata({
   title: "Refund & Cancellation Policy",
   description:
-    "How trials, cancellations and refunds work for OctaByte XTK subscriptions.",
+    "How the free trial, cancellations and refunds work for OctaByte XTK subscriptions: how to cancel, when a refund applies and how to request one.",
   path: "/legal/refunds",
 });
 

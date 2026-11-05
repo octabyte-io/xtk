@@ -23,11 +23,12 @@ export const guide: Guide = {
     "how-xtk-handles-your-data",
   ],
   relatedLinks: [
-    { label: "E-signatures that never leave Practice Manager", href: "/blog/e-signatures-inside-xpm" },
+    { label: "E-signatures for accountants in Xero Practice Manager", href: "/blog/e-signatures-inside-xpm" },
     {
       label: "E-signature legality for accountants, by jurisdiction",
       href: "/blog/esignature-legality-for-accountants",
     },
+    { label: "“I can't log in”: getting clients to sign without an account", href: "/blog/clients-cant-log-in-to-sign" },
     { label: "Terms of Service", href: "/legal/terms" },
   ],
   faq: [

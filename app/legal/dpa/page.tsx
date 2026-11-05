@@ -7,7 +7,7 @@ import { LEGAL_UPDATED, company } from "@/lib/legal";
 export const metadata: Metadata = pageMetadata({
   title: "Data Processing Addendum",
   description:
-    "The DPA governing XTK's processing of personal data on behalf of practices under GDPR / UK GDPR.",
+    "The Data Processing Addendum governing how XTK processes personal data on behalf of accounting practices under the GDPR and UK GDPR.",
   path: "/legal/dpa",
 });
 

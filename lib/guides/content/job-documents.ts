@@ -2,7 +2,7 @@ import type { Guide } from "../types";
 
 export const guide: Guide = {
   slug: "job-documents",
-  title: "Job documents in Xero Practice Manager",
+  title: "Attach documents to Xero Practice Manager jobs with XTK",
   description:
     "File a job's paperwork on the job itself — XTK adds a Documents tab to every Xero Practice Manager job page, storing files in your practice's own Drive.",
   series: "Documents",
@@ -24,12 +24,13 @@ export const guide: Guide = {
     "getting-started-with-xtk",
   ],
   relatedLinks: [
+    { label: "Filing by client isn't enough: job and quote documents in XPM", href: "/blog/xero-practice-manager-job-documents" },
     {
-      label: "A sane folder structure for client documents",
+      label: "A client folder structure for accountants",
       href: "/blog/organise-client-documents-google-drive",
     },
     {
-      label: "Document management in Xero Practice Manager: four options",
+      label: "Document management in Xero Practice Manager",
       href: "/blog/xero-practice-manager-document-management",
     },
   ],
@@ -119,7 +120,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "The folder name is composed from the job's number and name, so it always matches what the job header says. That matters more than it sounds: XPM has two different URLs for the same job depending on whether you arrived from Job Manager or from a client's Jobs tab, and both open the same folder. One job, one folder, however you got there.",
+      text: [
+        "The folder name is composed from the job's number and name, so it always matches what the job header says. That matters more than it sounds: XPM has two different URLs for the same job depending on whether you arrived from Job Manager or from a client's Jobs tab, and both open the same folder. One job, one folder, however you got there. If you're still deciding whether to file by job at all, we cover ",
+        { text: "why job and quote filing beats one big client folder", href: "/blog/xero-practice-manager-job-documents" },
+        " on the blog.",
+      ],
     },
     {
       type: "list",

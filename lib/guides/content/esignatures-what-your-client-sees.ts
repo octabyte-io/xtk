@@ -22,7 +22,8 @@ export const guide: Guide = {
     "client-portal-guide-for-clients",
   ],
   relatedLinks: [
-    { label: "E-signatures that never leave Practice Manager", href: "/blog/e-signatures-inside-xpm" },
+    { label: "E-signatures for accountants in Xero Practice Manager", href: "/blog/e-signatures-inside-xpm" },
+    { label: "“I can't log in”: getting clients to sign without an account", href: "/blog/clients-cant-log-in-to-sign" },
     { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [

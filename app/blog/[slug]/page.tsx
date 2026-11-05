@@ -14,8 +14,14 @@ import {
   getPost,
   getPostRelatedLinks,
   getRelatedPosts,
+  getTopicPillar,
+  getTopicSpokes,
+  postDescription,
+  postSeoTitle,
   posts,
+  topics,
 } from "@/lib/posts";
+import Link from "next/link";
 import { pageMetadata } from "@/lib/metadata";
 import { assertContentLinks } from "@/lib/routes";
 import { blogPostingJsonLd, faqPageJsonLd } from "@/lib/structured-data";
@@ -38,14 +44,15 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
   return pageMetadata({
-    title: `${post.title} — XTK Blog`,
+    title: postSeoTitle(post),
     socialTitle: post.title,
     absoluteTitle: true,
-    description: post.excerpt,
+    description: postDescription(post),
     path: `/blog/${post.slug}`,
     image: post.ogImage,
     type: "article",
     publishedTime: post.date,
+    modifiedTime: post.updated ?? post.date,
   });
 }
 
@@ -59,6 +66,9 @@ export default async function BlogPost({
   if (!post) notFound();
   const related = getRelatedPosts(slug);
   const relatedLinks = getPostRelatedLinks(slug);
+  const pillar = getTopicPillar(slug);
+  const spokes = getTopicSpokes(slug);
+  const topic = post.topic ? topics[post.topic] : undefined;
 
   return (
     <>
@@ -105,7 +115,40 @@ export default async function BlogPost({
           </header>
 
           <div className="mx-auto w-full max-w-3xl px-5 pb-16 pt-2 sm:px-8">
+            {pillar && topic && (
+              <p className="mt-6 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink-soft">
+                Part of our series on{" "}
+                <Link
+                  href={`/blog/${pillar.slug}`}
+                  className="font-medium text-accent-deep underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
+                >
+                  {topic.name.charAt(0).toLowerCase() + topic.name.slice(1)}
+                </Link>
+                . Start with the overview for the full picture.
+              </p>
+            )}
             <PostBody body={post.body} />
+
+            {spokes.length > 0 && topic && (
+              <section aria-label={`More on ${topic.name}`} className="mt-12">
+                <h2 className="font-display text-2xl font-bold tracking-tight text-ink">
+                  Every article in this series
+                </h2>
+                <p className="mt-2 text-ink-soft">{topic.blurb}</p>
+                <ul className="mt-5 flex flex-col gap-2.5">
+                  {spokes.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        href={`/blog/${p.slug}`}
+                        className="font-medium text-accent-deep underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
+                      >
+                        {p.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             {post.faq && post.faq.length > 0 && (
               <section aria-label="Frequently asked questions" className="mt-12">

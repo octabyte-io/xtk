@@ -15,11 +15,11 @@ import { BOOK_A_CALL_URL, CHROME_STORE_URL, FIREFOX_STORE_URL } from "@/lib/site
 import { faqPageJsonLd, howToJsonLd } from "@/lib/structured-data";
 
 const TITLE = "Get started with XTK";
-const DESCRIPTION =
-  "Install the XTK extension in Chrome or Firefox, create your practice account and start working inside Xero Practice Manager — 30-day free trial, no card needed.";
+const DESCRIPTION = `Install the XTK extension in Chrome or Firefox, create your practice account and start working inside Xero Practice Manager. ${pricing.trialDays}-day free trial.`;
 
 export const metadata: Metadata = pageMetadata({
-  title: "Get started",
+  title: "Install XTK for Xero Practice Manager — get started",
+  absoluteTitle: true,
   description: DESCRIPTION,
   path: "/get-started",
 });
@@ -340,7 +340,15 @@ export default function GetStarted() {
         </header>
 
         {/* The primary action, above the fold and above the instructions. */}
-        <div className="mx-auto w-full max-w-6xl px-5 pb-4 sm:px-8">
+        <section
+          aria-labelledby="choose-browser"
+          className="mx-auto w-full max-w-6xl px-5 pb-4 sm:px-8"
+        >
+          {/* Visually hidden: the cards speak for themselves, but the store
+              cards' h3s need an h2 above them so the outline doesn't skip. */}
+          <h2 id="choose-browser" className="sr-only">
+            Choose your browser
+          </h2>
           <Reveal className="grid gap-5 sm:grid-cols-2">
             <StoreCard
               browser="Chrome"
@@ -356,7 +364,7 @@ export default function GetStarted() {
               pending="The Firefox build is done and the Add-ons listing is with Mozilla for review. Chrome is ready today."
             />
           </Reveal>
-        </div>
+        </section>
 
         <div className="mx-auto w-full max-w-3xl px-5 pb-16 sm:px-8">
           <GuideBody body={walkthrough} />

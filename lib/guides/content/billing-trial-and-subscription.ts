@@ -4,7 +4,7 @@ export const guide: Guide = {
   slug: "billing-trial-and-subscription",
   title: "XTK pricing, your trial, and what read-only mode means",
   description:
-    "XTK pricing in full: one $59 USD plan for your whole practice, a 30-day free trial with no card, how an Admin upgrades, and exactly what read-only mode blocks.",
+    "XTK pricing in full: one $59 USD plan for your whole practice, a 30-day free trial with no card, how an Admin upgrades, and what read-only mode blocks.",
   series: "Account & trust",
   order: 17,
   date: "2026-07-28",

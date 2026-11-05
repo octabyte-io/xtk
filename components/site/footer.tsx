@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./logo";
 import { LINKEDIN_URL } from "@/lib/site";
+import { topics } from "@/lib/posts/topics";
 
 const linkClass =
   "text-sm font-medium text-ink-soft transition-colors hover:text-ink";
@@ -18,6 +19,23 @@ const columns: {
       { href: "/#esign", label: "E-signatures" },
       { href: "/pricing", label: "Pricing" },
       { href: "/#faq", label: "FAQ" },
+    ],
+  },
+  {
+    // The blog's three pillar posts — a sitewide link to each tells search
+    // engines which page owns the topic. Short labels; the registry's full
+    // names are too long for a footer column.
+    heading: "Topics",
+    links: [
+      {
+        href: `/blog/${topics["document-management"].pillarSlug}`,
+        label: "Document management",
+      },
+      { href: `/blog/${topics["e-signatures"].pillarSlug}`, label: "E-signatures" },
+      {
+        href: `/blog/${topics["client-documents"].pillarSlug}`,
+        label: "Collecting documents",
+      },
     ],
   },
   {
@@ -55,7 +73,7 @@ export default function Footer() {
             The toolkit for Xero Practice Manager.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {columns.map((col) => (
             <nav key={col.heading} aria-label={col.heading} className="flex flex-col gap-3">
               <h2 className="font-display text-sm font-bold text-ink">

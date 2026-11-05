@@ -24,6 +24,7 @@ export const guide: Guide = {
   relatedLinks: [
     { label: "Get started — install XTK", href: "/get-started" },
     { label: "Introducing XTK", href: "/blog/introducing-xtk" },
+    { label: "Document management in Xero Practice Manager", href: "/blog/xero-practice-manager-document-management" },
     { label: "Pricing", href: "/pricing" },
     { label: "Support", href: "/support" },
   ],

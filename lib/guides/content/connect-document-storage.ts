@@ -23,11 +23,14 @@ export const guide: Guide = {
     "invite-your-team",
   ],
   relatedLinks: [
-    { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    { label: "A client folder structure for accountants", href: "/blog/organise-client-documents-google-drive" },
     {
       label: "SuiteFiles, FYI, Karbon or your own Drive, compared",
       href: "/blog/document-management-for-xero-practices-compared",
     },
+    { label: "SharePoint or OneDrive for Xero Practice Manager client files", href: "/blog/xero-practice-manager-sharepoint-onedrive" },
+    { label: "Google shared drive or My Drive for Xero Practice Manager client files", href: "/blog/xero-practice-manager-google-shared-drive" },
+    { label: "Document management in Xero Practice Manager", href: "/blog/xero-practice-manager-document-management" },
     { label: "Privacy Policy", href: "/legal/privacy" },
     { label: "Sub-processors", href: "/legal/subprocessors" },
   ],

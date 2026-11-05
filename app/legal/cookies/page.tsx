@@ -7,7 +7,7 @@ import { LEGAL_UPDATED, company } from "@/lib/legal";
 export const metadata: Metadata = pageMetadata({
   title: "Cookies & Tracking",
   description:
-    "The cookies, local storage and diagnostics XTK uses across the website, portal and extension.",
+    "The cookies, local storage and diagnostics XTK uses across this website, the web portal and the browser extension, what each one is for and how to control it.",
   path: "/legal/cookies",
 });
 

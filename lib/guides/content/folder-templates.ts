@@ -2,7 +2,7 @@ import type { Guide } from "../types";
 
 export const guide: Guide = {
   slug: "folder-templates",
-  title: "Folder templates: one standard client folder structure",
+  title: "Folder templates in XTK: set up client folders once",
   description:
     "Set up your practice's standard client folder structure once in XTK and apply it to any client in Xero Practice Manager — [DATE] tokens, no duplicate folders.",
   series: "Documents",
@@ -24,11 +24,13 @@ export const guide: Guide = {
     "bulk-file-actions",
   ],
   relatedLinks: [
-    { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    { label: "A client folder structure for accountants", href: "/blog/organise-client-documents-google-drive" },
     {
       label: "The accounting client onboarding checklist: seven steps",
       href: "/blog/accounting-client-onboarding-checklist",
     },
+    { label: "How to name client files so anyone can find them", href: "/blog/how-to-name-client-files" },
+    { label: "Document management in Xero Practice Manager", href: "/blog/xero-practice-manager-document-management" },
   ],
   faq: [
     {

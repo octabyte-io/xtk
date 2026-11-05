@@ -5,9 +5,10 @@ import { company } from "@/lib/legal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About",
+  title: "About XTK — the toolkit for Xero Practice Manager",
+  absoluteTitle: true,
   description:
-    "What OctaByte XTK is, who makes it, and how it works with Xero Practice Manager.",
+    "About XTK, the Chrome and Firefox extension from OctaByte that adds documents, e-signatures, client portals and templates to Xero Practice Manager.",
   path: "/about",
 });
 

@@ -1,5 +1,12 @@
 import { getAllGuides, getGuidesBySeries } from "@/lib/guides";
-import { getAllPosts } from "@/lib/posts";
+import {
+  getAllPosts,
+  getPost,
+  postDescription,
+  topics,
+  type Post,
+  type PostTopic,
+} from "@/lib/posts";
 import { company, pricing } from "@/lib/legal";
 import { absoluteUrl } from "@/lib/structured-data";
 import { CHROME_STORE_URL, FIREFOX_STORE_URL } from "@/lib/site";
@@ -30,7 +37,7 @@ export function GET() {
     `- [Get started](${absoluteUrl("/get-started")}): install the extension, create a practice account, first steps in XPM`,
     `- [Pricing](${absoluteUrl("/pricing")}): one plan, whole practice, ${pricing.trialDays}-day free trial`,
     `- [User guides](${absoluteUrl("/guides")}): index of every step-by-step guide`,
-    `- [Blog](${absoluteUrl("/blog")}): product news and practice tips`,
+    `- [Blog](${absoluteUrl("/blog")}): articles on document management, e-signatures and collecting client documents in XPM`,
     `- [About](${absoluteUrl("/about")}): who makes XTK`,
     `- [Support](${absoluteUrl("/support")}): how to get help (${company.supportEmail})`,
     `- [Sitemap](${absoluteUrl("/sitemap")}): every page on the site, grouped by section`,
@@ -62,11 +69,32 @@ export function GET() {
     }
   }
 
-  lines.push("", "## Blog", "");
-  for (const post of getAllPosts()) {
-    lines.push(
-      `- [${post.title}](${absoluteUrl(`/blog/${post.slug}`)}): ${post.excerpt}`
-    );
+  // Blog: the three topic clusters first, each led by its pillar (the
+  // overview that owns the topic), then anything outside a topic.
+  const postLine = (post: Post, prefix = "") =>
+    `- [${post.title}](${absoluteUrl(`/blog/${post.slug}`)}): ${prefix}${postDescription(post)}`;
+  const posts = getAllPosts();
+  lines.push(
+    "",
+    "## Blog topics",
+    "",
+    "The blog is organised into three topics. Each has one overview article (listed first) that links to every other article in the topic."
+  );
+  for (const key of Object.keys(topics) as PostTopic[]) {
+    const topic = topics[key];
+    const pillar = getPost(topic.pillarSlug);
+    lines.push("", `### ${topic.name}`, "", topic.blurb, "");
+    if (pillar) lines.push(postLine(pillar, "Overview. "));
+    for (const post of posts) {
+      if (post.topic === key && post.slug !== topic.pillarSlug) {
+        lines.push(postLine(post));
+      }
+    }
+  }
+  const untopiced = posts.filter((p) => !p.topic);
+  if (untopiced.length > 0) {
+    lines.push("", "## Other blog posts", "");
+    for (const post of untopiced) lines.push(postLine(post));
   }
 
   lines.push(

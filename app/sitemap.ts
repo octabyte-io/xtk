@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // pages have no revision history to draw one from, and an invented date is
   // worse than none.
   const dated: Partial<Record<(typeof STATIC_PATHS)[number], string>> = {
-    "/blog": newest(posts.map((p) => p.date)),
+    "/blog": newest(posts.map((p) => p.updated ?? p.date)),
     "/guides": newest(guides.map((g) => g.updated)),
   };
   const staticPaths: { path: string; lastModified?: string }[] = [
@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...posts.map((post) => ({
       url: absoluteUrl(`/blog/${post.slug}`),
-      lastModified: post.date,
+      lastModified: post.updated ?? post.date,
     })),
     ...guides.map((guide) => ({
       url: absoluteUrl(`/guides/${guide.slug}`),

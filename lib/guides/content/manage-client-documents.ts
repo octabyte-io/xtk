@@ -2,7 +2,7 @@ import type { Guide } from "../types";
 
 export const guide: Guide = {
   slug: "manage-client-documents",
-  title: "Manage client documents inside Xero Practice Manager",
+  title: "Manage client documents in Xero Practice Manager with XTK",
   description:
     "Browse, upload, organise and find client files without leaving Xero Practice Manager — XTK's Documents tab keeps every file in your practice's own storage.",
   series: "Documents",
@@ -28,11 +28,12 @@ export const guide: Guide = {
     "getting-started-with-xtk",
   ],
   relatedLinks: [
-    { label: "A sane folder structure for client documents", href: "/blog/organise-client-documents-google-drive" },
+    { label: "A client folder structure for accountants", href: "/blog/organise-client-documents-google-drive" },
     {
-      label: "Document management in Xero Practice Manager: four options",
+      label: "Document management in Xero Practice Manager",
       href: "/blog/xero-practice-manager-document-management",
     },
+    { label: "How to name client files so anyone can find them", href: "/blog/how-to-name-client-files" },
     { label: "Privacy Policy", href: "/legal/privacy" },
   ],
   faq: [

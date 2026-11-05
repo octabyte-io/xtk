@@ -1,10 +1,9 @@
 /**
  * Content store for the /guides section (user-guide articles).
  *
- * Mirrors lib/posts.ts but with a richer block AST (images, steps, h3, video)
- * and guide-specific metadata (series, order, updated, faq, relatedSlugs) —
- * and, unlike posts.ts (small and static, so left flat), split one file per
- * guide: types live in ./types.ts, each article in ./content/<slug>.ts, and
+ * Mirrors lib/posts but with a richer block AST (images, steps, h3, video)
+ * and guide-specific metadata (series, order, updated, faq, relatedSlugs).
+ * Same layout: types live in ./types.ts, each article in ./content/<slug>.ts, and
  * this file registers them and exposes the helpers. Articles are authored one
  * per session — see user-guide/MASTER-PLAN.md for slugs, briefs and status.
  */

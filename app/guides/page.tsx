@@ -11,9 +11,10 @@ import { getGuidesBySeries } from "@/lib/guides";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
-  title: "User guides",
+  title: "XTK user guides — step by step in Xero Practice Manager",
+  absoluteTitle: true,
   description:
-    "Step-by-step guides to XTK: set up documents, e-signatures, client portals and templates inside Xero Practice Manager.",
+    "Step-by-step guides to XTK: set up documents, e-signatures, client portals and templates inside Xero Practice Manager, from first install to billing.",
   path: "/guides",
 });
 

@@ -26,6 +26,7 @@ export const guide: Guide = {
       label: "How long must accountants keep client records?",
       href: "/blog/how-long-accountants-keep-client-records",
     },
+    { label: "Document management in Xero Practice Manager", href: "/blog/xero-practice-manager-document-management" },
     { label: "Privacy Policy", href: "/legal/privacy" },
     { label: "Data Processing Addendum", href: "/legal/dpa" },
     { label: "Sub-processors", href: "/legal/subprocessors" },

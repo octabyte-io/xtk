@@ -24,6 +24,7 @@ export function absoluteUrl(path: string): string {
 /** Stable node ids so every graph on the site points at one Organization. */
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
+const SOFTWARE_ID = `${SITE_URL}/#software`;
 
 /** Reference to the Organization node emitted sitewide by the root layout. */
 const publisher = { "@id": ORGANIZATION_ID } as const;
@@ -88,8 +89,9 @@ export function blogPostingJsonLd(post: Post) {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.excerpt,
+    description: post.description ?? post.excerpt,
     datePublished: post.date,
+    dateModified: post.updated ?? post.date,
     author: {
       "@type": "Person",
       name: post.author.name,
@@ -182,7 +184,11 @@ export function videoObjectJsonLd() {
   };
 }
 
-/** For the home page. */
+/**
+ * For the home and pricing pages. One `@id`, so the two emissions describe a
+ * single product rather than two. No rating or review fields: there are none
+ * to report, and inventing them is a manual-action risk.
+ */
 export function softwareApplicationJsonLd() {
   /** Only listings that are actually published — see lib/site.ts. */
   const listings = [CHROME_STORE_URL, FIREFOX_STORE_URL].filter(
@@ -191,12 +197,15 @@ export function softwareApplicationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": SOFTWARE_ID,
     name: company.product,
+    alternateName: company.shortName,
     applicationCategory: "BusinessApplication",
+    applicationSubCategory: "Browser extension",
     operatingSystem: "Chrome, Firefox",
-    description:
-      "XTK adds document management, e-signatures, client portals and template automation to Xero Practice Manager — in a panel that opens right inside it.",
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
+    image: absoluteUrl(DEFAULT_OG_IMAGE),
     ...(listings.length > 0 && {
       downloadUrl: listings[0],
       installUrl: listings[0],
@@ -206,6 +215,8 @@ export function softwareApplicationJsonLd() {
       "@type": "Offer",
       price: pricing.amount.replace(/[^0-9.]/g, ""),
       priceCurrency: pricing.currency,
+      url: absoluteUrl("/pricing"),
+      availability: "https://schema.org/InStock",
       description: `Per practice, per ${pricing.interval}, after a ${pricing.trialDays}-day free trial.`,
     },
     publisher,

@@ -7,7 +7,7 @@ import { LEGAL_UPDATED, company } from "@/lib/legal";
 export const metadata: Metadata = pageMetadata({
   title: "Your Data Rights & Deletion",
   description:
-    "How to access, export or delete your data from OctaByte XTK, and what happens when you do.",
+    "How to access, export or delete your data from OctaByte XTK or close your account: what we delete, what we may keep, and how long it takes.",
   path: "/legal/data-deletion",
 });
 

@@ -5,7 +5,7 @@ import { H2, P } from "@/components/site/legal/prose";
 import { getGuidesBySeries } from "@/lib/guides";
 import { LEGAL_UPDATED } from "@/lib/legal";
 import { pageMetadata } from "@/lib/metadata";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, topics, type PostTopic } from "@/lib/posts";
 
 /**
  * The human-readable counterpart to app/sitemap.ts. Both read the same stores,
@@ -19,7 +19,7 @@ import { getAllPosts } from "@/lib/posts";
 export const metadata: Metadata = pageMetadata({
   title: "Sitemap",
   description:
-    "Every page on the XTK site — user guides, blog posts, product pages and policies — in one list.",
+    "Every page on the XTK site in one list: user guides by series, blog posts by topic, product pages and policies for the Xero Practice Manager toolkit.",
   path: "/sitemap",
 });
 
@@ -28,7 +28,7 @@ const MAIN_PAGES: { href: string; label: string; blurb: string }[] = [
   { href: "/get-started", label: "Get started", blurb: "Install the extension and set up your practice." },
   { href: "/pricing", label: "Pricing", blurb: "One price per practice, and what the trial covers." },
   { href: "/guides", label: "User guides", blurb: "Step-by-step walkthroughs of every feature." },
-  { href: "/blog", label: "Blog", blurb: "Product news and practice tips." },
+  { href: "/blog", label: "Blog", blurb: "Articles on documents, e-signatures and client files in XPM." },
   { href: "/about", label: "About", blurb: "Who builds XTK and why." },
   { href: "/support", label: "Support", blurb: "How to get help." },
 ];
@@ -120,13 +120,47 @@ export default function Sitemap() {
       ))}
 
       <H2 id="blog">Blog</H2>
-      <LinkList
-        items={posts.map((post) => ({
-          href: `/blog/${post.slug}`,
-          label: post.title,
-          blurb: post.category,
-        }))}
-      />
+      <P>
+        {posts.length} articles, grouped by topic. The first in each topic is
+        its overview.
+      </P>
+      {(Object.keys(topics) as PostTopic[]).map((key) => {
+        const topic = topics[key];
+        const inTopic = posts.filter((p) => p.topic === key);
+        // Pillar first, then the rest newest first.
+        const ordered = [
+          ...inTopic.filter((p) => p.slug === topic.pillarSlug),
+          ...inTopic.filter((p) => p.slug !== topic.pillarSlug),
+        ];
+        return (
+          <div key={key} className="mt-6">
+            <h3 className="font-display text-lg font-bold text-ink">
+              {topic.name}
+            </h3>
+            <LinkList
+              items={ordered.map((post) => ({
+                href: `/blog/${post.slug}`,
+                label: post.title,
+              }))}
+            />
+          </div>
+        );
+      })}
+      {posts.some((p) => !p.topic) && (
+        <div className="mt-6">
+          <h3 className="font-display text-lg font-bold text-ink">
+            Other posts
+          </h3>
+          <LinkList
+            items={posts
+              .filter((p) => !p.topic)
+              .map((post) => ({
+                href: `/blog/${post.slug}`,
+                label: post.title,
+              }))}
+          />
+        </div>
+      )}
 
       <H2 id="legal">Policies</H2>
       <LinkList

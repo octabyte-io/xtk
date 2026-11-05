@@ -3,6 +3,7 @@ import SectionHeading from "./section-heading";
 import ButtonLink from "./button-link";
 import { A } from "./prose-link";
 import { GET_STARTED_PATH } from "@/lib/site";
+import { pricing } from "@/lib/legal";
 
 const included = [
   "Every XTK feature — e-signatures, client portal, document requests and templates",
@@ -40,6 +41,7 @@ export default function Pricing({
 }: {
   showHeading?: boolean;
 } = {}) {
+  const PlanHeading = showHeading ? "h3" : "h2";
   return (
     <section
       id="pricing"
@@ -48,7 +50,7 @@ export default function Pricing({
       {showHeading && (
         <SectionHeading
           eyebrow="Pricing"
-          title="Try everything free for 30 days"
+          title={`Try everything free for ${pricing.trialDays} days`}
           lede="No credit card, no feature tiers, no per-seat surprises. Start your trial, put your whole practice on it, and only pay if it earns its keep."
         />
       )}
@@ -57,14 +59,16 @@ export default function Pricing({
           <div className="grid sm:grid-cols-[5fr_6fr]">
             <div className="hero-wash flex flex-col justify-center gap-5 border-b border-line px-6 py-10 sm:border-b-0 sm:border-r sm:px-10">
               <span className="inline-flex w-fit items-center rounded-full bg-mint/20 px-3.5 py-1 text-sm font-medium text-ink">
-                30-day free trial · no credit card
+                {pricing.trialDays}-day free trial · no credit card
               </span>
               <div>
                 <div className="flex items-baseline gap-2">
                   <span className="font-display text-5xl font-bold tracking-tight text-ink">
-                    $59
+                    {pricing.amount}
                   </span>
-                  <span className="text-lg text-ink-soft">USD / month</span>
+                  <span className="text-lg text-ink-soft">
+                    {pricing.currency} / {pricing.interval}
+                  </span>
                 </div>
                 <p className="mt-2 text-sm text-ink-soft">
                   after your trial ends — cancel anytime
@@ -75,9 +79,11 @@ export default function Pricing({
               </ButtonLink>
             </div>
             <div className="px-6 py-10 sm:px-10">
-              <h3 className="font-display text-base font-bold text-ink">
+              {/* h2 on /pricing, where no section heading sits above it — the
+                  page goes h1 → h2 rather than skipping a level. */}
+              <PlanHeading className="font-display text-base font-bold text-ink">
                 One plan, everything included
-              </h3>
+              </PlanHeading>
               <ul className="mt-5 space-y-4">
                 {included.map((item) => (
                   <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-ink-soft">

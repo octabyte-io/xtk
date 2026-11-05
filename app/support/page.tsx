@@ -6,9 +6,10 @@ import { pageMetadata } from "@/lib/metadata";
 import { BOOK_A_CALL_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Support",
+  title: "XTK support — email, book a call or ask in the panel",
+  absoluteTitle: true,
   description:
-    "Get help with OctaByte XTK — contact support, report a problem, or read the FAQ.",
+    "Get help with XTK for Xero Practice Manager: email support, book a 20-minute call, report a problem from the XTK panel, or find the right user guide.",
   path: "/support",
 });
 

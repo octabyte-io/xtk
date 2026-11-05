@@ -23,7 +23,8 @@ export const guide: Guide = {
     "placeholder-reference",
   ],
   relatedLinks: [
-    { label: "Stop retyping client data", href: "/blog/stop-retyping-client-data" },
+    { label: "The covering email: what to write when you send a client documents to sign", href: "/blog/covering-email-for-client-documents" },
+    { label: "How to stop chasing clients for documents", href: "/blog/stop-chasing-clients-for-documents" },
     { label: "Support", href: "/support" },
   ],
   faq: [

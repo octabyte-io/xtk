@@ -2,7 +2,7 @@ import type { Guide } from "../types";
 
 export const guide: Guide = {
   slug: "quote-documents",
-  title: "Quote documents in Xero Practice Manager",
+  title: "Attach documents to Xero Practice Manager quotes with XTK",
   description:
     "Keep a quote's paperwork on the quote — XTK adds a Documents tab to every Xero Practice Manager quote and estimate, filing to your practice's own Drive.",
   series: "Documents",
@@ -23,12 +23,13 @@ export const guide: Guide = {
     "connect-document-storage",
   ],
   relatedLinks: [
+    { label: "Filing by client isn't enough: job and quote documents in XPM", href: "/blog/xero-practice-manager-job-documents" },
     {
-      label: "A sane folder structure for client documents",
+      label: "A client folder structure for accountants",
       href: "/blog/organise-client-documents-google-drive",
     },
     {
-      label: "Document management in Xero Practice Manager: four options",
+      label: "Document management in Xero Practice Manager",
       href: "/blog/xero-practice-manager-document-management",
     },
   ],
@@ -155,7 +156,11 @@ export const guide: Guide = {
     },
     {
       type: "p",
-      text: "It matters because the alternative is worse than it sounds: file by the route the person took and the same quote's paperwork ends up in two places, depending on who opened it and from where. One quote, one folder, under the client whose work it is.",
+      text: [
+        "It matters because the alternative is worse than it sounds: file by the route the person took and the same quote's paperwork ends up in two places, depending on who opened it and from where. One quote, one folder, under the client whose work it is. Our blog post on ",
+        { text: "organising job and quote documents in XPM", href: "/blog/xero-practice-manager-job-documents" },
+        " makes the case for filing at job and quote level at all.",
+      ],
     },
     {
       type: "callout",
